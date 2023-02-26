@@ -1,11 +1,18 @@
+import Button from "@/components/Button/Button";
+
 export default function Home() {
   return (
     <>
-      <h1>KWIDZY - HOME</h1>
-      <button>
-        <a href={"/start"}>Jouer</a>
-      </button>
-      <p>Le quiz fun & ludique pour toute la famille</p>
+      <div className="pt-80 md:pt-0">
+        <h1 className="font-bold text-3xl md:text-8xl mb-20">KWIDZY</h1>
+        <div>
+          <Button>
+            <a className="font-bold text-3xl" href={"/start"}>
+              Jouer
+            </a>
+          </Button>
+        </div>
+      </div>
     </>
   );
 }
