@@ -1,11 +1,11 @@
-import Button from "@/components/Button/Button";
+import MainBtn from "@/components/Button/MainBtn";
 import React from "react";
 
 export default function index() {
   return (
-    <div>
+    <div className="h-screen md:px-96 flex flex-col justify-between">
       <input
-        className="rounded-full p-4 w-full"
+        className="rounded-full p-4 w-full bg-secondary-color placeholder-white focus:outline-none focus:bg-darker-secondary-color"
         type="text"
         id="pseudo"
         name="pseudo"
@@ -19,13 +19,15 @@ export default function index() {
         <div>
           <img src="#" alt="Avatar ananas" />
         </div>
-        <p className="p-4 bg-[#3FC6E3] rounded-full mb-6">Pret à te lancer ?</p>
-        <Button>
-          <a href="/categories" className="text-2xl font-bold">
-            C'est parti !
-          </a>
-        </Button>
       </div>
+      <p className="p-4 bg-tertiary-color rounded-full mb-6">
+        Pret à te lancer ?
+      </p>
+      <MainBtn>
+        <a href="/categories" className="text-4xl font-bold">
+          C'est parti !
+        </a>
+      </MainBtn>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between">
+    <nav className="flex justify-between mb-12">
       <Link href={"/"}>Kwidzy</Link>
       {/* <Link href={"/register"}>S'inscrire</Link> */}
       <Link href={"/categories"}>Catégories</Link>
