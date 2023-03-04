@@ -17,7 +17,10 @@ module.exports = {
         "darker-secondary-color": "var(--darker-secondary-color)",
         "tertiary-color": "var(--tertiary-color)",
         "darker-tertiary-color": "var(--darker-tertiary-color)",
-      }
+      },
+      backgroundImage: {
+        'numerique': "url('../public/assets/images/keyboard.jpg')",
+      },
     },
   },
   plugins: [],

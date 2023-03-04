@@ -1,5 +1,9 @@
 import React from "react";
-import { MainBtn, SecondaryBtn, ThirdBtn } from "@/components/Button";
+import { MainBtn, SecondaryBtn, ThirdBtn } from "@/components/atoms/Button";
+
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Title from "@/components/atoms/Title";
 
 const CreateCharactersWithProps = ({
   ASCIIChar,
@@ -18,13 +22,15 @@ const RepeatDots = ({ times, children }: { times: number; children: any }) => {
 };
 
 export default function index() {
+  const router = useRouter();
+
   return (
     <div>
-      <h1 className="hidden md:block md:font-bold md:text-4xl md:mb-12">
-        Catégories
-      </h1>
-      <section className="md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-6 md:justify-items-center">
-        <MainBtn>Numérique</MainBtn>
+      <Title>Catégories</Title>
+      <section className="md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-6 md:justify-items-center md:mt-12">
+        <MainBtn>
+          <Link href={"/quizdetail"}>Numérique</Link>
+        </MainBtn>
         <ThirdBtn>Cinéma et séries</ThirdBtn>
         <SecondaryBtn>Blagues nulles</SecondaryBtn>
         <MainBtn>Histoire de l'art</MainBtn>

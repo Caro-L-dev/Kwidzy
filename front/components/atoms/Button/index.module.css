@@ -1,0 +1,25 @@
+.btn{
+  @apply 
+  flex
+  justify-center items-center
+  w-full 
+  h-[70px] md:h-[90px] 
+  p-2 my-3
+  cursor-pointer
+  rounded-2xl  
+  border-r-[5px] border-b-[5px] 
+  text-xl md:text-4xl
+  font-bold
+}
+
+.main{
+  @apply bg-primary-color border-darker-primary-color
+}
+
+.secondary{
+  @apply bg-secondary-color border-darker-secondary-color
+}
+
+.third{
+  @apply bg-tertiary-color border-darker-tertiary-color
+}

@@ -1,4 +1,4 @@
-import MainBtn from "@/components/Button/MainBtn";
+import MainBtn from "@/components/atoms/Button/MainBtn";
 import React from "react";
 
 export default function index() {
