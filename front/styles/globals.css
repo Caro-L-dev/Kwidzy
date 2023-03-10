@@ -12,3 +12,12 @@
   --tertiary-color: #3FC6E3;
   --darker-tertiary-color: #39ABC5;
 }
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+html,body {
+  @apply bg-indigo-500
+}
