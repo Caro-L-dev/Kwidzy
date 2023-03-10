@@ -8,7 +8,8 @@
   cursor-pointer
   rounded-2xl  
   border-r-[5px] border-b-[5px] 
-  text-xl md:text-4xl
+  text-sm md:text-4xl
+  tracking-widest
   font-bold
 }
 

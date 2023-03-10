@@ -26,10 +26,12 @@ export default function index() {
 
   return (
     <div>
-      <Title>Catégories</Title>
+      <Title Title="Catégories" />
       <section className="md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-6 md:justify-items-center md:mt-12">
         <MainBtn>
-          <Link href={"/quizdetail"}>Numérique</Link>
+          <Link href={"/quizdetail"}>
+            <p>Numérique</p>
+          </Link>
         </MainBtn>
         <ThirdBtn>Cinéma et séries</ThirdBtn>
         <SecondaryBtn>Blagues nulles</SecondaryBtn>

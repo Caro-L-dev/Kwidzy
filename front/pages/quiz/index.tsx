@@ -1,16 +1,19 @@
-import { MainBtn, ThirdBtn } from "@/components/atoms/Button";
 import React from "react";
+import { MainBtn, ThirdBtn } from "@/components/atoms/Button";
+import Score from "@/components/atoms/Score";
+import Timer from "@/components/atoms/Timer";
 
 export default function index() {
   return (
     <div>
       <div className="relative">
-        <div className="opacity-30 h-[73px] md:h-full md:w-[580px] p-4 rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center"></div>
-        <p className="absolute top-4 bottom-0 right-0 left-0 text-3xl font-bold">
-          0 Brouette
-        </p>
-        <div>timer</div>
+        <div className="absolute top-[-15px] right-[-10px]">
+          {/* au pire je place le timer en haut au centre */}
+          <Timer />
+        </div>
       </div>
+      <Score />
+
       <ThirdBtn>Q1: Qui a conçu Facebook ?</ThirdBtn>
       <div>
         <MainBtn>

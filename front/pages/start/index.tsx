@@ -1,11 +1,15 @@
-import MainBtn from "@/components/atoms/Button/MainBtn";
 import React from "react";
+
+// Component Import
+import Bubble from "@/components/atoms/Bubble";
+import MainBtn from "@/components/atoms/Button/MainBtn";
+import AvatarChoice from "@/components/molecules/AvatarChoice/AvatarChoice";
 
 export default function index() {
   return (
-    <div className="h-screen md:px-96 flex flex-col justify-between">
+    <div className="md:px-96 flex flex-col">
       <input
-        className="rounded-full p-4 w-full bg-secondary-color placeholder-white focus:outline-none focus:bg-darker-secondary-color"
+        className="rounded-full text-sm tracking-wide p-4 w-full bg-secondary-color placeholder-white focus:outline-none focus:bg-darker-secondary-color mb-6"
         type="text"
         id="pseudo"
         name="pseudo"
@@ -14,20 +18,15 @@ export default function index() {
         maxLength={8}
         placeholder="Quel est ton pseudo ?"
       />
-      <div>
-        <h2 className="font-bold text-2xl">Choix de votre avatar</h2>
-        <div>
-          <img src="#" alt="Avatar ananas" />
-        </div>
+      <div className="mt-6">
+        <AvatarChoice />
+        <Bubble>Pret à te lancer user ?</Bubble>
+        <MainBtn>
+          <a href="/categories" className="text-lg tracking-wider font-bold">
+            C'est parti !
+          </a>
+        </MainBtn>
       </div>
-      <p className="p-4 bg-tertiary-color rounded-full mb-6">
-        Pret à te lancer ?
-      </p>
-      <MainBtn>
-        <a href="/categories" className="text-4xl font-bold">
-          C'est parti !
-        </a>
-      </MainBtn>
     </div>
   );
 }
