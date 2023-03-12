@@ -7,7 +7,7 @@ export default function index() {
   return (
     <div>
       <div className="relative">
-        <div className="absolute top-[-15px] right-[-10px]">
+        <div className="absolute top-[-15px] right-[-10px] md:relative md:flex md:justify-center">
           {/* au pire je place le timer en haut au centre */}
           <Timer />
         </div>
@@ -15,7 +15,7 @@ export default function index() {
       <Score />
 
       <ThirdBtn>Q1: Qui a conçu Facebook ?</ThirdBtn>
-      <div>
+      <div className="md:grid md:grid-cols-2 md:gap-x-4">
         <MainBtn>
           <span className="mr-4">A.</span>
           <p>Georges Clooney</p>

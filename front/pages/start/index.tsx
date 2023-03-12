@@ -7,7 +7,7 @@ import AvatarChoice from "@/components/molecules/AvatarChoice/AvatarChoice";
 
 export default function index() {
   return (
-    <div className="md:px-96 flex flex-col">
+    <div className="flex flex-col">
       <input
         className="rounded-full text-sm tracking-wide p-4 w-full bg-secondary-color placeholder-white focus:outline-none focus:bg-darker-secondary-color mb-6"
         type="text"

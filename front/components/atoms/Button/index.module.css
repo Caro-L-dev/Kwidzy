@@ -1,14 +1,14 @@
 .btn{
   @apply 
   flex
-  justify-center items-center
-  w-full 
+  justify-center items-center mx-auto
+  w-full
   h-[70px] md:h-[90px] 
-  p-2 my-3
+  p-2 my-3 md:px-6
   cursor-pointer
   rounded-2xl  
   border-r-[5px] border-b-[5px] 
-  text-sm md:text-4xl
+  text-sm md:text-lg
   tracking-widest
   font-bold
 }

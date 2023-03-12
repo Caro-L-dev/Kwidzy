@@ -27,7 +27,7 @@ export default function index() {
   return (
     <div>
       <Title Title="Catégories" />
-      <section className="md:grid md:grid-cols-2 md:gap-y-4 md:gap-x-6 md:justify-items-center md:mt-12">
+      <section className="md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
         <MainBtn>
           <Link href={"/quizdetail"}>
             <p>Numérique</p>
