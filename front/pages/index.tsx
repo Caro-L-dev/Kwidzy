@@ -1,7 +1,25 @@
 import { Button } from "@/components/atoms/AdvancedButton.tsx/AdavancedButton";
 import MainBtn from "@/components/atoms/Button/MainBtn";
+import { useRouter } from "next/router";
+import { MouseEvent } from "react";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleClick = (
+    event: MouseEvent<HTMLAnchorElement, MouseEvent>,
+    path: string
+  ) => {
+    if (path === "/start") {
+      console.log("Je me rends sur la page Start");
+      router.push(path);
+    }
+    if (path === "/profil") {
+      console.log("Je me rends sur la page de Profil");
+      router.push(path);
+    }
+  };
+
   return (
     <>
       <div className="relative mt-56 md:mt-[20%]">
@@ -15,19 +33,51 @@ export default function Home() {
       </div>
 
       <div className="mt-20">
-        <Button className="m-1" rounded variant="primary">
+        <Button
+          className="m-1"
+          rounded
+          variant="primary"
+          type={"button"}
+          onClick={(event: any) => handleClick(event, "/start")}
+          id={"1"}
+        >
           Primary
         </Button>
-        <Button className="m-1" rounded variant="secondary">
+        <Button
+          className="m-1"
+          rounded
+          variant="secondary"
+          type={"button"}
+          id={""}
+          onClick={(event: any) => handleClick(event, "/profil")}
+        >
           Secondary
         </Button>
-        <Button className="m-1" rounded variant="tertiary">
+        <Button
+          className="m-1"
+          rounded
+          variant="tertiary"
+          type={"button"}
+          id={""}
+        >
           Tertiary
         </Button>
-        <Button className="m-1" rounded variant="correct">
+        <Button
+          className="m-1"
+          rounded
+          variant="correct"
+          type={"button"}
+          id={""}
+        >
           Correct
         </Button>
-        <Button className="m-1" rounded={false} variant="mistake">
+        <Button
+          className="m-1"
+          rounded={false}
+          variant="mistake"
+          type={"button"}
+          id={""}
+        >
           Mistake
         </Button>
 
