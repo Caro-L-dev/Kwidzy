@@ -1,9 +1,13 @@
+/**
+ * Package Import
+ */
 import React from "react";
-import { MainBtn, SecondaryBtn, ThirdBtn } from "@/components/atoms/Button";
-
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Title from "@/components/atoms/Title";
+
+/**
+ * Local Import
+ */
+import { Title, Button } from "../../components/atoms";
 
 const CreateCharactersWithProps = ({
   ASCIIChar,
@@ -24,27 +28,82 @@ const RepeatDots = ({ times, children }: { times: number; children: any }) => {
 export default function index() {
   const router = useRouter();
 
+  const handleClick = (path: string) => {
+    if (path === "/quizdetail") {
+      console.log("Je me rends sur la page QuizDetail");
+      router.push(path);
+    }
+  };
+
   return (
-    <div>
+    <>
       <Title Title="Catégories" />
       <section className="md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
-        <MainBtn>
-          <Link href={"/quizdetail"}>
-            <p>Numérique</p>
-          </Link>
-        </MainBtn>
-        <ThirdBtn>Cinéma et séries</ThirdBtn>
-        <SecondaryBtn>Blagues nulles</SecondaryBtn>
-        <MainBtn>Histoire de l'art</MainBtn>
-        <ThirdBtn>Gastronomie</ThirdBtn>
-        <SecondaryBtn>Sport</SecondaryBtn>
+        <Button
+          rounded
+          className={""}
+          type={"button"}
+          variant={"primary"}
+          onClick={() => handleClick("/quizdetail")}
+        >
+          Numérique
+        </Button>
+
+        <Button
+          className={""}
+          type={"button"}
+          variant={"secondary"}
+          rounded
+          onClick={() => handleClick("/quizdetail")}
+        >
+          Cinéma et séries
+        </Button>
+
+        <Button
+          className={""}
+          type={"button"}
+          variant={"tertiary"}
+          rounded
+          onClick={() => handleClick("/quizdetail")}
+        >
+          Blagues nulles
+        </Button>
+
+        <Button
+          className={""}
+          type={"button"}
+          variant={"primary"}
+          rounded
+          onClick={() => handleClick("/quizdetail")}
+        >
+          Histoire de l'art
+        </Button>
+
+        <Button
+          className={""}
+          type={"button"}
+          variant={"secondary"}
+          rounded
+          onClick={() => handleClick("/quizdetail")}
+        >
+          Gastronomie
+        </Button>
+
+        <Button
+          className={""}
+          type={"button"}
+          variant={"tertiary"}
+          rounded
+          onClick={() => handleClick("/quizdetail")}
+        >
+          Sport
+        </Button>
       </section>
       <div className="flex justify-center text-5xl">
-        {/* <div className="bg-tertiary-color h-5 w-5 rounded-full opacity-30"></div> */}
         <RepeatDots times={3}>
           <CreateCharactersWithProps ASCIIChar="."></CreateCharactersWithProps>
         </RepeatDots>
       </div>
-    </div>
+    </>
   );
 }

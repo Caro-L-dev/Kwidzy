@@ -1,8 +1,21 @@
-import { MainBtn } from "@/components/atoms/Button";
-import Input from "@/components/atoms/Input/Index";
+/**
+ * Package Import
+ */
 import React from "react";
+import router from "next/router";
+
+/**
+ * Local Import
+ */
+import { Button, Input } from "../../components/atoms";
 
 export default function index() {
+  const handleClick = (path: string) => {
+    if (path === "/register") {
+      console.log("Je me rends sur la page S'inscrire");
+      router.push(path);
+    }
+  };
   return (
     <div className="flex flex-col justify-center">
       <p>Pseudo</p>
@@ -11,7 +24,15 @@ export default function index() {
       <Input bgColor={"bg-tertiary-color"} />
       <p>Email</p>
       <Input bgColor={"bg-primary-color"} />
-      <MainBtn>S'inscrire</MainBtn>
+      <Button
+        rounded
+        className={""}
+        type={"button"}
+        variant={"primary"}
+        onClick={() => handleClick("/register")}
+      >
+        S'inscrire
+      </Button>
     </div>
   );
 }

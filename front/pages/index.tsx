@@ -1,15 +1,17 @@
-import { Button } from "@/components/atoms/AdvancedButton.tsx/AdavancedButton";
-import MainBtn from "@/components/atoms/Button/MainBtn";
+/**
+ * Package Import
+ */
 import { useRouter } from "next/router";
-import { MouseEvent } from "react";
+
+/**
+ * Local Import
+ */
+import { Button } from "@/components/atoms/Button/Button";
 
 export default function Home() {
   const router = useRouter();
 
-  const handleClick = (
-    event: MouseEvent<HTMLAnchorElement, MouseEvent>,
-    path: string
-  ) => {
+  const handleClick = (path: string) => {
     if (path === "/start") {
       console.log("Je me rends sur la page Start");
       router.push(path);
@@ -34,56 +36,14 @@ export default function Home() {
 
       <div className="mt-20">
         <Button
-          className="m-1"
+          type={"button"}
+          variant={"primary"}
+          className={""}
           rounded
-          variant="primary"
-          type={"button"}
-          onClick={(event: any) => handleClick(event, "/start")}
-          id={"1"}
+          onClick={() => handleClick("/start")}
         >
-          Primary
+          Jouer
         </Button>
-        <Button
-          className="m-1"
-          rounded
-          variant="secondary"
-          type={"button"}
-          id={""}
-          onClick={(event: any) => handleClick(event, "/profil")}
-        >
-          Secondary
-        </Button>
-        <Button
-          className="m-1"
-          rounded
-          variant="tertiary"
-          type={"button"}
-          id={""}
-        >
-          Tertiary
-        </Button>
-        <Button
-          className="m-1"
-          rounded
-          variant="correct"
-          type={"button"}
-          id={""}
-        >
-          Correct
-        </Button>
-        <Button
-          className="m-1"
-          rounded={false}
-          variant="mistake"
-          type={"button"}
-          id={""}
-        >
-          Mistake
-        </Button>
-
-        <MainBtn>
-          <a href={"/start"}>Jouer</a>
-        </MainBtn>
       </div>
     </>
   );

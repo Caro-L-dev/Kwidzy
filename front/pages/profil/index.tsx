@@ -1,11 +1,24 @@
+/**
+ * Package Import
+ */
 import React from "react";
-import SubTitle from "@/components/atoms/SubTitle";
-import { MainBtn } from "@/components/atoms/Button";
-import Link from "next/link";
+import router from "next/router";
+
+/**
+ * Local Import
+ */
+import { SubTitle, Button } from "../../components/atoms";
 
 export default function index() {
+  const handleClick = (path: string) => {
+    if (path === "/register") {
+      console.log("Je me rends sur la page S'inscrire");
+      router.push(path);
+    }
+  };
+
   return (
-    <div className="">
+    <>
       <div className="flex flex-col justify-between items-center">
         <div className="bg-white h-24 w-24 rounded-full mb-2" />
         <SubTitle subtitle="Pouki78" />
@@ -25,10 +38,18 @@ export default function index() {
         <p>Toggle</p>
       </div>
 
-      <MainBtn>
-        <Link href={"/register"}>Créer un compte</Link>
-      </MainBtn>
-      <MainBtn>Se déconnecter</MainBtn>
-    </div>
+      <Button
+        rounded
+        className={""}
+        type={"submit"}
+        variant={"primary"}
+        onClick={() => handleClick("/register")}
+      >
+        Créer un compte
+      </Button>
+      <Button rounded className={""} type={"submit"} variant={"tertiary"}>
+        Se déconnecter
+      </Button>
+    </>
   );
 }
