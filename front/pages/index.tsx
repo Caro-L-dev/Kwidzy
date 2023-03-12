@@ -1,3 +1,4 @@
+import { Button } from "@/components/atoms/AdvancedButton.tsx/AdavancedButton";
 import MainBtn from "@/components/atoms/Button/MainBtn";
 
 export default function Home() {
@@ -14,6 +15,22 @@ export default function Home() {
       </div>
 
       <div className="mt-20">
+        <Button className="m-1" rounded variant="primary">
+          Primary
+        </Button>
+        <Button className="m-1" rounded variant="secondary">
+          Secondary
+        </Button>
+        <Button className="m-1" rounded variant="tertiary">
+          Tertiary
+        </Button>
+        <Button className="m-1" rounded variant="correct">
+          Correct
+        </Button>
+        <Button className="m-1" rounded={false} variant="mistake">
+          Mistake
+        </Button>
+
         <MainBtn>
           <a href={"/start"}>Jouer</a>
         </MainBtn>
