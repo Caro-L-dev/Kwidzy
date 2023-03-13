@@ -7,3 +7,4 @@ export { default as Score } from "./Score";
 export { default as Title } from "./Typography/Title";
 export { default as SubTitle } from "./Typography/SubTitle";
 export { Button } from "./Button/Button";
+export { Triangle } from "./Triangle";

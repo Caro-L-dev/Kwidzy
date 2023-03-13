@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 /**
  * Local Import
  */
-import { Button } from "../components/atoms";
+import { Button, Triangle } from "../components/atoms";
 
 export default function Home() {
   const router = useRouter();
@@ -26,25 +26,22 @@ export default function Home() {
     <>
       <div className="relative mt-56 md:mt-[20%]">
         <div className="flex justify-center">
-          {/* Triangle Shape */}
-          <div className="w-0 h-0 border-l-[50px] border-l-transparent border-r-[50px] border-r-transparent border-t-[100px] border-t-primary-color md:hidden" />
+          <Triangle className={"md:hidden"} position={"down"} />
         </div>
         <h1 className="absolute top-6 right-0 left-0 font-bold text-3xl md:text-6xl mb-8 md:relative md:text-center">
           KWIDZY
         </h1>
       </div>
 
-      <div className="mt-20">
-        <Button
-          type={"button"}
-          variant={"primary"}
-          className={"mb-4"}
-          rounded
-          onClick={() => handleClick("/start")}
-        >
-          Jouer
-        </Button>
-      </div>
+      <Button
+        type={"button"}
+        variant={"primary"}
+        className={"mt-20 mb-4"}
+        rounded
+        onClick={() => handleClick("/start")}
+      >
+        Jouer
+      </Button>
     </>
   );
 }
