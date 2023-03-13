@@ -26,7 +26,7 @@ export default function index() {
       <Input bgColor={"bg-primary-color"} />
       <Button
         rounded
-        className={""}
+        className={"mb-4"}
         type={"button"}
         variant={"primary"}
         onClick={() => handleClick("/register")}

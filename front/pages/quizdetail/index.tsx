@@ -42,7 +42,7 @@ export default function index() {
             </div>
             <Button
               rounded
-              className={""}
+              className={"mb-4"}
               type={"button"}
               variant={"primary"}
               onClick={() => handleClick("/quiz")}

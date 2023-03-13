@@ -25,7 +25,7 @@ export default function index() {
         <p className="text-xs">Compte invité</p>
       </div>
 
-      <div className="my-6">
+      <div className="my-6 mb-4">
         <h3>Mes avatars débloqués</h3>
         <div className="flex my-2">
           <div className="bg-white h-12 w-12 rounded-full mr-2" />
@@ -33,21 +33,21 @@ export default function index() {
         </div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between mb-4">
         <p>Son</p>
         <p>Toggle</p>
       </div>
 
       <Button
         rounded
-        className={""}
+        className={"mb-4"}
         type={"submit"}
         variant={"primary"}
         onClick={() => handleClick("/register")}
       >
         Créer un compte
       </Button>
-      <Button rounded className={""} type={"submit"} variant={"tertiary"}>
+      <Button rounded className={"mb-4"} type={"submit"} variant={"tertiary"}>
         Se déconnecter
       </Button>
     </>

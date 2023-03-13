@@ -38,10 +38,10 @@ export default function index() {
   return (
     <>
       <Title Title="Catégories" />
-      <section className="md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
+      <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
         <Button
           rounded
-          className={""}
+          className={"mb-2"}
           type={"button"}
           variant={"primary"}
           onClick={() => handleClick("/quizdetail")}
@@ -50,7 +50,7 @@ export default function index() {
         </Button>
 
         <Button
-          className={""}
+          className={"mb-2"}
           type={"button"}
           variant={"secondary"}
           rounded
@@ -60,7 +60,7 @@ export default function index() {
         </Button>
 
         <Button
-          className={""}
+          className={"mb-2"}
           type={"button"}
           variant={"tertiary"}
           rounded
@@ -70,7 +70,7 @@ export default function index() {
         </Button>
 
         <Button
-          className={""}
+          className={"mb-2"}
           type={"button"}
           variant={"primary"}
           rounded
@@ -80,7 +80,7 @@ export default function index() {
         </Button>
 
         <Button
-          className={""}
+          className={"mb-2"}
           type={"button"}
           variant={"secondary"}
           rounded
@@ -90,7 +90,7 @@ export default function index() {
         </Button>
 
         <Button
-          className={""}
+          className={"mb-2"}
           type={"button"}
           variant={"tertiary"}
           rounded
@@ -99,7 +99,7 @@ export default function index() {
           Sport
         </Button>
       </section>
-      <div className="flex justify-center text-5xl">
+      <div className="flex justify-center text-2xl mb-4">
         <RepeatDots times={3}>
           <CreateCharactersWithProps ASCIIChar="."></CreateCharactersWithProps>
         </RepeatDots>

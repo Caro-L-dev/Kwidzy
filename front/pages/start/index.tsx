@@ -8,7 +8,7 @@ import router from "next/router";
  * Local Import
  */
 import { Bubble, Button } from "../../components/atoms";
-import AvatarChoice from "@/components/molecules/AvatarChoice/AvatarChoice";
+import { AvatarChoice } from "../../components/molecules";
 
 export default function index() {
   const handleClick = (path: string) => {
@@ -36,7 +36,7 @@ export default function index() {
         <Button
           type={"button"}
           variant={"primary"}
-          className={"w-full"}
+          className={"w-full mb-4"}
           rounded
           onClick={() => handleClick("/categories")}
         >

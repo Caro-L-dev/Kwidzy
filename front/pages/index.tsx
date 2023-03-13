@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 /**
  * Local Import
  */
-import { Button } from "@/components/atoms/Button/Button";
+import { Button } from "../components/atoms";
 
 export default function Home() {
   const router = useRouter();
@@ -38,7 +38,7 @@ export default function Home() {
         <Button
           type={"button"}
           variant={"primary"}
-          className={""}
+          className={"mb-4"}
           rounded
           onClick={() => handleClick("/start")}
         >

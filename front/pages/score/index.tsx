@@ -20,20 +20,20 @@ export default function index() {
   return (
     <>
       <SubTitle subtitle="Score" />
-      <div>
+      <div className="mt-4">
         <p>Pas mal !</p>
         <p>Vous avez obtenu :</p>
         <Score />
 
         <div className="flex flex-col justify-center items-center">
           <p>Vous débloquez :</p>
-          <div className="h-7 w-7 bg-white rounded-lg" />
+          <div className="h-7 w-7 bg-white rounded-lg mt-4" />
         </div>
 
         <Bubble>Que diriez vous de faire mieux la prochaine fois ?</Bubble>
         <Button
           rounded
-          className={""}
+          className={"mb-4"}
           type={"button"}
           variant={"primary"}
           onClick={() => handleClick("/")}
