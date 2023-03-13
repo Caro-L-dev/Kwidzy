@@ -11,6 +11,10 @@
   --darker-secondary-color: #AC43B6;
   --tertiary-color: #3FC6E3;
   --darker-tertiary-color: #39ABC5;
+  --correct-color: #59df6d;
+  --darker-correct-color: #39c540;
+  --mistake-color: #df5959;
+  --darker-mistake-color: #c53939;
 }
 
 html, body {

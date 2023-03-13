@@ -1,5 +1,12 @@
+/**
+ * Package Import
+ */
 import React from "react";
-import SubTitle from "@/components/atoms/SubTitle";
+
+/**
+ * Local Import
+ */
+import { SubTitle } from "../../atoms/index";
 import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
@@ -8,7 +15,7 @@ import {
 export default function AvatarChoice() {
   return (
     <>
-      <SubTitle>Choix de votre avatar</SubTitle>
+      <SubTitle subtitle="Choix de votre avatar" />
       <div className="flex justify-between items-center my-12">
         <MdOutlineKeyboardArrowLeft />
         <div className="aspect-square h-24 bg-white rounded-lg shadow-lg">

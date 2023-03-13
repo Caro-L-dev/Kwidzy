@@ -10,17 +10,4 @@
   border-r-[5px] border-b-[5px] 
   text-sm md:text-lg
   tracking-widest
-  font-bold
-}
-
-.main{
-  @apply bg-primary-color border-darker-primary-color
-}
-
-.secondary{
-  @apply bg-secondary-color border-darker-secondary-color
-}
-
-.third{
-  @apply bg-tertiary-color border-darker-tertiary-color
 }

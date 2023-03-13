@@ -1,11 +1,23 @@
+/**
+ * Package Import
+ */
 import React from "react";
+import router from "next/router";
 
-// Component Import
-import Bubble from "@/components/atoms/Bubble";
-import MainBtn from "@/components/atoms/Button/MainBtn";
-import AvatarChoice from "@/components/molecules/AvatarChoice/AvatarChoice";
+/**
+ * Local Import
+ */
+import { Bubble, Button } from "../../components/atoms";
+import { AvatarChoice } from "../../components/molecules";
 
 export default function index() {
+  const handleClick = (path: string) => {
+    if (path === "/categories") {
+      console.log("Je me rends sur la page Catégories");
+      router.push(path);
+    }
+  };
+
   return (
     <div className="flex flex-col">
       <input
@@ -21,11 +33,15 @@ export default function index() {
       <div className="mt-6">
         <AvatarChoice />
         <Bubble>Pret à te lancer user ?</Bubble>
-        <MainBtn>
-          <a href="/categories" className="text-lg tracking-wider font-bold">
-            C'est parti !
-          </a>
-        </MainBtn>
+        <Button
+          type={"button"}
+          variant={"primary"}
+          className={"w-full mb-4"}
+          rounded
+          onClick={() => handleClick("/categories")}
+        >
+          C'est parti !
+        </Button>
       </div>
     </div>
   );

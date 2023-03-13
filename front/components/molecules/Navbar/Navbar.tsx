@@ -1,6 +1,13 @@
+/**
+ * Package Import
+ */
 import React from "react";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import Link from "next/link";
+
+/**
+ * Local Import
+ */
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import Avatar from "@/components/atoms/Avatar";
 
 export default function Navbar() {

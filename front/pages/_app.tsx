@@ -1,6 +1,12 @@
+/**
+ * Package Import
+ */
 import type { AppProps } from "next/app";
-import Container from "@/components/molecules/Container/Container";
 
+/**
+ * Local Import
+ */
+import { Container } from "../components/molecules";
 import "@/styles/globals.css";
 import { Rammetto_One } from "@next/font/google";
 

@@ -1,29 +1,46 @@
-import Bubble from "@/components/atoms/Bubble";
-import { MainBtn } from "@/components/atoms/Button";
-import Score from "@/components/atoms/Score";
-import SubTitle from "@/components/atoms/SubTitle";
-import Link from "next/link";
+/**
+ * Package Import
+ */
 import React from "react";
+import router from "next/router";
+
+/**
+ * Local Import
+ */
+import { SubTitle, Button, Bubble, Score } from "../../components/atoms";
 
 export default function index() {
+  const handleClick = (path: string) => {
+    if (path === "/") {
+      console.log("Je me rends sur la page Kwidzy");
+      router.push(path);
+    }
+  };
+
   return (
-    <div>
+    <>
       <SubTitle subtitle="Score" />
-      <div>
+      <div className="mt-4">
         <p>Pas mal !</p>
         <p>Vous avez obtenu :</p>
         <Score />
 
         <div className="flex flex-col justify-center items-center">
           <p>Vous débloquez :</p>
-          <div className="h-7 w-7 bg-white rounded-lg"></div>
+          <div className="h-7 w-7 bg-white rounded-lg mt-4" />
         </div>
 
         <Bubble>Que diriez vous de faire mieux la prochaine fois ?</Bubble>
-        <MainBtn>
-          <Link href={"/"}>Rejouer</Link>
-        </MainBtn>
+        <Button
+          rounded
+          className={"mb-4"}
+          type={"button"}
+          variant={"primary"}
+          onClick={() => handleClick("/")}
+        >
+          Rejouer
+        </Button>
       </div>
-    </div>
+    </>
   );
 }

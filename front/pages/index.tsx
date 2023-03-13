@@ -1,6 +1,27 @@
-import MainBtn from "@/components/atoms/Button/MainBtn";
+/**
+ * Package Import
+ */
+import { useRouter } from "next/router";
+
+/**
+ * Local Import
+ */
+import { Button } from "../components/atoms";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleClick = (path: string) => {
+    if (path === "/start") {
+      console.log("Je me rends sur la page Start");
+      router.push(path);
+    }
+    if (path === "/profil") {
+      console.log("Je me rends sur la page de Profil");
+      router.push(path);
+    }
+  };
+
   return (
     <>
       <div className="relative mt-56 md:mt-[20%]">
@@ -14,9 +35,15 @@ export default function Home() {
       </div>
 
       <div className="mt-20">
-        <MainBtn>
-          <a href={"/start"}>Jouer</a>
-        </MainBtn>
+        <Button
+          type={"button"}
+          variant={"primary"}
+          className={"mb-4"}
+          rounded
+          onClick={() => handleClick("/start")}
+        >
+          Jouer
+        </Button>
       </div>
     </>
   );
