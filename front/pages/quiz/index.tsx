@@ -12,7 +12,7 @@ export default function index() {
   return (
     <>
       <div className="relative">
-        <div className="absolute top-[-15px] right-[-10px] md:relative md:flex md:justify-center">
+        <div className="absolute top-[-15px] right-[-10px] md:relative md:flex md:justify-center z-10">
           <Timer />
         </div>
       </div>
