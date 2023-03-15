@@ -1,0 +1,38 @@
+/* Answers */
+.active {
+  @apply bg-blue
+}
+
+.correct {
+  animation: correct 3s ease forwards;
+}
+
+/* Convertir couleur en tailwind */
+@keyframes correct {
+  0%, 22%, 42% {
+    background: mediumblue;
+  }
+  20%, 40%, 60% {
+    background: midnightblue;
+  }
+  62%, 100% {
+    background: green;
+  }
+}
+
+.mistake {
+  animation: mistake 3s ease forwards;
+}
+
+/* Convertir couleur en tailwind */
+@keyframes mistake {
+  0%, 22%, 42% {
+    background: mediumblue;
+  }
+  20%, 40%, 60% {
+    background: midnightblue;
+  }
+  62%, 100% {
+    background: crimson;
+  }
+}

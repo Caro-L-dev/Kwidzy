@@ -3,9 +3,12 @@
  */
 import React, { useState } from "react";
 
-interface ScoreProps {}
+export default function ScoreAtom(datas: any) {
+  /**
+   * Hooks
+   */
+  const [questionNumber, setQuestionNumber] = useState(3);
 
-const Score: React.FC<ScoreProps> = ({}) => {
   /**
    * Datas
    */
@@ -22,11 +25,6 @@ const Score: React.FC<ScoreProps> = ({}) => {
     { id: 10, amount: "10 Brouettes" },
   ].reverse();
 
-  /**
-   * Hooks
-   */
-  const [questionNumber, setQuestionNumber] = useState(3);
-
   return (
     <div className="relative">
       <div className="relative">
@@ -42,6 +40,4 @@ const Score: React.FC<ScoreProps> = ({}) => {
       </div>
     </div>
   );
-};
-
-export default Score;
+}

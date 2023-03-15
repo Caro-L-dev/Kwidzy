@@ -1,42 +1,54 @@
 /**
  * Package Import
  */
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 /**
  * Local Import
  */
 import { Button } from "@/components/atoms";
 
-export default function Quiz() {
+export default function QuizMolecule({
+  data,
+  setTimeOut,
+  questionNumber,
+  setQuestionNumber,
+}: {
+  data: any;
+  setTimeOut: any;
+  questionNumber: number;
+  setQuestionNumber: any;
+}) {
+  /**
+   * Hooks
+   */
+  const [question, setQuestion] = useState(null);
+
+  useEffect(() => {
+    setQuestion(data[questionNumber - 1]);
+  }, [data, questionNumber]);
+
   return (
     <>
       {/* QUESTIONS */}
       <Button className={"mb-4"} type={"button"} variant={"tertiary"} rounded>
-        Q1: Qui a conçu Facebook ?
+        {question?.questionNumber}
+        {question?.question}
       </Button>
 
       {/* ANSWERS */}
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
-        <Button className={"mb-2"} type={"button"} variant={"primary"} rounded>
-          <span className="mr-4">A.</span>
-          <p>Georges Clooney</p>
-        </Button>
-
-        <Button className={"mb-2"} type={"button"} variant={"primary"} rounded>
-          <span className="mr-4">B.</span>
-          <p>Marc Zuckerberg</p>
-        </Button>
-
-        <Button className={"mb-2"} type={"button"} variant={"primary"} rounded>
-          <span className="mr-4">C.</span>
-          <p>Falbala</p>
-        </Button>
-
-        <Button className={"mb-2"} type={"button"} variant={"primary"} rounded>
-          <span className="mr-4">C.</span>
-          <p>Bill Gates</p>
-        </Button>
+        {question?.answers.map((answer: any) => (
+          <Button
+            className={"mb-2"}
+            type={"button"}
+            variant={"primary"}
+            rounded
+          >
+            <span className="mr-4">{answer.letter}</span>
+            <p>{answer.text}</p>
+          </Button>
+        ))}
       </div>
     </>
   );
