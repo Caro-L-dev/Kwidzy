@@ -45,7 +45,7 @@ export default function QuizMolecule({
 
   const handleClick = (answer: answerState) => {
     setSelectedAnswer(answer.text);
-    setClassName("active");
+    setClassName("active bg-slate-500");
   };
   console.log({ selectedAnswer });
   return (
@@ -60,7 +60,7 @@ export default function QuizMolecule({
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
         {question?.answers.map((answer) => (
           <Button
-            className={selectedAnswer === answer.text ? className : ""}
+            className={selectedAnswer === answer.text ? className : "answer"}
             onClick={() => handleClick(answer)}
             type={"button"}
             variant={"primary"}
