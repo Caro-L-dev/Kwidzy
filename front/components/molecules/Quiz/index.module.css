@@ -1,6 +1,6 @@
 /* Answers */
-.active {
-  @apply bg-blue
+.active{
+  @apply bg-slate-500
 }
 
 .correct {

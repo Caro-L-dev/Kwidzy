@@ -23,10 +23,17 @@ export default function QuizMolecule({
    * Hooks
    */
   const [question, setQuestion] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [className, setClassName] = useState("answer");
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
   }, [data, questionNumber]);
+
+  const handleClick = (answer: React.SetStateAction<null>) => {
+    setSelectedAnswer(answer);
+    setClassName("active");
+  };
 
   return (
     <>
@@ -40,7 +47,8 @@ export default function QuizMolecule({
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
         {question?.answers.map((answer: any) => (
           <Button
-            className={"mb-2"}
+            className={selectedAnswer === answer ? className : ""}
+            onClick={() => handleClick(answer)}
             type={"button"}
             variant={"primary"}
             rounded
