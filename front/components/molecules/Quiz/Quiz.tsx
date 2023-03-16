@@ -2,11 +2,24 @@
  * Package Import
  */
 import React, { useEffect, useState } from "react";
+import styles from "./index.module.css";
 
 /**
  * Local Import
  */
 import { Button } from "@/components/atoms";
+
+interface QuestionState {
+  questionNumber: number;
+  question: string;
+  answers: answerState[];
+}
+
+interface answerState {
+  letter: string;
+  text: string;
+  correct: boolean;
+}
 
 export default function QuizMolecule({
   data,
@@ -22,19 +35,19 @@ export default function QuizMolecule({
   /**
    * Hooks
    */
-  const [question, setQuestion] = useState(null);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [question, setQuestion] = useState<QuestionState | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [className, setClassName] = useState("answer");
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
   }, [data, questionNumber]);
 
-  const handleClick = (answer: React.SetStateAction<null>) => {
-    setSelectedAnswer(answer);
+  const handleClick = (answer: answerState) => {
+    setSelectedAnswer(answer.text);
     setClassName("active");
   };
-
+  console.log({ selectedAnswer });
   return (
     <>
       {/* QUESTIONS */}
@@ -45,9 +58,9 @@ export default function QuizMolecule({
 
       {/* ANSWERS */}
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
-        {question?.answers.map((answer: any) => (
+        {question?.answers.map((answer) => (
           <Button
-            className={selectedAnswer === answer ? className : ""}
+            className={selectedAnswer === answer.text ? className : ""}
             onClick={() => handleClick(answer)}
             type={"button"}
             variant={"primary"}

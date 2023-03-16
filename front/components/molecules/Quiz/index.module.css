@@ -1,5 +1,5 @@
 /* Answers */
-.active{
+button .active{
   @apply bg-slate-500
 }
 
