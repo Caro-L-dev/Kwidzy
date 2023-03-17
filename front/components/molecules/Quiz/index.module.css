@@ -1,8 +1,4 @@
 /* Answers */
-.active{
-  @apply bg-slate-500
-}
-
 .correct {
   animation: correct 3s ease forwards;
 }
