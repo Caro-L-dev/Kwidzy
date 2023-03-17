@@ -68,7 +68,14 @@ export default function QuizMolecule({
             onClick={() => handleClick(answer)}
             type={"button"}
             // variant={"primary"}
-            variant={answer.correct ? "correct" : "mistake"}
+            // variant={answer.correct ? "correct" : "mistake"}
+            variant={`bg-primary-color ${
+              answer.correct
+                ? "correct"
+                : answer.correct!
+                ? "mistake"
+                : "primary"
+            }`}
             rounded
           >
             <span className="mr-4">{answer.letter}</span>
