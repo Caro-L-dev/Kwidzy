@@ -36,7 +36,7 @@ export default function QuizMolecule({
    */
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [activeClassName, setActiveClassName] = useState("");
+  const [className, setClassName] = useState("");
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
@@ -44,7 +44,12 @@ export default function QuizMolecule({
 
   const handleClick = (answer: answerState) => {
     setSelectedAnswer(answer.text);
-    setActiveClassName("bg-secondary-color");
+    setClassName(
+      "bg-secondary-color border-darker-secondary-color border-r-[5px] border-b-[5px]"
+    );
+    setTimeout(() => {
+      setClassName(answer.correct ? "bg-correct-color" : "bg-mistake-color");
+    }, 1000);
   };
   console.log({ selectedAnswer });
   return (
@@ -59,10 +64,11 @@ export default function QuizMolecule({
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
         {question?.answers.map((answer) => (
           <Button
-            className={selectedAnswer === answer.text ? activeClassName : ""}
+            className={selectedAnswer === answer.text ? className : ""}
             onClick={() => handleClick(answer)}
             type={"button"}
-            variant={"primary"}
+            // variant={"primary"}
+            variant={answer.correct ? "correct" : "mistake"}
             rounded
           >
             <span className="mr-4">{answer.letter}</span>

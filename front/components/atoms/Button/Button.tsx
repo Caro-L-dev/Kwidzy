@@ -4,6 +4,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { classNames } from "./classNames";
+import { clsx } from "clsx";
 
 export const Button = ({
   id,
@@ -27,7 +28,7 @@ export const Button = ({
     type={type || "button"}
     id={id}
     onClick={onClick}
-    className={classNames(
+    className={clsx(
       `px-4 py-2 cursor-pointer shadow-md border-r-[5px] border-b-[5px] text-sm md:text-lg tracking-widest flex justify-center items-center mx-auto w-full h-[70px] md:h-[90px]`,
       rounded ? "rounded-2xl" : "",
       variant === "primary"
