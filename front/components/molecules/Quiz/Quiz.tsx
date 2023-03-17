@@ -2,7 +2,6 @@
  * Package Import
  */
 import React, { useEffect, useState } from "react";
-import styles from "./index.module.css";
 
 /**
  * Local Import
@@ -37,7 +36,7 @@ export default function QuizMolecule({
    */
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [className, setClassName] = useState("answer");
+  const [activeClassName, setActiveClassName] = useState("");
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
@@ -45,7 +44,7 @@ export default function QuizMolecule({
 
   const handleClick = (answer: answerState) => {
     setSelectedAnswer(answer.text);
-    setClassName("active bg-slate-500");
+    setActiveClassName("bg-secondary-color");
   };
   console.log({ selectedAnswer });
   return (
@@ -60,7 +59,7 @@ export default function QuizMolecule({
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
         {question?.answers.map((answer) => (
           <Button
-            className={selectedAnswer === answer.text ? className : "answer"}
+            className={selectedAnswer === answer.text ? activeClassName : ""}
             onClick={() => handleClick(answer)}
             type={"button"}
             variant={"primary"}
