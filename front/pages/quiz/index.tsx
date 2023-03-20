@@ -1,7 +1,7 @@
 /**
  * Package Import
  */
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 /**
  * Local Import
@@ -20,18 +20,22 @@ export default function index() {
   /**
    * Datas
    */
-  const scoreDatas = [
-    { id: 1, amount: "1 Brouette" },
-    { id: 2, amount: "2 Brouettes" },
-    { id: 3, amount: "3 Brouettes" },
-    { id: 4, amount: "4 Brouettes" },
-    { id: 5, amount: "5 Brouettes" },
-    { id: 6, amount: "6 Brouettes" },
-    { id: 7, amount: "7 Brouettes" },
-    { id: 8, amount: "8 Brouettes" },
-    { id: 9, amount: "9 Brouettes" },
-    { id: 10, amount: "10 Brouettes" },
-  ].reverse();
+  const scoreDatas = useMemo(
+    () =>
+      [
+        { id: 1, amount: "1 Brouette" },
+        { id: 2, amount: "2 Brouettes" },
+        { id: 3, amount: "3 Brouettes" },
+        { id: 4, amount: "4 Brouettes" },
+        { id: 5, amount: "5 Brouettes" },
+        { id: 6, amount: "6 Brouettes" },
+        { id: 7, amount: "7 Brouettes" },
+        { id: 8, amount: "8 Brouettes" },
+        { id: 9, amount: "9 Brouettes" },
+        { id: 10, amount: "10 Brouettes" },
+      ].reverse(),
+    []
+  );
 
   const data = [
     {
@@ -116,6 +120,15 @@ export default function index() {
       ],
     },
   ];
+
+  useEffect(() => {
+    questionNumber > 1 &&
+      setEarned(
+        scoreDatas.find((money) => money.id === questionNumber - 1)?.amount ??
+          "0 Brouette"
+      );
+  }, [scoreDatas, questionNumber]);
+
   return (
     <>
       <div className="relative">

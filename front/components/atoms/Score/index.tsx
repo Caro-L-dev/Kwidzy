@@ -3,7 +3,14 @@
  */
 import React, { useState } from "react";
 
-export default function ScoreAtom(datas: any) {
+interface ScoreDatas {
+  datas: {
+    id: number;
+    amount: string;
+  }[];
+}
+
+export default function ScoreAtom(datas: ScoreDatas) {
   /**
    * Hooks
    */
