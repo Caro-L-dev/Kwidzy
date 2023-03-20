@@ -22,12 +22,12 @@ interface answerState {
 
 export default function QuizMolecule({
   data,
-  setTimeOut,
+  setStop,
   questionNumber,
   setQuestionNumber,
 }: {
   data: any;
-  setTimeOut: any;
+  setStop: any;
   questionNumber: number;
   setQuestionNumber: any;
 }) {
@@ -42,14 +42,31 @@ export default function QuizMolecule({
     setQuestion(data[questionNumber - 1]);
   }, [data, questionNumber]);
 
+  const delay = (duration: number, callback: any) => {
+    setTimeout(() => {
+      callback();
+    }, duration);
+  };
+
   const handleClick = (answer: answerState) => {
     setSelectedAnswer(answer.text);
     setClassName(
       "bg-secondary-color border-darker-secondary-color border-r-[5px] border-b-[5px]"
     );
-    setTimeout(() => {
-      setClassName(answer.correct ? "bg-correct-color" : "bg-mistake-color");
-    }, 1000);
+    delay(1000, () =>
+      setClassName(answer.correct ? "bg-correct-color" : "bg-mistake-color")
+    );
+    delay(2000, () => {
+      if (answer.correct) {
+        // Go to the next question
+        setQuestionNumber(
+          (currentQuestionNumber: number) => currentQuestionNumber + 1
+        );
+        setSelectedAnswer(null);
+      } else {
+        setStop(true);
+      }
+    });
   };
   console.log({ selectedAnswer });
   return (

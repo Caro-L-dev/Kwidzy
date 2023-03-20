@@ -1,6 +1,6 @@
 /* Answers */
 .correct {
-  animation: correct 3s ease forwards;
+  animation: correct 1s ease forwards;
 }
 
 /* Convertir couleur en tailwind */
@@ -17,7 +17,7 @@
 }
 
 .mistake {
-  animation: mistake 3s ease forwards;
+  animation: mistake 1s ease forwards;
 }
 
 /* Convertir couleur en tailwind */

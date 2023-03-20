@@ -13,8 +13,8 @@ export default function index() {
   /**
    * Hooks
    */
-  const [questionNumber, setQuestionNumber] = useState(3);
-  const [timeOut, setTimeOut] = useState(false);
+  const [questionNumber, setQuestionNumber] = useState(1);
+  const [stop, setStop] = useState(false);
   /**
    * Datas
    */
@@ -125,7 +125,7 @@ export default function index() {
 
       <Quiz
         data={data}
-        setTimeOut={setTimeOut}
+        setStop={setStop}
         questionNumber={questionNumber}
         setQuestionNumber={setQuestionNumber}
       />
