@@ -68,7 +68,7 @@ export default function QuizMolecule({
       }
     });
   };
-  console.log({ selectedAnswer });
+  // console.log({ selectedAnswer });
   return (
     <>
       {/* QUESTIONS */}
@@ -79,19 +79,16 @@ export default function QuizMolecule({
 
       {/* ANSWERS */}
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
-        {question?.answers.map((answer) => (
+        {question?.answers.map((answer, index) => (
           <Button
+            key={index}
             className={selectedAnswer === answer.text ? className : ""}
             onClick={() => handleClick(answer)}
             type={"button"}
             // variant={"primary"}
             // variant={answer.correct ? "correct" : "mistake"}
-            variant={`bg-primary-color ${
-              answer.correct
-                ? "correct"
-                : answer.correct!
-                ? "mistake"
-                : "primary"
+            variant={`primary ${
+              answer.correct ? "correct" : answer.correct! ? "mistake" : ""
             }`}
             rounded
           >

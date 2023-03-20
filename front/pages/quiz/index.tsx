@@ -15,6 +15,8 @@ export default function index() {
    */
   const [questionNumber, setQuestionNumber] = useState(1);
   const [stop, setStop] = useState(false);
+  const [earned, setEarned] = useState("0 Brouette");
+
   /**
    * Datas
    */
@@ -117,18 +119,24 @@ export default function index() {
   return (
     <>
       <div className="relative">
-        <div className="absolute top-[-15px] right-[-10px] md:relative md:flex md:justify-center z-10">
-          <Timer />
-        </div>
+        {/* Condition qui affiche le score */}
+        {stop ? (
+          <h2>Vous avez gagné : {earned}</h2>
+        ) : (
+          <>
+            <div className="absolute top-[-15px] right-[-10px] md:relative md:flex md:justify-center z-10">
+              <Timer />
+            </div>
+            <Score datas={scoreDatas} />
+            <Quiz
+              data={data}
+              setStop={setStop}
+              questionNumber={questionNumber}
+              setQuestionNumber={setQuestionNumber}
+            />
+          </>
+        )}
       </div>
-      <Score datas={scoreDatas} />
-
-      <Quiz
-        data={data}
-        setStop={setStop}
-        questionNumber={questionNumber}
-        setQuestionNumber={setQuestionNumber}
-      />
     </>
   );
 }
