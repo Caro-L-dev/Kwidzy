@@ -22,12 +22,12 @@ interface answerState {
 
 export default function QuizMolecule({
   data,
-  setTimeOut,
+  setStop,
   questionNumber,
   setQuestionNumber,
 }: {
   data: any;
-  setTimeOut: any;
+  setStop: any;
   questionNumber: number;
   setQuestionNumber: any;
 }) {
@@ -36,17 +36,39 @@ export default function QuizMolecule({
    */
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [activeClassName, setActiveClassName] = useState("");
+  const [className, setClassName] = useState("");
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
   }, [data, questionNumber]);
 
+  const delay = (duration: number, callback: any) => {
+    setTimeout(() => {
+      callback();
+    }, duration);
+  };
+
   const handleClick = (answer: answerState) => {
     setSelectedAnswer(answer.text);
-    setActiveClassName("bg-secondary-color");
+    setClassName(
+      "bg-secondary-color border-darker-secondary-color border-r-[5px] border-b-[5px]"
+    );
+    delay(1000, () =>
+      setClassName(answer.correct ? "bg-correct-color" : "bg-mistake-color")
+    );
+    delay(2000, () => {
+      if (answer.correct) {
+        // Go to the next question
+        setQuestionNumber(
+          (currentQuestionNumber: number) => currentQuestionNumber + 1
+        );
+        setSelectedAnswer(null);
+      } else {
+        setStop(true);
+      }
+    });
   };
-  console.log({ selectedAnswer });
+  // console.log({ selectedAnswer });
   return (
     <>
       {/* QUESTIONS */}
@@ -57,12 +79,17 @@ export default function QuizMolecule({
 
       {/* ANSWERS */}
       <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
-        {question?.answers.map((answer) => (
+        {question?.answers.map((answer, index) => (
           <Button
-            className={selectedAnswer === answer.text ? activeClassName : ""}
+            key={index}
+            className={selectedAnswer === answer.text ? className : ""}
             onClick={() => handleClick(answer)}
             type={"button"}
-            variant={"primary"}
+            // variant={"primary"}
+            // variant={answer.correct ? "correct" : "mistake"}
+            variant={`primary ${
+              answer.correct ? "correct" : answer.correct! ? "mistake" : ""
+            }`}
             rounded
           >
             <span className="mr-4">{answer.letter}</span>

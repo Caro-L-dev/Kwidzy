@@ -3,7 +3,14 @@
  */
 import React, { useState } from "react";
 
-export default function ScoreAtom(datas: any) {
+interface ScoreDatas {
+  datas: {
+    id: number;
+    amount: string;
+  }[];
+}
+
+export default function ScoreAtom(datas: ScoreDatas) {
   /**
    * Hooks
    */
@@ -29,8 +36,11 @@ export default function ScoreAtom(datas: any) {
     <div className="relative">
       <div className="relative">
         <div className="opacity-30 h-[73px] md:w-full p-4 rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center" />
-        {scoreDatas.map((score) => (
-          <p className="absolute top-5 bottom-0 right-0 left-0 text-lg font-bold">
+        {scoreDatas.map((score, index) => (
+          <p
+            key={index}
+            className="absolute top-5 bottom-0 right-0 left-0 text-lg font-bold"
+          >
             <span className={questionNumber === score.id ? "block" : "hidden"}>
               <span className="hidden">{score.id}</span>
               <span>{score.amount}</span>
