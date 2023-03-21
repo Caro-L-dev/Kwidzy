@@ -138,7 +138,7 @@ export default function index() {
         ) : (
           <>
             <div className="absolute top-[-15px] right-[-10px] md:relative md:flex md:justify-center z-10">
-              <Timer />
+              <Timer setStop={setStop} questionNumber={questionNumber} />
             </div>
             <Score datas={scoreDatas} />
             <Quiz
