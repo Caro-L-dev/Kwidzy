@@ -21,12 +21,12 @@ interface answerState {
 }
 
 export default function QuizMolecule({
-  data,
+  quizData,
   setStop,
   questionNumber,
   setQuestionNumber,
 }: {
-  data: any;
+  quizData: any;
   setStop: any;
   questionNumber: number;
   setQuestionNumber: any;
@@ -39,8 +39,8 @@ export default function QuizMolecule({
   const [className, setClassName] = useState("");
 
   useEffect(() => {
-    setQuestion(data[questionNumber - 1]);
-  }, [data, questionNumber]);
+    setQuestion(quizData[questionNumber - 1]);
+  }, [quizData, questionNumber]);
 
   const delay = (duration: number, callback: any) => {
     setTimeout(() => {

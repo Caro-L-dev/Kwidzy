@@ -9,7 +9,7 @@ import React, { useRef } from "react";
 import { Bubble, Button } from "../../atoms";
 import { AvatarChoice } from "../../molecules";
 
-export default function Start({ setUsername }: { setUsername: string }) {
+export default function Start({ setUsername }: { setUsername: any }) {
   const inputRef = useRef();
 
   const handleClick = () => {
