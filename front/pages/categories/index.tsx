@@ -1,13 +1,14 @@
 /**
  * Package Import
  */
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 /**
  * Local Import
  */
 import { Title, Button } from "../../components/atoms";
+import { Start } from "../../components/molecules";
 
 const CreateCharactersWithProps = ({
   ASCIIChar,
@@ -25,8 +26,20 @@ const RepeatDots = ({ times, children }: { times: number; children: any }) => {
   });
 };
 
+/**
+ * Types
+ */
+interface UsernameState {
+  username: string;
+}
+
 export default function index() {
   const router = useRouter();
+
+  /**
+   * State
+   */
+  const [username, setUsername] = useState<UsernameState | null>(null);
 
   const handleClick = (path: string) => {
     if (path === "/quizdetail") {
@@ -37,73 +50,79 @@ export default function index() {
 
   return (
     <>
-      <Title Title="Catégories" />
-      <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
-        <Button
-          rounded
-          className={"mb-2"}
-          type={"button"}
-          variant={"primary"}
-          onClick={() => handleClick("/quizdetail")}
-        >
-          Numérique
-        </Button>
+      {username ? (
+        <>
+          <Title Title="Catégories" />
+          <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
+            <Button
+              rounded
+              className={"mb-2"}
+              type={"button"}
+              variant={"primary"}
+              onClick={() => handleClick("/quizdetail")}
+            >
+              Numérique
+            </Button>
 
-        <Button
-          className={"mb-2"}
-          type={"button"}
-          variant={"secondary"}
-          rounded
-          onClick={() => handleClick("/quizdetail")}
-        >
-          Cinéma et séries
-        </Button>
+            <Button
+              className={"mb-2"}
+              type={"button"}
+              variant={"secondary"}
+              rounded
+              onClick={() => handleClick("/quizdetail")}
+            >
+              Cinéma et séries
+            </Button>
 
-        <Button
-          className={"mb-2"}
-          type={"button"}
-          variant={"tertiary"}
-          rounded
-          onClick={() => handleClick("/quizdetail")}
-        >
-          Blagues nulles
-        </Button>
+            <Button
+              className={"mb-2"}
+              type={"button"}
+              variant={"tertiary"}
+              rounded
+              onClick={() => handleClick("/quizdetail")}
+            >
+              Blagues nulles
+            </Button>
 
-        <Button
-          className={"mb-2"}
-          type={"button"}
-          variant={"primary"}
-          rounded
-          onClick={() => handleClick("/quizdetail")}
-        >
-          Histoire de l'art
-        </Button>
+            <Button
+              className={"mb-2"}
+              type={"button"}
+              variant={"primary"}
+              rounded
+              onClick={() => handleClick("/quizdetail")}
+            >
+              Histoire de l'art
+            </Button>
 
-        <Button
-          className={"mb-2"}
-          type={"button"}
-          variant={"secondary"}
-          rounded
-          onClick={() => handleClick("/quizdetail")}
-        >
-          Gastronomie
-        </Button>
+            <Button
+              className={"mb-2"}
+              type={"button"}
+              variant={"secondary"}
+              rounded
+              onClick={() => handleClick("/quizdetail")}
+            >
+              Gastronomie
+            </Button>
 
-        <Button
-          className={"mb-2"}
-          type={"button"}
-          variant={"tertiary"}
-          rounded
-          onClick={() => handleClick("/quizdetail")}
-        >
-          Sport
-        </Button>
-      </section>
-      <div className="flex justify-center text-2xl mb-4">
-        <RepeatDots times={3}>
-          <CreateCharactersWithProps ASCIIChar="."></CreateCharactersWithProps>
-        </RepeatDots>
-      </div>
+            <Button
+              className={"mb-2"}
+              type={"button"}
+              variant={"tertiary"}
+              rounded
+              onClick={() => handleClick("/quizdetail")}
+            >
+              Sport
+            </Button>
+          </section>
+          <div className="flex justify-center text-2xl mb-4">
+            <RepeatDots times={3}>
+              <CreateCharactersWithProps ASCIIChar="."></CreateCharactersWithProps>
+            </RepeatDots>
+          </div>
+        </>
+      ) : (
+        <Start setUsername={setUsername} />
+      )}
     </>
   );
 }
