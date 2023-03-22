@@ -1,23 +1,22 @@
 /**
  * Package Import
  */
-import React from "react";
-import router from "next/router";
+import React, { useRef } from "react";
 
 /**
  * Local Import
  */
-import { Bubble, Button } from "../../components/atoms";
-import { AvatarChoice } from "../../components/molecules";
+import { Bubble, Button } from "../../atoms";
+import { AvatarChoice } from "../../molecules";
 
-export default function index() {
-  const handleClick = (path: string) => {
-    if (path === "/categories") {
-      console.log("Je me rends sur la page Catégories");
-      router.push(path);
-    }
+export default function Start({ setUsername }: { setUsername: string }) {
+  const inputRef = useRef();
+
+  const handleClick = () => {
+    inputRef.current.value && setUsername(inputRef.current.value);
   };
 
+  // S'affiche au fur et à mesure - animation
   return (
     <div className="flex flex-col">
       <input
@@ -29,6 +28,7 @@ export default function index() {
         minLength={3}
         maxLength={8}
         placeholder="Quel est ton pseudo ?"
+        ref={inputRef}
       />
       <div className="mt-6">
         <AvatarChoice />
@@ -38,7 +38,7 @@ export default function index() {
           variant={"primary"}
           className={"w-full mb-4"}
           rounded
-          onClick={() => handleClick("/categories")}
+          onClick={handleClick}
         >
           C'est parti !
         </Button>

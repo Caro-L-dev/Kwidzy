@@ -12,12 +12,10 @@ export default function Home() {
   const router = useRouter();
 
   const handleClick = (path: string) => {
-    if (path === "/start") {
-      console.log("Je me rends sur la page Start");
+    if (path === "/categories") {
       router.push(path);
     }
     if (path === "/profil") {
-      console.log("Je me rends sur la page de Profil");
       router.push(path);
     }
   };
@@ -38,7 +36,7 @@ export default function Home() {
         variant={"primary"}
         className={"mt-20 mb-4"}
         rounded
-        onClick={() => handleClick("/start")}
+        onClick={() => handleClick("/categories")}
       >
         Jouer
       </Button>

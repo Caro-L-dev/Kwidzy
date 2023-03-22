@@ -11,7 +11,7 @@ import { Quiz } from "../../components/molecules";
 
 export default function index() {
   /**
-   * Hooks
+   * State
    */
   const [questionNumber, setQuestionNumber] = useState(1);
   const [stop, setStop] = useState(false);
