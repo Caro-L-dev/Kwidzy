@@ -6,7 +6,7 @@ import React, { useState } from "react";
 interface ScoreDatas {
   datas: {
     id: number;
-    amount: string;
+    amount: number;
   }[];
 }
 
@@ -20,16 +20,16 @@ export default function ScoreAtom(datas: ScoreDatas) {
    * Datas
    */
   const scoreDatas = [
-    { id: 1, amount: "1 Brouette" },
-    { id: 2, amount: "2 Brouettes" },
-    { id: 3, amount: "3 Brouettes" },
-    { id: 4, amount: "4 Brouettes" },
-    { id: 5, amount: "5 Brouettes" },
-    { id: 6, amount: "6 Brouettes" },
-    { id: 7, amount: "7 Brouettes" },
-    { id: 8, amount: "8 Brouettes" },
-    { id: 9, amount: "9 Brouettes" },
-    { id: 10, amount: "10 Brouettes" },
+    { id: 1, amount: 1 },
+    { id: 2, amount: 2 },
+    { id: 3, amount: 3 },
+    { id: 4, amount: 4 },
+    { id: 5, amount: 5 },
+    { id: 6, amount: 6 },
+    { id: 7, amount: 7 },
+    { id: 8, amount: 8 },
+    { id: 9, amount: 9 },
+    { id: 10, amount: 10 },
   ].reverse();
 
   return (

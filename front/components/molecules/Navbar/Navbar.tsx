@@ -32,6 +32,7 @@ export default function Navbar() {
         <AiOutlineArrowLeft />
       </Link>
       <Link href={"/register"}>S'inscrire</Link>
+      <Link href={"/score"}>Score</Link>
       <p>Titre</p>
       <Link href={"/profil"}>
         <Avatar />

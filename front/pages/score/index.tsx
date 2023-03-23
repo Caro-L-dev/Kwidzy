@@ -23,7 +23,7 @@ export default function index() {
       <div className="mt-4">
         <p>Pas mal !</p>
         <p>Vous avez obtenu :</p>
-        <Score />
+        <Score datas={[]} />
 
         <div className="flex flex-col justify-center items-center">
           <p>Vous débloquez :</p>
