@@ -8,6 +8,9 @@ import { useRouter } from "next/router";
  */
 import { Button } from "@/components/atoms/Button/Button";
 
+/**
+ * Component
+ */
 export default function Home() {
   const router = useRouter();
 

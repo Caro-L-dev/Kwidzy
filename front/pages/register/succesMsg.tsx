@@ -1,6 +1,16 @@
-import Bubble from "@/components/atoms/Bubble";
+/**
+ * Package Import
+ */
 import React from "react";
 
+/**
+ * Local Import
+ */
+import Bubble from "@/components/atoms/Bubble";
+
+/**
+ * Sucess Message - Component
+ */
 export default function succesMsg() {
   return (
     <>

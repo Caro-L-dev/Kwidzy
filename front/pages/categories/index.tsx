@@ -10,6 +10,9 @@ import { useRouter } from "next/router";
 import { Title, Button } from "../../components/atoms";
 import { Start } from "../../components/molecules";
 
+/**
+ * Several dots Function
+ */
 const CreateCharactersWithProps = ({
   ASCIIChar,
   ...props
@@ -33,7 +36,13 @@ interface UsernameState {
   username: string;
 }
 
-export default function index() {
+/**
+ * Page
+ */
+export default function categoriesPage() {
+  /**
+   * Routing
+   */
   const router = useRouter();
 
   /**
@@ -41,6 +50,9 @@ export default function index() {
    */
   const [username, setUsername] = useState<UsernameState | null>(null);
 
+  /**
+   * Action
+   */
   const handleClick = (path: string) => {
     if (path === "/quizdetail") {
       console.log("Je me rends sur la page QuizDetail");

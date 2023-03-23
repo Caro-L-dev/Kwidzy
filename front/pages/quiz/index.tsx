@@ -15,7 +15,10 @@ import { Quiz } from "../../components/molecules";
  */
 import quizData from "../../data/quizData";
 
-export default function index() {
+/**
+ * Page
+ */
+export default function quizPage() {
   /**
    * State
    */
@@ -43,6 +46,9 @@ export default function index() {
     []
   );
 
+  /**
+   * Lifecycle
+   */
   useEffect(() => {
     questionNumber > 1 &&
       setEarned(
@@ -50,6 +56,9 @@ export default function index() {
       );
   }, [scoreDatas, questionNumber]);
 
+  /**
+   * Actions
+   */
   const handleClick = (path: string) => {
     if (path === "/") {
       console.log("Je me rends sur la page Kwidzy");

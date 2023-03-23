@@ -4,15 +4,16 @@
 import React from "react";
 import classnames from "classnames";
 
-// ajout type text, email input
-
-function Input({
+/**
+ * Component
+ */
+const Input: any = ({
   bgColor,
   children,
 }: {
   bgColor: string;
   children?: React.ReactNode;
-}) {
+}) => {
   return (
     <>
       <input
@@ -24,6 +25,6 @@ function Input({
       </input>
     </>
   );
-}
+};
 
 export default Input;

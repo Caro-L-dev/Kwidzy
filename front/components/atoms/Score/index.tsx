@@ -3,6 +3,9 @@
  */
 import React, { useState } from "react";
 
+/**
+ * Types
+ */
 interface ScoreDatas {
   datas: {
     id: number;
@@ -10,9 +13,12 @@ interface ScoreDatas {
   }[];
 }
 
+/**
+ * Component
+ */
 export default function ScoreAtom(datas: ScoreDatas) {
   /**
-   * Hooks
+   * State
    */
   const [questionNumber, setQuestionNumber] = useState(3);
 

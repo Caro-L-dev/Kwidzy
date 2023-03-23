@@ -9,6 +9,9 @@ import React, { useRef } from "react";
 import { Bubble, Button } from "../../atoms";
 import { AvatarChoice } from "../../molecules";
 
+/**
+ * Component
+ */
 export default function Start({ setUsername }: { setUsername: any }) {
   const inputRef = useRef();
 

@@ -12,6 +12,9 @@ import {
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
 
+/**
+ * Component
+ */
 export default function AvatarChoice() {
   return (
     <>

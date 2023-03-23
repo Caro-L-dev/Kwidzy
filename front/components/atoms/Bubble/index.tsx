@@ -4,15 +4,20 @@
 import React from "react";
 
 /**
- * local Import
+ * Local Import
  */
 import { Triangle } from "../index";
 
+/**
+ * Type
+ */
 interface BubbleProps {
   children?: React.ReactNode;
 }
 
-// Corriger position Triangle
+/**
+ * Component
+ */
 const Bubble: React.FC<BubbleProps> = ({ children }) => {
   return (
     <div className="relative my-6">

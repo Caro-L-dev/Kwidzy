@@ -3,8 +3,11 @@
  */
 import React from "react";
 
-export default function index() {
-  return <div className="bg-white h-12 w-12 rounded-full"></div>;
-}
+/**
+ * Component
+ */
+const Avatar: any = () => {
+  return <div className="bg-white h-12 w-12 rounded-full" />;
+};
 
-// custom size pr navbar, profil, icon gagnées
+export default Avatar;
