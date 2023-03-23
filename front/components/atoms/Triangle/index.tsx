@@ -3,8 +3,15 @@
  */
 import React from "react";
 import PropTypes from "prop-types";
+
+/**
+ * Local Import
+ */
 import { classNames } from "./classNames";
 
+/**
+ * Component
+ */
 export const Triangle = ({
   className,
   position,
@@ -31,6 +38,9 @@ export const Triangle = ({
   />
 );
 
+/**
+ * Types
+ */
 Triangle.propTypes = {
   className: PropTypes.string,
   position: PropTypes.oneOf(["down", "side-logo", "side-bubble"]),

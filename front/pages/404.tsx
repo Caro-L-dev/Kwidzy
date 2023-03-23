@@ -3,6 +3,9 @@
  */
 import React from "react";
 
+/**
+ * Component
+ */
 export default function Error404() {
   return (
     <>

@@ -11,7 +11,10 @@ import Link from "next/link";
 import { Title, Box, Button } from "../../components/atoms";
 import { HiArrowCircleLeft } from "react-icons/hi";
 
-export default function index() {
+/**
+ * Page
+ */
+export default function quizdetailPage() {
   const handleClick = (path: string) => {
     if (path === "/quiz") {
       console.log("Je me rends sur la page Quiz");

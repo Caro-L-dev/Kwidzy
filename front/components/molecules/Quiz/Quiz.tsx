@@ -8,6 +8,9 @@ import React, { useEffect, useState } from "react";
  */
 import { Button } from "@/components/atoms";
 
+/**
+ * Types
+ */
 interface QuestionState {
   questionNumber: number;
   question: string;
@@ -20,34 +23,46 @@ interface answerState {
   correct: boolean;
 }
 
+/**
+ * Component
+ */
 export default function QuizMolecule({
-  data,
+  quizData,
   setStop,
   questionNumber,
   setQuestionNumber,
 }: {
-  data: any;
+  quizData: any;
   setStop: any;
   questionNumber: number;
   setQuestionNumber: any;
 }) {
   /**
-   * Hooks
+   * State
    */
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [className, setClassName] = useState("");
 
+  /**
+   * Lifecycle
+   */
   useEffect(() => {
-    setQuestion(data[questionNumber - 1]);
-  }, [data, questionNumber]);
+    setQuestion(quizData[questionNumber - 1]);
+  }, [quizData, questionNumber]);
 
+  /**
+   * Delay Function
+   */
   const delay = (duration: number, callback: any) => {
     setTimeout(() => {
       callback();
     }, duration);
   };
 
+  /**
+   * Actions
+   */
   const handleClick = (answer: answerState) => {
     setSelectedAnswer(answer.text);
     setClassName(
@@ -68,7 +83,7 @@ export default function QuizMolecule({
       }
     });
   };
-  // console.log({ selectedAnswer });
+
   return (
     <>
       {/* QUESTIONS */}

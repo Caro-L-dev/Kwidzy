@@ -9,7 +9,13 @@ import router from "next/router";
  */
 import { SubTitle, Button, Bubble, Score } from "../../components/atoms";
 
-export default function index() {
+/**
+ * Page
+ */
+export default function scorePage() {
+  /**
+   * Actions
+   */
   const handleClick = (path: string) => {
     if (path === "/") {
       console.log("Je me rends sur la page Kwidzy");
@@ -23,7 +29,7 @@ export default function index() {
       <div className="mt-4">
         <p>Pas mal !</p>
         <p>Vous avez obtenu :</p>
-        <Score />
+        <Score datas={[]} />
 
         <div className="flex flex-col justify-center items-center">
           <p>Vous débloquez :</p>

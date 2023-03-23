@@ -3,8 +3,15 @@
  */
 import React from "react";
 import PropTypes from "prop-types";
+
+/**
+ * Local Import
+ */
 import { classNames } from "./classNames";
 
+/**
+ * Component
+ */
 export const Button = ({
   id,
   type,
@@ -53,6 +60,9 @@ export const Button = ({
   </button>
 );
 
+/**
+ * Types
+ */
 Button.defaultProps = {
   rounded: false,
 };

@@ -9,7 +9,10 @@ import router from "next/router";
  */
 import { SubTitle, Button } from "../../components/atoms";
 
-export default function index() {
+/**
+ * Page
+ */
+export default function profilPage() {
   const handleClick = (path: string) => {
     if (path === "/register") {
       console.log("Je me rends sur la page S'inscrire");

@@ -7,6 +7,10 @@ import type { AppProps } from "next/app";
  * Local Import
  */
 import { Container } from "../components/molecules";
+
+/**
+ * Styles
+ */
 import "@/styles/globals.css";
 import { Rammetto_One } from "@next/font/google";
 
@@ -16,6 +20,9 @@ const mainFont = Rammetto_One({
   weight: "400",
 });
 
+/**
+ * Component
+ */
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Container>

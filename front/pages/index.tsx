@@ -8,9 +8,18 @@ import { useRouter } from "next/router";
  */
 import { Button, Triangle } from "../components/atoms";
 
-export default function Home() {
+/**
+ * Page
+ */
+export default function homePage() {
+  /**
+   * Routing
+   */
   const router = useRouter();
 
+  /**
+   * Actions
+   */
   const handleClick = (path: string) => {
     if (path === "/categories") {
       router.push(path);

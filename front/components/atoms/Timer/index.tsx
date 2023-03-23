@@ -3,15 +3,24 @@
  */
 import React, { useEffect, useState } from "react";
 
-export default function index({
+/**
+ * Component
+ */
+const Timer: any = ({
   setStop,
   questionNumber,
 }: {
   setStop: any;
   questionNumber: number;
-}) {
+}) => {
+  /**
+   * State
+   */
   const [timer, setTimer] = useState(30);
 
+  /**
+   * LifeCycles
+   */
   useEffect(() => {
     if (timer === 0) return setStop(true);
     const interval = setInterval(() => {
@@ -29,4 +38,6 @@ export default function index({
       {timer}
     </div>
   );
-}
+};
+
+export default Timer;

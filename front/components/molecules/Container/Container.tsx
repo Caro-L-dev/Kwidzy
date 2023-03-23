@@ -8,6 +8,9 @@ import React from "react";
  */
 import Navbar from "../Navbar/Navbar";
 
+/**
+ * Component
+ */
 export default function Container({ children }: any) {
   return (
     <>
