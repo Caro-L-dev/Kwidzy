@@ -72,7 +72,7 @@ export default function quizPage() {
         {/* Condition qui affiche le score */}
         {stop ? (
           <>
-            <SubTitle subtitle="Score" />
+            <SubTitle name="Score" />
             <div className="mt-4">
               <p>Pas mal !</p>
               <p>Vous avez obtenu :</p>

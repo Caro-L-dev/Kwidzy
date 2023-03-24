@@ -5,15 +5,17 @@ import React from "react";
 import classnames from "classnames";
 
 /**
- * Component
+ * Types
  */
-const Input: any = ({
-  bgColor,
-  children,
-}: {
+interface InputProps {
   bgColor: string;
   children?: React.ReactNode;
-}) => {
+}
+
+/**
+ * Component
+ */
+const Input = ({ bgColor, children }: InputProps) => {
   return (
     <>
       <input

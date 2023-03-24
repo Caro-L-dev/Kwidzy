@@ -7,17 +7,15 @@ import React from "react";
  * Type
  */
 interface SubTitleProps {
-  subtitle: React.ReactNode;
+  name: React.ReactNode;
 }
 
 /**
  * Component
  */
-const SubTitle: React.FC<SubTitleProps> = ({ subtitle }) => {
+const SubTitle = ({ name }: SubTitleProps) => {
   return (
-    <h2 className="text-lg tracking-wide md:text-3xl md:font-bold">
-      {subtitle}
-    </h2>
+    <h2 className="text-lg tracking-wide md:text-3xl md:font-bold">{name}</h2>
   );
 };
 

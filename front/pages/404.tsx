@@ -4,12 +4,17 @@
 import React from "react";
 
 /**
+ * Local Import
+ */
+import { Title } from "@/components/atoms";
+
+/**
  * Component
  */
 export default function Error404() {
   return (
     <>
-      <h1>Mince, erreur 404 !</h1>
+      <Title name="Erreur 404 !" />
     </>
   );
 }

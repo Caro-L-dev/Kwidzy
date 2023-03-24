@@ -4,15 +4,17 @@
 import React, { useEffect, useState } from "react";
 
 /**
- * Component
+ * Types
  */
-const Timer: any = ({
-  setStop,
-  questionNumber,
-}: {
+interface TimerProps {
   setStop: any;
   questionNumber: number;
-}) => {
+}
+
+/**
+ * Component
+ */
+const Timer = ({ setStop, questionNumber }: TimerProps) => {
   /**
    * State
    */

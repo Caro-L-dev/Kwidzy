@@ -25,7 +25,7 @@ export default function scorePage() {
 
   return (
     <>
-      <SubTitle subtitle="Score" />
+      <SubTitle name="Score" />
       <div className="mt-4">
         <p>Pas mal !</p>
         <p>Vous avez obtenu :</p>

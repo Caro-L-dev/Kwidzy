@@ -12,7 +12,7 @@ import logo from "../../../public/assets/images/Logo.svg";
 /**
  * Component
  */
-const Logo: any = ({}) => {
+const Logo = ({}) => {
   return (
     <>
       <Image src={logo} height="100" alt="Kwidzy logo" />

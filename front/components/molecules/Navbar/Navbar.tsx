@@ -8,8 +8,13 @@ import Link from "next/link";
  * Local Import
  */
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import Avatar from "@/components/atoms/Avatar";
 import Logo from "@/components/atoms/Logo";
+import Avatar from "@/components/atoms/Avatar";
+
+/**
+ * Image Import
+ */
+import avatarImg from "../../../public/assets/images/avatar.png";
 
 /**
  * Component
@@ -32,7 +37,13 @@ export default function Navbar() {
       </Link>
       {/* Apparait seulement quand l'utilisateur est ajouté / connecté */}
       <Link href={"/profil"}>
-        <Avatar />
+        <Avatar
+          src={avatarImg}
+          alt="Ananas Funky"
+          variant="circular"
+          size="md"
+          className={""}
+        />
       </Link>
     </nav>
   );
