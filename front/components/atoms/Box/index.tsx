@@ -5,15 +5,17 @@ import React from "react";
 import classnames from "classnames";
 
 /**
- * Component
+ * Types
  */
-const Box: any = ({
-  bgColor,
-  children,
-}: {
+interface BoxProps {
   bgColor: string;
   children: React.ReactNode;
-}) => {
+}
+
+/**
+ * Component
+ */
+const Box = ({ bgColor, children }: BoxProps) => {
   return (
     <>
       <p

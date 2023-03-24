@@ -8,41 +8,43 @@ import Link from "next/link";
  * Local Import
  */
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import Logo from "@/components/atoms/Logo";
 import Avatar from "@/components/atoms/Avatar";
+
+/**
+ * Image Import
+ */
+import avatarImg from "../../../public/assets/images/avatar.png";
 
 /**
  * Component
  */
 export default function Navbar() {
   /**
-   * Render - Mobile
+   * Render - TEST
    */
   return (
+    // Ne s'affiche pas sur la page de démarrage
     <nav className="flex justify-between items-center mb-7">
-      <Link href={"/"}>
+      <Link href={"/"} className="md:hidden">
         <AiOutlineArrowLeft />
       </Link>
-      <Link href={"/register"}>S'inscrire</Link>
-      <Link href={"/score"}>Score</Link>
-      <p>Titre</p>
+      <Link href={"/"} className="hidden md:block">
+        <Logo />
+      </Link>
+      <Link href={"/categories"} className="md:hidden">
+        Catégories
+      </Link>
+      {/* Apparait seulement quand l'utilisateur est ajouté / connecté */}
       <Link href={"/profil"}>
-        <Avatar />
+        <Avatar
+          src={avatarImg}
+          alt="Ananas Funky"
+          variant="circular"
+          size="md"
+          className={""}
+        />
       </Link>
     </nav>
   );
-
-  /**
-   * Render - Desktop
-   */
-  // return (
-  //   <nav className="flex justify-between mb-7">
-  //     <Link href={"/"}>Kwidzy</Link>
-  //     <Link href={"/register"}>S'inscrire</Link>
-  //     <Link href={"/categories"}>Catégories</Link>
-  //     <Link href={"/quizdetail"}>QuizDetail</Link>
-  //     <Link href={"/quiz"}>Quiz</Link>
-  //     <Link href={"/score"}>Score</Link>
-  //     <Link href={"/profil"}>Profil</Link>
-  //   </nav>
-  // );
 }

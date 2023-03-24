@@ -24,7 +24,7 @@ export default function profilPage() {
     <>
       <div className="flex flex-col justify-between items-center">
         <div className="bg-white h-24 w-24 rounded-full mb-2" />
-        <SubTitle subtitle="Pouki78" />
+        <SubTitle name="Pouki78" />
         <p className="text-xs">Compte invité</p>
       </div>
 

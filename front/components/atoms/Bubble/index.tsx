@@ -18,7 +18,7 @@ interface BubbleProps {
 /**
  * Component
  */
-const Bubble: React.FC<BubbleProps> = ({ children }) => {
+const Bubble = ({ children }: BubbleProps) => {
   return (
     <div className="relative my-6">
       <Triangle

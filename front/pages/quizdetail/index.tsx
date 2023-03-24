@@ -30,7 +30,7 @@ export default function quizdetailPage() {
             <HiArrowCircleLeft />
           </Link>
         </span>
-        <Title Title="Numérique" />
+        <Title name="Numérique" />
       </div>
 
       <div className="flex flex-col justify-between">

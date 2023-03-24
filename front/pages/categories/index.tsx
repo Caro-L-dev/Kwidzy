@@ -64,7 +64,7 @@ export default function categoriesPage() {
     <>
       {username ? (
         <>
-          <Title Title="Catégories" />
+          <Title name="Catégories" />
           <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
             <Button
               rounded
