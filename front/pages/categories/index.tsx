@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 /**
  * Local Import
  */
-import { Title, Button } from "../../components/atoms";
-import { Start } from "../../components/molecules";
+import { Title, Button } from "@/src/components/atoms";
+import { Start } from "@/src/components/molecules";
 
 /**
  * Several dots Function

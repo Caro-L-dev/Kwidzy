@@ -7,7 +7,7 @@ import Image from "next/image";
 /**
  * Local Import
  */
-import logo from "../../../public/assets/images/Logo.svg";
+import logo from "@/public/assets/images/Logo.svg";
 
 /**
  * Component

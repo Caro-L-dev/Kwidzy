@@ -7,8 +7,8 @@ import router from "next/router";
 /**
  * Local Import
  */
-import { Bubble, Button, SubTitle, Timer } from "../../components/atoms";
-import { Quiz } from "../../components/molecules";
+import { Bubble, Button, SubTitle, Timer } from "@/src/components/atoms";
+import { Quiz } from "@/src/components/molecules";
 
 /**
  * Datas Import

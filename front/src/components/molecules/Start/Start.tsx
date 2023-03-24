@@ -6,8 +6,8 @@ import React, { useRef } from "react";
 /**
  * Local Import
  */
-import { Bubble, Button } from "../../atoms";
-import { AvatarChoice } from "../../molecules";
+import { Bubble, Button } from "@/src/components/atoms";
+import { AvatarChoice } from "@/src/components/molecules";
 
 /**
  * Component

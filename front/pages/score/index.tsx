@@ -7,7 +7,7 @@ import router from "next/router";
 /**
  * Local Import
  */
-import { SubTitle, Button, Bubble, Score } from "../../components/atoms";
+import { SubTitle, Button, Bubble, Score } from "@/src/components/atoms";
 
 /**
  * Page

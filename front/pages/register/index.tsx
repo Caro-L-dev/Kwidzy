@@ -7,7 +7,7 @@ import router from "next/router";
 /**
  * Local Import
  */
-import { Button, Input } from "../../components/atoms";
+import { Button, Input } from "@/src/components/atoms";
 
 /**
  * Page

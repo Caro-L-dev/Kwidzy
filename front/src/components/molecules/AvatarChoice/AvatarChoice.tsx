@@ -12,7 +12,11 @@ import {
   MdOutlineKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import avatar from "../../../public/assets/images/avatar.png";
+
+/**
+ * Image Import
+ */
+import avatar from "@/public/assets/images/avatar.png";
 
 /**
  * Component

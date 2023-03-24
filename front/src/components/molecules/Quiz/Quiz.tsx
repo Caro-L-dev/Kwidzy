@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 /**
  * Local Import
  */
-import { Button } from "@/components/atoms";
+import { Button } from "@/src/components/atoms";
 
 /**
  * Types

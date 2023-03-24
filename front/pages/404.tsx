@@ -6,7 +6,7 @@ import React from "react";
 /**
  * Local Import
  */
-import { Title } from "@/components/atoms";
+import { Title } from "@/src/components/atoms";
 
 /**
  * Component

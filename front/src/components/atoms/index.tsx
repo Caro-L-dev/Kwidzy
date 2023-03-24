@@ -7,3 +7,5 @@ export { default as Title } from "./Typography/Title";
 export { default as SubTitle } from "./Typography/SubTitle";
 export { Button } from "./Button/Button";
 export { default as Score } from "./Score";
+export { default as Logo } from "./Logo";
+export { default as Avatar } from "./Avatar";

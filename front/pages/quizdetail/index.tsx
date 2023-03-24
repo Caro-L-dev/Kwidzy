@@ -8,7 +8,7 @@ import Link from "next/link";
 /**
  * Local Import
  */
-import { Title, Box, Button } from "../../components/atoms";
+import { Title, Box, Button } from "@/src/components/atoms";
 import { HiArrowCircleLeft } from "react-icons/hi";
 
 /**

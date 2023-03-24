@@ -6,7 +6,7 @@ import type { AppProps } from "next/app";
 /**
  * Local Import
  */
-import { Container } from "../components/molecules";
+import { Container } from "@/src/components/molecules";
 
 /**
  * Styles

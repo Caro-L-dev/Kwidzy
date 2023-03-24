@@ -8,13 +8,12 @@ import Link from "next/link";
  * Local Import
  */
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import Logo from "@/components/atoms/Logo";
-import Avatar from "@/components/atoms/Avatar";
+import { Logo, Avatar } from "@/src/components/atoms";
 
 /**
  * Image Import
  */
-import avatarImg from "../../../public/assets/images/avatar.png";
+import avatarImg from "@/public/assets/images/avatar.png";
 
 /**
  * Component

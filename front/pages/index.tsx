@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 /**
  * Local Import
  */
-import { Button, Triangle } from "../components/atoms";
+import { Button, Triangle } from "@/src/components/atoms";
 
 /**
  * Page
