@@ -2,6 +2,7 @@
  * Package Import
  */
 import { useRouter } from "next/router";
+import axios from 'axios';
 
 /**
  * Local Import
@@ -11,6 +12,7 @@ import { Button, Triangle } from "@/src/components/atoms";
 /**
  * Page
  */
+
 export default function homePage() {
   /**
    * Routing
@@ -22,7 +24,19 @@ export default function homePage() {
    */
   const handleClick = (path: string) => {
     if (path === "/categories") {
-      router.push(path);
+      /**
+       * Fetch all categories via call to backend
+       */
+      axios.get(`http://localhost:3030/categories`)
+      .then(res => {
+        let data = res.data;
+        console.log(data);
+        let routerData = {
+          pathname: path,
+            state: data // your data array of objects
+        }
+        router.push(routerData);
+      });
     }
     if (path === "/profil") {
       router.push(path);

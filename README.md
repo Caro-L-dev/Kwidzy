@@ -6,7 +6,7 @@ _NextJs, Typescript, Tailwind, Jest, React Testing Library, StoryBook , MySQL_
 
 ## 👶 **Getting Started**
 
-First, run the development server:
+First, run the development server(front folder):
 
 ```bash
 npm run dev
