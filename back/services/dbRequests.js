@@ -8,9 +8,9 @@ let mysql = require('mysql');
  */
 let connectToDb = mysql.createConnection({
   host: "localhost",
-  user: "",
+  user: "root",
   password: "",
-  database: 'test'
+  database: "kwidzy"
 });
 
 connectToDb.connect(function(error) {

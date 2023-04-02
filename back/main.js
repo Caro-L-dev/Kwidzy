@@ -1,7 +1,8 @@
 /**
  * Package Import
  */
-var restify = require('restify');
+let restify = require('restify');
+const corsMiddleware = require('restify-cors-middleware');
 // require('dotenv').config();
 
 /**
@@ -16,6 +17,17 @@ var server = restify.createServer({
   name: 'kwidzy',
   version: '1.0.0'
 });
+
+
+var cors = corsMiddleware({
+  preflightMaxAge: 5,
+  origins: ['*'],
+  allowHeaders:['X-App-Version'],
+  exposeHeaders:[]
+});
+
+server.pre(cors.preflight)
+server.use(cors.actual)
 
 server.use(restify.plugins.jsonBodyParser({ mapParams: true }));
 server.use(restify.plugins.acceptParser(server.acceptable));
