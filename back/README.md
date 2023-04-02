@@ -14,7 +14,7 @@ Open [http://localhost:3030](http://localhost:3030) with your browser to see the
 ## 🔧 **Setup project**
 
 ```bash
-npm init
+npm install
 ```
 
 ### main.js
@@ -28,12 +28,33 @@ Restify : Librairie qui permet de faire un serveur REST. Ressemble à Express.
 Définit les routes de l'api REST,  
 "/" pour le moment, mais il est possible d'en ajouter d'autres.
 
-## **SQL Creation**
-
-SQL pour créer la base de données :
+# Comment récupérer la base de donnée sur un autre pc ? Process:
+## MySql instal
+- Installer MySql -> https://dev.mysql.com/downloads/installer/
+- appuyer sur "windows" -> cmd
+- taper "mysql -u root -p" puis entrer
+- normalement, tu dois avoir ça :
+![bd config](./img/03.JPG "config bdd 1")
+- Si jamais il te demande de mettre un mot de passe, retiens le bien et utilises le plus tard quand tu dois mettre un mdp qqpart.
+- Une fois que tu as ça dans le terminal, écrit ça puis entrer :
 ```sql
 CREATE DATABASE kwidzy;
 ```
+
+## 2 Dbeaver
+- Télécharger dbeaver -> https://dbeaver.io/download/
+- Sur dbeaver, cliquer sur MySql
+- Si jamais il demande de télécharger un driver, tu dis OUIIIIII
+![bd config](./img/02.png "config bdd 1")
+- Puis mettre les configs suivantes (kwidzy à la place de test)
+![bd config](./img/01.png "config bdd 2")
+- Si tout va bien jusqu'ici GG !
+- Faire un nouveau script :
+![bd config](./img/04.png "config bdd 3")
+- Dans la truc du script, copier coller tout le tas de script SQL qu'on a mis en dessous, puis l'executer avec le 3em bouton à gauche :
+![bd config](./img/05.png "config bdd 4")
+
+## **SQL Creation**
 
 ```bash
 drop table if exists answer;
