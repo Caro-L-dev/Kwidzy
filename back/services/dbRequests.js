@@ -2,15 +2,17 @@
  * Package Import
  */
 let mysql = require('mysql');
+require('dotenv').config();
 
 /**
  * Connection to the Database
  */
 let connectToDb = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "kwidzy"
+  port: process.env.MYSQL_ADDON_PORT,
+  host: process.env.MYSQL_ADDON_HOST,
+  user: process.env.MYSQL_ADDON_USER,
+  password: process.env.MYSQL_ADDON_PASSWORD,
+  database: process.env.MYSQL_ADDON_DB
 });
 
 connectToDb.connect(function(error) {
@@ -19,7 +21,7 @@ connectToDb.connect(function(error) {
 });
 
 exports.getCategories = function(callback) {
-  connectToDb.query("select * from category", function(error, results) {
+  connectToDb.query("select * from categories", function(error, results) {
         if(error){    
             console.log("Error ocurred in executing the query : " + error);
         } else {
