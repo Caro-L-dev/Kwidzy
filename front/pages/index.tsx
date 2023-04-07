@@ -2,7 +2,7 @@
  * Package Import
  */
 import { useRouter } from "next/router";
-import axios from 'axios';
+import axios from "axios";
 
 /**
  * Local Import
@@ -23,22 +23,22 @@ export default function homePage() {
    * Actions
    */
   const handleClick = (path: string) => {
+    // if (path === "/categories") {
+    //   /**
+    //    * Fetch all categories via call to backend
+    //    */
+    //   axios.get(`http://localhost:3030/categories`)
+    //   .then(res => {
+    //     let data = res.data;
+    //     console.log(data);
+    //     let routerData = {
+    //       pathname: path,
+    //         state: data // your data array of objects
+    //     }
+    //     router.push(routerData);
+    //   });
+    // }
     if (path === "/categories") {
-      /**
-       * Fetch all categories via call to backend
-       */
-      axios.get(`http://localhost:3030/categories`)
-      .then(res => {
-        let data = res.data;
-        console.log(data);
-        let routerData = {
-          pathname: path,
-            state: data // your data array of objects
-        }
-        router.push(routerData);
-      });
-    }
-    if (path === "/profil") {
       router.push(path);
     }
   };

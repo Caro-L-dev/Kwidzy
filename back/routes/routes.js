@@ -14,4 +14,14 @@ module.exports = function(server) {
             }
         });
     });
+
+   server.get('/question', function (req, res, next) {
+       dbRequests.getQuestion(function (error, question) {
+           if (error) {
+               return res.json(500, {error: "Unexpected error, maybe our services are down."});
+           } else {
+               return res.json(200, question);
+           }
+       });
+   });
 };

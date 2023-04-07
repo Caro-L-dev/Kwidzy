@@ -43,6 +43,7 @@ export default function QuizMolecule({
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [className, setClassName] = useState("");
+  const [variant, setVariant] = useState("primary");
 
   /**
    * Lifecycle
@@ -68,9 +69,7 @@ export default function QuizMolecule({
     setClassName(
       "bg-secondary-color border-darker-secondary-color border-r-[5px] border-b-[5px]"
     );
-    delay(1000, () =>
-      setClassName(answer.correct ? "bg-correct-color" : "bg-mistake-color")
-    );
+    delay(1000, () => setVariant(answer.correct ? "correct" : "mistake"));
     delay(2000, () => {
       if (answer.correct) {
         // Go to the next question
@@ -97,14 +96,9 @@ export default function QuizMolecule({
         {question?.answers.map((answer, index) => (
           <Button
             key={index}
-            className={selectedAnswer === answer.text ? className : ""}
             onClick={() => handleClick(answer)}
             type={"button"}
-            // variant={"primary"}
-            // variant={answer.correct ? "correct" : "mistake"}
-            variant={`primary ${
-              answer.correct ? "correct" : answer.correct! ? "mistake" : ""
-            }`}
+            variant={selectedAnswer === answer.text ? variant : "primary"}
             rounded
           >
             <span className="mr-4">{answer.letter}</span>
