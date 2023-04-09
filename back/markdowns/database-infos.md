@@ -1,6 +1,6 @@
 ## **SQL Creation**
 
-```bash
+```sql
 drop table if exists answer;
 drop table if exists question;
 drop table if exists category;

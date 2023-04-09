@@ -3,6 +3,7 @@
  */
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 /**
  * Local Import
@@ -37,6 +38,11 @@ interface UsernameState {
 }
 
 /**
+ * Datas
+ */
+const baseURL = "http://localhost:3030/categories";
+
+/**
  * Page
  */
 export default function categoriesPage() {
@@ -49,6 +55,7 @@ export default function categoriesPage() {
    * State
    */
   const [username, setUsername] = useState<UsernameState | null>(null);
+  const [categories, setCategories] = React.useState(null);
 
   /**
    * Action
@@ -60,20 +67,45 @@ export default function categoriesPage() {
     }
   };
 
+  /**
+   * Fetch datas
+   */
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
+
+  if (!categories) return null;
+
   return (
     <>
       {username ? (
         <>
           <Title name="Catégories" />
           <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
+            {/* Boucle .map */}
+            {/* {categories.map((category: any) => (
+              <Button
+                key={category.id}
+                rounded
+                className={"mb-2"}
+                type={"button"}
+                variant={"primary"}
+                onClick={() => handleClick("/quizdetail")}
+              >
+                {category.name}
+              </Button>
+            ))} */}
+
             <Button
-              rounded
               className={"mb-2"}
               type={"button"}
               variant={"primary"}
+              rounded
               onClick={() => handleClick("/quizdetail")}
             >
-              Numérique
+              {categories[0].name}
             </Button>
 
             <Button
@@ -83,7 +115,7 @@ export default function categoriesPage() {
               rounded
               onClick={() => handleClick("/quizdetail")}
             >
-              Cinéma et séries
+              {categories[1].name}
             </Button>
 
             <Button
@@ -93,7 +125,7 @@ export default function categoriesPage() {
               rounded
               onClick={() => handleClick("/quizdetail")}
             >
-              Blagues nulles
+              {categories[2].name}
             </Button>
 
             <Button
@@ -103,7 +135,7 @@ export default function categoriesPage() {
               rounded
               onClick={() => handleClick("/quizdetail")}
             >
-              Histoire de l'art
+              {categories[3].name}
             </Button>
 
             <Button
@@ -113,7 +145,7 @@ export default function categoriesPage() {
               rounded
               onClick={() => handleClick("/quizdetail")}
             >
-              Gastronomie
+              {categories[4].name}
             </Button>
 
             <Button
@@ -123,7 +155,7 @@ export default function categoriesPage() {
               rounded
               onClick={() => handleClick("/quizdetail")}
             >
-              Sport
+              {categories[5].name}
             </Button>
           </section>
           <div className="flex justify-center text-2xl mb-4">
