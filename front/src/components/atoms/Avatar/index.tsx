@@ -28,8 +28,6 @@ const Avatar = ({ className, src, alt, variant, size }: AvatarProps) => {
     <Image
       src={src}
       alt={alt}
-      width="10"
-      height="10"
       className={classNames(
         `hover:border-2 hover:border-primary-color`,
         variant === "rounded" ? "rounded" : "",
