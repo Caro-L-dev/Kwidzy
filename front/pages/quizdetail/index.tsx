@@ -10,6 +10,12 @@ import Link from "next/link";
  */
 import { Title, Box, Button } from "@/src/components/atoms";
 import { HiArrowCircleLeft } from "react-icons/hi";
+import axios from "axios";
+
+/**
+ * Datas
+ */
+const baseURL = "http://localhost:3030/categories";
 
 /**
  * Page
@@ -22,6 +28,19 @@ export default function quizdetailPage() {
     }
   };
 
+  const [categories, setCategories] = React.useState(null);
+
+  /**
+   * Fetch datas
+   */
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
+
+  if (!categories) return null;
+
   return (
     <>
       <div className="hidden md:flex md:mb-4 md:items-center">
@@ -30,7 +49,7 @@ export default function quizdetailPage() {
             <HiArrowCircleLeft />
           </Link>
         </span>
-        <Title name="Numérique" />
+        <Title name={categories[0].name} />
       </div>
 
       <div className="flex flex-col justify-between">
@@ -40,9 +59,23 @@ export default function quizdetailPage() {
           </div>
           <div className="md:w-full md:ml-12">
             <div className="mb-32">
-              <Box bgColor="bg-tertiary-color">Facile</Box>
-              <Box bgColor="bg-secondary-color">15 questions</Box>
+              <Box bgColor="bg-tertiary-color">{categories[0].level}</Box>
+              <Box bgColor="bg-secondary-color">
+                {categories[0].questions_nbr} questions
+              </Box>
+              <div className="text-sm text-left">
+                <h3>But du jeu :</h3>
+                <p>
+                  Répondre au plus de questions possibles dans un temps imparti.
+                </p>
+                <p>
+                  Attention toutefois, dès qu'une réponse est fausse, la partie
+                  s'arrête.
+                </p>
+                <p>Bonne chance à vous !</p>
+              </div>
             </div>
+
             <Button
               rounded
               className={"mb-4"}

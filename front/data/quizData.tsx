@@ -16,7 +16,7 @@ const data = [
       },
       {
         letter: "C.",
-        text: "Johny Hallyday",
+        text: "Johnny Hallyday",
         correct: false,
       },
       {

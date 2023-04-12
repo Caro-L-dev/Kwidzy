@@ -24,4 +24,14 @@ module.exports = function(server) {
            }
        });
    });
+
+   server.get('/answer', function (req, res, next) {
+    dbRequests.getAnswer(function (error, answer) {
+        if (error) {
+            return res.json(500, {error: "Unexpected error, maybe our services are down."});
+        } else {
+            return res.json(200, answer);
+        }
+    });
+   });
 };
