@@ -20,16 +20,19 @@ interface QuestionState {
   answers: answerState[];
 }
 
-interface QuestionStateApi {
-  id: number;
-  category_id: number;
-  question_text: string;
-}
-
 interface answerState {
   letter: string;
   text: string;
   correct: boolean;
+}
+
+/**
+ * API Types
+ */
+interface QuestionStateApi {
+  id: number;
+  category_id: number;
+  question_text: string;
 }
 
 interface answerStateApi {
@@ -49,12 +52,10 @@ const answerURL = "http://localhost:3030/answer";
  * Component
  */
 export default function QuizMolecule({
-  quizData,
   setStop,
   questionNumber,
   setQuestionNumber,
 }: {
-  quizData: any;
   setStop: any;
   questionNumber: number;
   setQuestionNumber: any;
@@ -64,16 +65,17 @@ export default function QuizMolecule({
    */
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-
+  const [className, setClassName] = useState("");
+  const [variant, setVariant] = useState("primary");
+  /**
+   * API State
+   */
   const [questionApi, setQuestionApi] = useState<QuestionStateApi[] | null>(
     null
   );
   const [answerApi, setAnswerApi] = useState<answerStateApi[] | null>(null);
 
-  const [className, setClassName] = useState("");
-  const [variant, setVariant] = useState("primary");
-
-  const quizData2: QuestionState[] = useMemo(() => {
+  const quizDataBack: QuestionState[] = useMemo(() => {
     if (!questionApi || !answerApi) {
       return [];
     }
@@ -100,8 +102,8 @@ export default function QuizMolecule({
    * Lifecycle
    */
   useEffect(() => {
-    setQuestion(quizData2[questionNumber - 1]);
-  }, [quizData2, questionNumber]);
+    setQuestion(quizDataBack[questionNumber - 1]);
+  }, [quizDataBack, questionNumber]);
 
   /**
    * Fetch datas
