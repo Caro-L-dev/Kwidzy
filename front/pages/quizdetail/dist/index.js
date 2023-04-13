@@ -15,7 +15,7 @@ var axios_1 = require("axios");
 /**
  * Datas
  */
-var baseURL = "http://localhost:3030/categories";
+var categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
 /**
  * Page
  */
@@ -31,7 +31,7 @@ function quizdetailPage() {
      * Fetch datas
      */
     react_1["default"].useEffect(function () {
-        axios_1["default"].get(baseURL).then(function (response) {
+        axios_1["default"].get(categoriesURL).then(function (response) {
             setCategories(response.data);
         });
     }, []);

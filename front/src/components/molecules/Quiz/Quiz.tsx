@@ -45,8 +45,8 @@ interface answerStateApi {
 /**
  * Datas
  */
-const questionURL = "http://localhost:3030/question";
-const answerURL = "http://localhost:3030/answer";
+const questionURL = process.env.NEXT_PUBLIC_QUESTION_URL;
+const answerURL = process.env.NEXT_PUBLIC_ANSWER_URL;
 
 /**
  * Component

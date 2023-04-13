@@ -33,6 +33,7 @@ export default function Start({ setUsername }: { setUsername: any }) {
         placeholder="Quel est ton pseudo ?"
         ref={inputRef}
       />
+      <p>Attention, sans pseudo pas d'entrée !</p>
       <div className="mt-6">
         <AvatarChoice />
         <Bubble>Pret à te lancer user ?</Bubble>

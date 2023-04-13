@@ -50,7 +50,7 @@ var RepeatDots = function (_a) {
 /**
  * Datas
  */
-var baseURL = "http://localhost:3030/categories";
+var categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
 /**
  * Page
  */
@@ -59,6 +59,19 @@ function categoriesPage() {
      * Routing
      */
     var router = router_1.useRouter();
+    /**
+     * Button Style
+     */
+    var bgColorBtn = [
+        "bg-primary-color",
+        "bg-secondary-color",
+        "bg-tertiary-color",
+    ];
+    var bgBorderColorBtn = [
+        "border-darker-primary-color",
+        "border-darker-secondary-color",
+        "border-darker-tertiary-color",
+    ];
     /**
      * State
      */
@@ -77,7 +90,7 @@ function categoriesPage() {
      * Fetch datas
      */
     react_1["default"].useEffect(function () {
-        axios_1["default"].get(baseURL).then(function (response) {
+        axios_1["default"].get(categoriesURL).then(function (response) {
             setCategories(response.data);
         });
     }, []);
@@ -85,13 +98,11 @@ function categoriesPage() {
         return null;
     return (react_1["default"].createElement(react_1["default"].Fragment, null, username ? (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement(atoms_1.Title, { name: "Cat\u00E9gories" }),
-        react_1["default"].createElement("section", { className: "mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12" },
-            react_1["default"].createElement(atoms_1.Button, { className: "mb-2", type: "button", variant: "primary", rounded: true, onClick: function () { return handleClick("/quizdetail"); } }, categories[0].name),
-            react_1["default"].createElement(atoms_1.Button, { className: "mb-2", type: "button", variant: "secondary", rounded: true, onClick: function () { return handleClick("/quizdetail"); } }, categories[1].name),
-            react_1["default"].createElement(atoms_1.Button, { className: "mb-2", type: "button", variant: "tertiary", rounded: true, onClick: function () { return handleClick("/quizdetail"); } }, categories[2].name),
-            react_1["default"].createElement(atoms_1.Button, { className: "mb-2", type: "button", variant: "primary", rounded: true, onClick: function () { return handleClick("/quizdetail"); } }, categories[3].name),
-            react_1["default"].createElement(atoms_1.Button, { className: "mb-2", type: "button", variant: "secondary", rounded: true, onClick: function () { return handleClick("/quizdetail"); } }, categories[4].name),
-            react_1["default"].createElement(atoms_1.Button, { className: "mb-2", type: "button", variant: "tertiary", rounded: true, onClick: function () { return handleClick("/quizdetail"); } }, categories[5].name)),
+        react_1["default"].createElement("section", { className: "mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12" }, categories.map(function (category, index) { return (react_1["default"].createElement(atoms_1.Button, { key: category.id, rounded: true, 
+            // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
+            // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
+            // la couleur correspondante dans le tableau "bgColorBtn".
+            className: "mb-2 " + bgColorBtn[index % bgColorBtn.length] + " " + bgBorderColorBtn[index % bgBorderColorBtn.length], type: "button", variant: "primary", onClick: function () { return handleClick("/quizdetail"); } }, category.name)); })),
         react_1["default"].createElement("div", { className: "flex justify-center text-2xl mb-4" },
             react_1["default"].createElement(RepeatDots, { times: 3 },
                 react_1["default"].createElement(CreateCharactersWithProps, { ASCIIChar: "." }))))) : (react_1["default"].createElement(molecules_1.Start, { setUsername: setUsername }))));

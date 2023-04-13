@@ -20,21 +20,6 @@ function homePage() {
      * Actions
      */
     var handleClick = function (path) {
-        // if (path === "/categories") {
-        //   /**
-        //    * Fetch all categories via call to backend
-        //    */
-        //   axios.get(`http://localhost:3030/categories`)
-        //   .then(res => {
-        //     let data = res.data;
-        //     console.log(data);
-        //     let routerData = {
-        //       pathname: path,
-        //         state: data // your data array of objects
-        //     }
-        //     router.push(routerData);
-        //   });
-        // }
         if (path === "/categories") {
             router.push(path);
         }

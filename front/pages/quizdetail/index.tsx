@@ -15,7 +15,7 @@ import axios from "axios";
 /**
  * Datas
  */
-const baseURL = "http://localhost:3030/categories";
+const categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
 
 /**
  * Page
@@ -34,7 +34,7 @@ export default function quizdetailPage() {
    * Fetch datas
    */
   React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
+    axios.get(categoriesURL).then((response) => {
       setCategories(response.data);
     });
   }, []);
