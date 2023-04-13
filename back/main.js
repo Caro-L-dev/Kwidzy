@@ -1,25 +1,26 @@
 /**
  * Package Import
  */
-let restify = require('restify');
+const restify = require('restify');
 const corsMiddleware = require('restify-cors-middleware');
-// require('dotenv').config();
 
 /**
- * Port
+ * Constants
  */
-const SERVER_PORT = 3030
+const SERVER_PORT = 3030;
+const SERVER_NAME = 'kwidzy';
+const SERVER_VERSION = '1.0.0';
 
 /**
  * Restify Server
  */
-var server = restify.createServer({
-  name: 'kwidzy',
-  version: '1.0.0'
+const server = restify.createServer({
+  name: SERVER_NAME,
+  version: SERVER_VERSION
 });
 
 
-var cors = corsMiddleware({
+const cors = corsMiddleware({
   preflightMaxAge: 5,
   origins: ['*'],
   allowHeaders:['X-App-Version'],
@@ -33,8 +34,9 @@ server.use(restify.plugins.jsonBodyParser({ mapParams: true }));
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser({ mapParams: true }));
 server.use(restify.plugins.fullResponse());
+
 require('./routes/routes')(server);
 
 server.listen(SERVER_PORT, () => {
-  console.log(server.name + ' listening at ' + SERVER_PORT);
+  console.log(`${SERVER_NAME} listening at ${SERVER_PORT}`);
 });
