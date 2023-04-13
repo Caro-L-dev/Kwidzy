@@ -20,6 +20,7 @@ connectToDb.connect(function(error) {
   console.log("Datas are linked to front, you're connected!");
 });
 
+
 exports.getCategories = function(callback) {
   connectToDb.query("select * from categories", function(error, results) {
         if(error){    
@@ -58,4 +59,9 @@ connectToDb.query("select * from answer", function(error, results) {
       callback(error, results);
 })};
 
-// "select * from question inner join category on question.category_id = category.id where category.name = 'sport'"
+
+exports.postRegister = function(callback) {
+  connectToDb.query("INSERT INTO user (username, password) VALUES (?;?)", [username, password],
+  (error, result) => {
+    console.log(error);
+  })};

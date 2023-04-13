@@ -1,37 +1,42 @@
 /**
  * Local Import
  */
-var dbRequests = require('../services/dbRequests');
+const dbRequests = require('../services/dbRequests');
+
+const errorMsg = "Unexpected error, maybe our services are down";
+const HTTP_STATUS_OK = 200;
+
+function sendErrorResponse(res, errorMessage) {
+  res.json(500, { error: errorMessage });
+}
 
 module.exports = function(server) {
 
-    server.get('/categories', function (req, res, next) {
-        dbRequests.getCategories(function (error, categories) {
-            if (error) {
-                return res.json(500, {error: "Unexpected error, maybe our services are down."});
-            } else {
-                return res.json(200, categories);
-            }
+  // GET
+    server.get('/:resource', function(req, res, next) {
+        // Utilisé pour récupérer le nom de la ressource demandée, 
+        // par exemple, "categories", "question" ou "answer".
+        const resource = req.params.resource;
+    
+        const dbFunction = {
+        categories: dbRequests.getCategories,
+        question: dbRequests.getQuestion,
+        answer: dbRequests.getAnswer
+        }[resource];
+    
+        if (dbFunction) {
+        dbFunction(function(error, data) {
+            error ? sendErrorResponse(res, errorMsg) : res.json(HTTP_STATUS_OK, data);
         });
-    });
-
-   server.get('/question', function (req, res, next) {
-       dbRequests.getQuestion(function (error, question) {
-           if (error) {
-               return res.json(500, {error: "Unexpected error, maybe our services are down."});
-           } else {
-               return res.json(200, question);
-           }
-       });
-   });
-
-   server.get('/answer', function (req, res, next) {
-    dbRequests.getAnswer(function (error, answer) {
-        if (error) {
-            return res.json(500, {error: "Unexpected error, maybe our services are down."});
         } else {
-            return res.json(200, answer);
+        sendErrorResponse(res, 'Invalid resource');
         }
     });
-   });
+
+  // POST
+    server.post('/register', function(req, res, next) {
+        dbRequests.postRegister(function(error, user) {
+        error ? sendErrorResponse(res, errorMsg) : res.json(200, user);
+        });
+    });
 };

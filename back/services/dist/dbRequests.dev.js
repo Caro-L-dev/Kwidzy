@@ -123,4 +123,10 @@ exports.getAnswer = function (callback) {
 
     callback(error, results);
   });
-}; // "select * from question inner join category on question.category_id = category.id where category.name = 'sport'"
+};
+
+exports.postRegister = function (callback) {
+  connectToDb.query("INSERT INTO user (username, password) VALUES (?;?)", [username, password], function (error, result) {
+    console.log(error);
+  });
+};
