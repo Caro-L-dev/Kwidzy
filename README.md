@@ -1,10 +1,10 @@
 # **Kwidzy**
 
-_NextJs, Typescript, Tailwind, Jest, React Testing Library, StoryBook , MySQL_
+_NextJs, Typescript, Tailwind, Jest, React Testing Library, StoryBook , MySQL, Clever Cloud_
 
 --
 
-## 👶 **Getting Started **
+## 👶 **Getting Started**
 
 First, run the development server(front folder):
 
@@ -39,7 +39,7 @@ npx tailwind init -p
 
 Don't forget to re-start the server to display the changes!
 
-## ** Warning **
+## **Warning**
 
 Don't forget to fetch .env file when repository is cloned!  
 For both folders.
