@@ -3,6 +3,7 @@
  */
 import React from "react";
 import router from "next/router";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 /**
@@ -21,6 +22,8 @@ const categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
  * Page
  */
 export default function quizdetailPage() {
+  const router = useRouter();
+
   const handleClick = (path: string) => {
     if (path === "/quiz") {
       console.log("Je me rends sur la page Quiz");
@@ -45,7 +48,7 @@ export default function quizdetailPage() {
     <>
       <div className="hidden md:flex md:mb-4 md:items-center">
         <span className="mr-4 text-4xl cursor-pointer">
-          <Link href={"/quiz"}>
+          <Link href={""} onClick={() => router.back()}>
             <HiArrowCircleLeft />
           </Link>
         </span>

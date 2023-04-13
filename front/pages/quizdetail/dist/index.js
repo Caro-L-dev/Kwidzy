@@ -20,10 +20,11 @@ var categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
  * Page
  */
 function quizdetailPage() {
+    var router = router_1.useRouter();
     var handleClick = function (path) {
         if (path === "/quiz") {
             console.log("Je me rends sur la page Quiz");
-            router_1["default"].push(path);
+            router.push(path);
         }
     };
     var _a = react_1["default"].useState(null), categories = _a[0], setCategories = _a[1];
@@ -40,7 +41,7 @@ function quizdetailPage() {
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "hidden md:flex md:mb-4 md:items-center" },
             react_1["default"].createElement("span", { className: "mr-4 text-4xl cursor-pointer" },
-                react_1["default"].createElement(link_1["default"], { href: "/quiz" },
+                react_1["default"].createElement(link_1["default"], { href: "", onClick: function () { return router.back(); } },
                     react_1["default"].createElement(hi_1.HiArrowCircleLeft, null))),
             react_1["default"].createElement(atoms_1.Title, { name: categories[0].name })),
         react_1["default"].createElement("div", { className: "flex flex-col justify-between" },
