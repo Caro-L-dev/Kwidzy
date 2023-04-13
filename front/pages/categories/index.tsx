@@ -1,7 +1,7 @@
 /**
  * Package Import
  */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
@@ -10,25 +10,7 @@ import axios from "axios";
  */
 import { Title, Button } from "@/src/components/atoms";
 import { Start } from "@/src/components/molecules";
-
-/**
- * Several dots Function
- */
-const CreateCharactersWithProps = ({
-  ASCIIChar,
-  ...props
-}: {
-  ASCIIChar: string;
-}) => {
-  return <span {...props}>{ASCIIChar}</span>;
-};
-
-const RepeatDots = ({ times, children }: { times: number; children: any }) => {
-  return React.cloneElement(children, {
-    //   This will override the original ASCIIChar in the div
-    ASCIIChar: children.props.ASCIIChar.repeat(times),
-  });
-};
+import { Dot, RepeatDots } from "@/pages/categories/dots";
 
 /**
  * Types
@@ -37,10 +19,10 @@ interface UsernameState {
   username: string;
 }
 
-/**
- * Datas
- */
-const categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
+interface Category {
+  id: string;
+  name: string;
+}
 
 /**
  * Page
@@ -70,7 +52,7 @@ export default function categoriesPage() {
    * State
    */
   const [username, setUsername] = useState<UsernameState | null>(null);
-  const [categories, setCategories] = React.useState(null);
+  const [categories, setCategories] = useState<Category[] | null>(null);
 
   /**
    * Action
@@ -85,13 +67,16 @@ export default function categoriesPage() {
   /**
    * Fetch datas
    */
-  React.useEffect(() => {
+  useEffect(() => {
+    const categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL ?? "";
     axios.get(categoriesURL).then((response) => {
       setCategories(response.data);
     });
   }, []);
 
-  if (!categories) return null;
+  if (!categories) {
+    return null;
+  }
 
   return (
     <>
@@ -119,7 +104,7 @@ export default function categoriesPage() {
           </section>
           <div className="flex justify-center text-2xl mb-4">
             <RepeatDots times={3}>
-              <CreateCharactersWithProps ASCIIChar="."></CreateCharactersWithProps>
+              <Dot ASCIIChar="." />
             </RepeatDots>
           </div>
         </>
