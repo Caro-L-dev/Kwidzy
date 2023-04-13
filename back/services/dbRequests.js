@@ -17,7 +17,7 @@ let connectToDb = mysql.createConnection({
 
 connectToDb.connect(function(error) {
   if (error) throw error;
-  console.log("Connected!");
+  console.log("Datas are linked to front, you're connected!");
 });
 
 exports.getCategories = function(callback) {
