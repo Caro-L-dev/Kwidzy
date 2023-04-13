@@ -33,7 +33,7 @@ module.exports = function(server) {
         }
     });
 
-  // POST
+  // POST wip
     server.post('/register', function(req, res, next) {
         dbRequests.postRegister(function(error, user) {
         error ? sendErrorResponse(res, errorMsg) : res.json(200, user);

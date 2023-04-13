@@ -33,7 +33,7 @@ module.exports = function (server) {
     } else {
       sendErrorResponse(res, 'Invalid resource');
     }
-  }); // POST
+  }); // POST wip
 
   server.post('/register', function (req, res, next) {
     dbRequests.postRegister(function (error, user) {

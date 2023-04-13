@@ -1,13 +1,13 @@
 /**
  * Package Import
  */
-let mysql = require('mysql');
+const mysql = require('mysql');
 require('dotenv').config();
 
 /**
  * Connection to the Database
  */
-let connectToDb = mysql.createConnection({
+const connectToDb = mysql.createConnection({
   port: process.env.MYSQL_ADDON_PORT,
   host: process.env.MYSQL_ADDON_HOST,
   user: process.env.MYSQL_ADDON_USER,
@@ -21,47 +21,28 @@ connectToDb.connect(function(error) {
 });
 
 
-exports.getCategories = function(callback) {
-  connectToDb.query("select * from categories", function(error, results) {
-        if(error){    
-            console.log("Error ocurred in executing the query : " + error);
-        } else {
-            for(let result of results) {
-              console.log(result);
-            }
-        }
-        callback(error, results);
-    });
-}
-
-exports.getQuestion = function(callback) {
-   connectToDb.query("select * from question", function(error, results) {
-         if(error){    
-             console.log("Error ocurred in executing the query : " + error);
-         } else {
-             for(let result of results) {
-               console.log(result);
-             }
-         }
-         callback(error, results);
-     });
-}
-
-exports.getAnswer = function(callback) {
-connectToDb.query("select * from answer", function(error, results) {
-      if(error){    
-          console.log("Error ocurred in executing the query : " + error);
-      } else {
-          for(let result of results) {
-            console.log(result);
-          }
+function fetchFromTable(table, callback) {
+  const query = `SELECT * FROM ${table}`;
+  connectToDb.query(query, function(error, results) {
+    if (error) {
+      console.log(`Error occurred in executing the query for ${table}: ${error}`);
+    } else {
+      for (let result of results) {
+        console.log(result);
       }
-      callback(error, results);
-})};
+    }
+    callback(error, results);
+  });
+};
 
+// GET
+exports.getCategories = (callback) => fetchFromTable('categories', callback);
+exports.getQuestion = (callback) => fetchFromTable('question', callback);
+exports.getAnswer = (callback) => fetchFromTable('answer', callback);
 
+// POST wip
 exports.postRegister = function(callback) {
   connectToDb.query("INSERT INTO user (username, password) VALUES (?;?)", [username, password],
   (error, result) => {
     console.log(error);
-  })};
+})};
