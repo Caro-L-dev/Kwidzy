@@ -65,7 +65,6 @@ export default function QuizMolecule({
    */
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [className, setClassName] = useState("");
   const [variant, setVariant] = useState("primary");
   /**
    * API State
@@ -134,9 +133,6 @@ export default function QuizMolecule({
    */
   const handleClick = (answer: answerState) => {
     setSelectedAnswer(answer.text);
-    setClassName(
-      "bg-secondary-color border-darker-secondary-color border-r-[5px] border-b-[5px]"
-    );
     delay(1000, () => setVariant(answer.correct ? "correct" : "mistake"));
     delay(2000, () => {
       if (answer.correct) {

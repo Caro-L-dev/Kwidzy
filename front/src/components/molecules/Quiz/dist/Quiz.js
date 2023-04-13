@@ -24,13 +24,12 @@ function QuizMolecule(_a) {
      */
     var _b = react_1.useState(null), question = _b[0], setQuestion = _b[1];
     var _c = react_1.useState(null), selectedAnswer = _c[0], setSelectedAnswer = _c[1];
-    var _d = react_1.useState(""), className = _d[0], setClassName = _d[1];
-    var _e = react_1.useState("primary"), variant = _e[0], setVariant = _e[1];
+    var _d = react_1.useState("primary"), variant = _d[0], setVariant = _d[1];
     /**
      * API State
      */
-    var _f = react_1.useState(null), questionApi = _f[0], setQuestionApi = _f[1];
-    var _g = react_1.useState(null), answerApi = _g[0], setAnswerApi = _g[1];
+    var _e = react_1.useState(null), questionApi = _e[0], setQuestionApi = _e[1];
+    var _f = react_1.useState(null), answerApi = _f[0], setAnswerApi = _f[1];
     var quizDataBack = react_1.useMemo(function () {
         if (!questionApi || !answerApi) {
             return [];
@@ -85,7 +84,6 @@ function QuizMolecule(_a) {
      */
     var handleClick = function (answer) {
         setSelectedAnswer(answer.text);
-        setClassName("bg-secondary-color border-darker-secondary-color border-r-[5px] border-b-[5px]");
         delay(1000, function () { return setVariant(answer.correct ? "correct" : "mistake"); });
         delay(2000, function () {
             if (answer.correct) {
