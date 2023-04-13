@@ -60,8 +60,8 @@ export default function quizPage() {
    * Actions
    */
   const handleClick = (path: string) => {
-    if (path === "/") {
-      console.log("Je me rends sur la page Kwidzy");
+    if (path === "/categories") {
+      console.log("Je me rends sur la page Catégories");
       router.push(path);
     }
   };
@@ -97,7 +97,7 @@ export default function quizPage() {
                 className={"mb-4"}
                 type={"button"}
                 variant={"primary"}
-                onClick={() => handleClick("/")}
+                onClick={() => handleClick("/categories")}
               >
                 Rejouer
               </Button>
@@ -105,7 +105,7 @@ export default function quizPage() {
           </>
         ) : (
           <>
-            <div className="absolute top-[-15px] right-[-10px] md:relative md:flex md:justify-center z-10">
+            <div className="relative flex justify-center z-10 mb-4">
               <Timer setStop={setStop} questionNumber={questionNumber} />
             </div>
             <Quiz

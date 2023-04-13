@@ -13,13 +13,16 @@ import { AvatarChoice } from "@/src/components/molecules";
  * Component
  */
 export default function Start({ setUsername }: { setUsername: any }) {
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
-    inputRef.current.value && setUsername(inputRef.current.value);
+    if (inputRef.current && inputRef.current.value.trim() !== "") {
+      setUsername(inputRef.current.value);
+    } else {
+      alert("N'oublie pas d'entrer ton pseudo avant de continuer.");
+    }
   };
 
-  // S'affiche au fur et à mesure - animation
   return (
     <div className="flex flex-col">
       <input

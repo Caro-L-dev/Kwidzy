@@ -40,7 +40,7 @@ interface UsernameState {
 /**
  * Datas
  */
-const baseURL = "http://localhost:3030/categories";
+const categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
 
 /**
  * Page
@@ -50,6 +50,21 @@ export default function categoriesPage() {
    * Routing
    */
   const router = useRouter();
+
+  /**
+   * Button Style
+   */
+  const bgColorBtn = [
+    "bg-primary-color",
+    "bg-secondary-color",
+    "bg-tertiary-color",
+  ];
+
+  const bgBorderColorBtn = [
+    "border-darker-primary-color",
+    "border-darker-secondary-color",
+    "border-darker-tertiary-color",
+  ];
 
   /**
    * State
@@ -71,7 +86,7 @@ export default function categoriesPage() {
    * Fetch datas
    */
   React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
+    axios.get(categoriesURL).then((response) => {
       setCategories(response.data);
     });
   }, []);
@@ -84,79 +99,23 @@ export default function categoriesPage() {
         <>
           <Title name="Catégories" />
           <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
-            {/* Boucle .map */}
-            {/* {categories.map((category: any) => (
+            {categories.map((category: any, index: number) => (
               <Button
                 key={category.id}
                 rounded
-                className={"mb-2"}
+                // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
+                // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
+                // la couleur correspondante dans le tableau "bgColorBtn".
+                className={`mb-2 ${bgColorBtn[index % bgColorBtn.length]} ${
+                  bgBorderColorBtn[index % bgBorderColorBtn.length]
+                }`}
                 type={"button"}
                 variant={"primary"}
                 onClick={() => handleClick("/quizdetail")}
               >
                 {category.name}
               </Button>
-            ))} */}
-
-            <Button
-              className={"mb-2"}
-              type={"button"}
-              variant={"primary"}
-              rounded
-              onClick={() => handleClick("/quizdetail")}
-            >
-              {categories[0].name}
-            </Button>
-
-            <Button
-              className={"mb-2"}
-              type={"button"}
-              variant={"secondary"}
-              rounded
-              onClick={() => handleClick("/quizdetail")}
-            >
-              {categories[1].name}
-            </Button>
-
-            <Button
-              className={"mb-2"}
-              type={"button"}
-              variant={"tertiary"}
-              rounded
-              onClick={() => handleClick("/quizdetail")}
-            >
-              {categories[2].name}
-            </Button>
-
-            <Button
-              className={"mb-2"}
-              type={"button"}
-              variant={"primary"}
-              rounded
-              onClick={() => handleClick("/quizdetail")}
-            >
-              {categories[3].name}
-            </Button>
-
-            <Button
-              className={"mb-2"}
-              type={"button"}
-              variant={"secondary"}
-              rounded
-              onClick={() => handleClick("/quizdetail")}
-            >
-              {categories[4].name}
-            </Button>
-
-            <Button
-              className={"mb-2"}
-              type={"button"}
-              variant={"tertiary"}
-              rounded
-              onClick={() => handleClick("/quizdetail")}
-            >
-              {categories[5].name}
-            </Button>
+            ))}
           </section>
           <div className="flex justify-center text-2xl mb-4">
             <RepeatDots times={3}>
