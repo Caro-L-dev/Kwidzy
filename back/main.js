@@ -1,6 +1,7 @@
 /**
  * Package Import
  */
+require('dotenv').config();
 const restify = require('restify');
 const mysql = require('mysql');
 const corsMiddleware = require('restify-cors-middleware');
@@ -58,6 +59,7 @@ server.listen(SERVER_PORT, () => {
 // ----------------- test 3
 
 
+/*
 server.use(restify.plugins.bodyParser());
 
 server.post('/user', (req, res, next) => {
@@ -77,3 +79,4 @@ server.post('/user', (req, res, next) => {
     }
   );
 });
+*/

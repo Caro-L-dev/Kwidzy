@@ -2,11 +2,13 @@
  * Package Import
  */
 const mysql = require('mysql');
-require('dotenv').config();
 
 /**
  * Connection to the Database
  */
+
+console.log("mysql port : " + process.env.MYSQL_ADDON_PORT);
+
 const connectToDb = mysql.createConnection({
   port: process.env.MYSQL_ADDON_PORT,
   host: process.env.MYSQL_ADDON_HOST,
@@ -35,12 +37,21 @@ function fetchFromTable(table, callback) {
   });
 };
 
+function registerUser(username, password, callback) {
+  connectToDb.query(
+    'INSERT INTO user (username, password) VALUES (?, ?)',
+    [username, password],
+    (error, results) => {
+      callback(error, results);
+    }
+  );
+}
+
 // GET
 exports.getCategories = (callback) => fetchFromTable('categories', callback);
 exports.getQuestion = (callback) => fetchFromTable('question', callback);
 exports.getAnswer = (callback) => fetchFromTable('answer', callback);
 
 // POST
-exports.postUser = (callback) => fetchFromTable('user', callback);
+exports.postUser = (username, password, callback) => registerUser(username, password, callback);
 
-// module.exports = connectToDb;

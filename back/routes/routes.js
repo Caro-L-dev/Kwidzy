@@ -19,9 +19,27 @@ module.exports = function(server) {
         const resource = req.params.resource;
     
         const dbFunction = {
-        categories: dbRequests.getCategories,
-        question: dbRequests.getQuestion,
-        answer: dbRequests.getAnswer
+          categories: dbRequests.getCategories,
+          question: dbRequests.getQuestion,
+          answer: dbRequests.getAnswer
+        }[resource];
+    
+        if (dbFunction) {
+        dbFunction(function(error, data) {
+            error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
+        });
+        } else {
+          sendErrorResponse(res, 'Invalid resource');
+        }
+    });
+
+    /*
+      // POST
+      server.post('/user', function(req, res, next) {
+        const resource = req.params.resource;
+    
+        const dbFunction = {
+        user: dbRequests.postUser,
         }[resource];
     
         if (dbFunction) {
@@ -32,21 +50,16 @@ module.exports = function(server) {
         sendErrorResponse(res, 'Invalid resource');
         }
     });
+    */
 
-      // POST
-       server.post('/:resource', function(req, res, next) {
-         const resource = req.params.resource;
-    
-         const dbFunction = {
-         user: dbRequests.postUser,
-         }[resource];
-    
-         if (dbFunction) {
-         dbFunction(function(error, data) {
-             error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
-         });
-         } else {
-         sendErrorResponse(res, 'Invalid resource');
-         }
-     });
+    // POST
+    server.post('/user', function(req, res, next) {
+      const resource = req.params.resource;
+      let username = req.body.username;
+      let password = req.body.password;
+
+      dbRequests.postUser(username, password, function(error, data) {
+          error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
+      });
+    });
 };
