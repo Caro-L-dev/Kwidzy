@@ -22,9 +22,7 @@ connectToDb.connect(function(error) {
   console.log("Datas are linked to front, you're connected!");
 });
 
-
-function fetchFromTable(table, callback) {
-  const query = `SELECT * FROM ${table}`;
+function makeSqlRequest(callback, query) {
   connectToDb.query(query, function(error, results) {
     if (error) {
       console.log(`Error occurred in executing the query for ${table}: ${error}`);
@@ -35,6 +33,16 @@ function fetchFromTable(table, callback) {
     }
     callback(error, results);
   });
+}
+
+function fetchFromTable(table, callback) {
+  const query = `SELECT * FROM ${table}`;
+  makeSqlRequest(callback, query);
+};
+
+function getCategoryQuestions(category, callback) {
+  const query = `SELECT * FROM question q INNER JOIN categories c on q.categories_id=c.id where c.name='${category}'`;
+  makeSqlRequest(callback, query);
 };
 
 function registerUser(username, password, callback) {
@@ -49,7 +57,7 @@ function registerUser(username, password, callback) {
 
 // GET
 exports.getCategories = (callback) => fetchFromTable('categories', callback);
-exports.getQuestion = (callback) => fetchFromTable('question', callback);
+exports.getQuestion = (category, callback) => getCategoryQuestions(category, callback);
 exports.getAnswer = (callback) => fetchFromTable('answer', callback);
 
 // POST

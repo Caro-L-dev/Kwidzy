@@ -13,6 +13,16 @@ function sendErrorResponse(res, errorMessage) {
 module.exports = function(server) {
 
   // GET
+  server.get('/question', function(req, res, next) {
+    // const category = req.body.category;
+    const category = "humour";
+
+    dbRequests.getQuestion(category, function(error, data) {
+        error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
+    });
+  });
+
+  // GET
     server.get('/:resource', function(req, res, next) {
         // Utilisé pour récupérer le nom de la ressource demandée, 
         // par exemple, "categories", "question" ou "answer".
@@ -32,25 +42,6 @@ module.exports = function(server) {
           sendErrorResponse(res, 'Invalid resource');
         }
     });
-
-    /*
-      // POST
-      server.post('/user', function(req, res, next) {
-        const resource = req.params.resource;
-    
-        const dbFunction = {
-        user: dbRequests.postUser,
-        }[resource];
-    
-        if (dbFunction) {
-        dbFunction(function(error, data) {
-            error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
-        });
-        } else {
-        sendErrorResponse(res, 'Invalid resource');
-        }
-    });
-    */
 
     // POST
     server.post('/user', function(req, res, next) {

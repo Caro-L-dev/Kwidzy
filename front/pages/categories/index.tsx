@@ -57,9 +57,10 @@ export default function categoriesPage() {
   /**
    * Action
    */
-  const handleClick = (path: string) => {
+  const handleClick = (path: string, categoryName: string) => {
     if (path === "/quizdetail") {
       console.log("Je me rends sur la page QuizDetail");
+      let finalPath = path + "/" + categoryName;
       router.push(path);
     }
   };
@@ -96,7 +97,7 @@ export default function categoriesPage() {
                 }`}
                 type={"button"}
                 variant={"primary"}
-                onClick={() => handleClick("/quizdetail")}
+                onClick={() => handleClick("/quizdetail", category.name)}
               >
                 {category.name}
               </Button>

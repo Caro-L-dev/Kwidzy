@@ -71,6 +71,8 @@ const QuizMolecule = ({
    */
   useEffect(() => {
     const fetchQuestions = async () => {
+      
+      let finalQuestionUrl = questionURL + "?category=humour";
       const response = await axios.get<QuestionStateApi[]>(questionURL);
       setQuestionApi(response.data);
     };
