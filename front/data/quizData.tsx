@@ -5,22 +5,18 @@ const data = [
     question: "Qui a conçu Facebook ?",
     answers: [
       {
-        letter: "A.",
         text: "Bill Gates",
         correct: false,
       },
       {
-        letter: "B.",
         text: "Marc Zuckerberg",
         correct: true,
       },
       {
-        letter: "C.",
         text: "Johnny Hallyday",
         correct: false,
       },
       {
-        letter: "D.",
         text: "Mr Charlie",
         correct: false,
       },
@@ -32,22 +28,18 @@ const data = [
     question: "Q'est ce qu'un composant ?",
     answers: [
       {
-        letter: "A.",
         text: "Réponse 01",
         correct: false,
       },
       {
-        letter: "B.",
         text: "Réponse 02",
         correct: false,
       },
       {
-        letter: "C.",
         text: "Réponse 03",
         correct: true,
       },
       {
-        letter: "D.",
         text: "Réponse 04",
         correct: false,
       },
@@ -59,22 +51,18 @@ const data = [
     question: "Q'est ce qu'un projet Agile ?",
     answers: [
       {
-        letter: "A.",
         text: "Réponse 01",
         correct: false,
       },
       {
-        letter: "B.",
         text: "Réponse 02",
         correct: false,
       },
       {
-        letter: "C.",
         text: "Réponse 03",
         correct: false,
       },
       {
-        letter: "D.",
         text: "Réponse 04",
         correct: true,
       },
