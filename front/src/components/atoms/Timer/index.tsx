@@ -6,8 +6,10 @@ import React, { useEffect, useState } from "react";
 /**
  * Types
  */
+type SetStopFunction = React.Dispatch<React.SetStateAction<boolean>>;
+
 interface TimerProps {
-  setStop: any;
+  setStop: SetStopFunction;
   questionNumber: number;
 }
 

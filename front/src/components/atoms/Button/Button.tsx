@@ -24,7 +24,7 @@ interface ButtonProps {
   className?: string;
   children?: React.ReactNode;
   rounded?: boolean;
-  variant?: ButtonVariant;
+  variant?: ButtonVariant | string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
