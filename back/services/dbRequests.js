@@ -40,9 +40,7 @@ exports.getCategories = (callback) => fetchFromTable('categories', callback);
 exports.getQuestion = (callback) => fetchFromTable('question', callback);
 exports.getAnswer = (callback) => fetchFromTable('answer', callback);
 
-// POST wip
-exports.postRegister = function(callback) {
-  connectToDb.query("INSERT INTO user (username, password) VALUES (?;?)", [username, password],
-  (error, result) => {
-    console.log(error);
-})};
+// POST
+exports.postUser = (callback) => fetchFromTable('user', callback);
+
+// module.exports = connectToDb;
