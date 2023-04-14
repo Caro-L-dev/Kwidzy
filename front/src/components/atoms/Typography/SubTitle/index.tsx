@@ -7,7 +7,7 @@ import React from "react";
  * Type
  */
 interface SubTitleProps {
-  name: React.ReactNode;
+  name: string;
 }
 
 /**

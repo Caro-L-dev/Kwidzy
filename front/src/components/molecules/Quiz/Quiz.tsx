@@ -8,71 +8,33 @@ import axios from "axios";
  * Local Import
  */
 import { Button } from "@/src/components/atoms";
-
-/**
- * Types
- */
-interface QuestionState {
-  id: number;
-  letter: string;
-  questionNumber: number;
-  question: string;
-  answers: answerState[];
-}
-
-interface answerState {
-  letter: string;
-  text: string;
-  correct: boolean;
-}
-
-/**
- * API Types
- */
-interface QuestionStateApi {
-  id: number;
-  category_id: number;
-  question_text: string;
-}
-
-interface answerStateApi {
-  id: number;
-  question_id: number;
-  answer_text: string;
-  is_correct: boolean;
-}
+import { QuestionState, AnswerState } from "./types";
+import { Props, QuestionStateApi, AnswerStateApi } from "./interfaces";
 
 /**
  * Datas
  */
-const questionURL = process.env.NEXT_PUBLIC_QUESTION_URL;
-const answerURL = process.env.NEXT_PUBLIC_ANSWER_URL;
+const questionURL = process.env.NEXT_PUBLIC_QUESTION_URL ?? "default-url";
+const answerURL = process.env.NEXT_PUBLIC_ANSWER_URL ?? "default-url";
 
 /**
  * Component
  */
-export default function QuizMolecule({
+const QuizMolecule = ({
   setStop,
   questionNumber,
   setQuestionNumber,
-}: {
-  setStop: any;
-  questionNumber: number;
-  setQuestionNumber: any;
-}) {
+}: Props) => {
   /**
    * State
    */
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [variant, setVariant] = useState("primary");
-  /**
-   * API State
-   */
   const [questionApi, setQuestionApi] = useState<QuestionStateApi[] | null>(
     null
   );
-  const [answerApi, setAnswerApi] = useState<answerStateApi[] | null>(null);
+  const [answerApi, setAnswerApi] = useState<AnswerStateApi[] | null>(null);
+  const [variant, setVariant] = useState("primary");
 
   const quizDataBack: QuestionState[] = useMemo(() => {
     if (!questionApi || !answerApi) {
@@ -81,7 +43,7 @@ export default function QuizMolecule({
     return questionApi.map((questionObject) => {
       return {
         id: questionObject.id,
-        questionNumber: `Q${questionObject.id}. `,
+        questionNumber: `Q${questionObject.id}.`,
         question: questionObject.question_text,
         answers: answerApi
           .filter((answerObject) => {
@@ -105,24 +67,30 @@ export default function QuizMolecule({
   }, [quizDataBack, questionNumber]);
 
   /**
-   * Fetch datas
+   * Fetch data
    */
-  React.useEffect(() => {
-    axios.get(questionURL).then((response) => {
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const response = await axios.get<QuestionStateApi[]>(questionURL);
       setQuestionApi(response.data);
-    });
+    };
+
+    fetchQuestions();
   }, []);
 
-  React.useEffect(() => {
-    axios.get(answerURL).then((response) => {
+  useEffect(() => {
+    const fetchAnswers = async () => {
+      const response = await axios.get<AnswerStateApi[]>(answerURL);
       setAnswerApi(response.data);
-    });
+    };
+
+    fetchAnswers();
   }, []);
 
   /**
    * Delay Function
    */
-  const delay = (duration: number, callback: any) => {
+  const delay = (duration: number, callback: () => void | (() => void)) => {
     setTimeout(() => {
       callback();
     }, duration);
@@ -131,19 +99,17 @@ export default function QuizMolecule({
   /**
    * Actions
    */
-  const handleClick = (answer: answerState) => {
+  const handleClick = (answer: AnswerState) => {
     setSelectedAnswer(answer.text);
     delay(1000, () => setVariant(answer.correct ? "correct" : "mistake"));
     delay(2000, () => {
-      if (answer.correct) {
-        // Go to the next question
-        setQuestionNumber(
-          (currentQuestionNumber: number) => currentQuestionNumber + 1
-        );
-        setSelectedAnswer(null);
-      } else {
-        setStop(true);
-      }
+      answer.correct
+        ? (setQuestionNumber(
+            // Go to the next question
+            (currentQuestionNumber: number) => currentQuestionNumber + 1
+          ),
+          setSelectedAnswer(null))
+        : setStop(true);
     });
   };
 
@@ -166,11 +132,12 @@ export default function QuizMolecule({
             rounded
             className={""}
           >
-            <span className="mr-4">{answer.letter}</span>
             <p>{answer.text}</p>
           </Button>
         ))}
       </div>
     </>
   );
-}
+};
+
+export default QuizMolecule;

@@ -1,7 +1,7 @@
 /**
  * Package Import
  */
-import React from "react";
+import React, { ReactNode } from "react";
 
 /**
  * Local Import
@@ -11,7 +11,7 @@ import Navbar from "../Navbar/Navbar";
 /**
  * Component
  */
-export default function Container({ children }: any) {
+export default function Container({ children }: { children: ReactNode }) {
   return (
     <>
       <div className="flex flex-col p-8 md:px-20 bg-gradient-to-b from-fuchsia-900 via-purple-600 to-indigo-500 w-full text-white">

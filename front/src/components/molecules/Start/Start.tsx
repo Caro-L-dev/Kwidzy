@@ -12,7 +12,11 @@ import { AvatarChoice } from "@/src/components/molecules";
 /**
  * Component
  */
-export default function Start({ setUsername }: { setUsername: any }) {
+export default function Start({
+  setUsername,
+}: {
+  setUsername: (username: string) => void;
+}) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
