@@ -14,10 +14,61 @@ module.exports = function(server) {
 
   // GET
   server.get('/question', function(req, res, next) {
-    // const category = req.body.category;
-    const category = "humour";
+    const category = req.query.category;
 
     dbRequests.getQuestion(category, function(error, data) {
+
+      // Tableau qui contiendra les réponses de la requête sql au bon format
+      let formattedResponseFront = [];
+
+      // Liste des id de toutes les questions récupérées par la requête sql
+      const questionIds = [...new Set(data.map(item => item.id))];
+
+      // Itère sur chaque id de question
+      questionIds.map(questionId => {
+
+        // Pour un id de question, récupère toutes ses lignes obtenues par le sql
+        let questionRows = data.filter(dataElement =>
+          dataElement.id === questionId
+        );
+
+        // Formate les questionRows pour avoir la tête qu'on veut
+        let questionFront = {
+          questionId: questionRows[0].id,
+          question: questionRows[0].question_text,
+          answers: []
+        };
+        questionRows.map(questionRow => {
+          questionFront.answers.push({
+            text: questionRow.answer_text, isCorrect: (questionRow.is_correct == 1) ? true : false
+          });
+        });
+
+        formattedResponseFront.push(questionFront);
+      });
+
+      /*
+        let mock = {
+          questionId: 5,
+          question: "machin ?",
+          answers: [
+            {text: "answer 1", isCorrect: false},
+            {text: "answer 2", isCorrect: false},
+            {text: "answer 3", isCorrect: true},
+            {text: "answer 4", isCorrect: false},
+          ]
+        }
+      */
+
+      error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, formattedResponseFront);
+    });
+  });
+
+  // GET
+  server.get('/answer', function(req, res, next) {
+    const questionId = req.query.questionId;
+
+    dbRequests.getAnswer(questionId, function(error, data) {
         error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
     });
   });

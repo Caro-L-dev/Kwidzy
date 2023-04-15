@@ -1,6 +1,6 @@
 export type AnswerState = {
   text: string;
-  correct: boolean;
+  isCorrect: boolean;
 };
 
 export type QuestionState = {

@@ -26,8 +26,13 @@ export default function quizdetailPage() {
 
   const handleClick = (path: string) => {
     if (path === "/quiz") {
-      console.log("Je me rends sur la page Quiz");
-      router.push(path);
+      let categoryName = router.query.category;
+      router.push(
+        {
+          pathname: path,
+          query: {category: categoryName},
+        }
+      )
     }
   };
 

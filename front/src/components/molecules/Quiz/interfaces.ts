@@ -1,14 +1,12 @@
 export interface QuestionStateApi {
-  id: number;
-  category_id: number;
-  question_text: string;
+  questionId: number;
+  question: string;
+  answers: [AnswerStateApi];
 }
 
 export interface AnswerStateApi {
-  id: number;
-  question_id: number;
-  answer_text: string;
-  is_correct: boolean;
+  text: string;
+  isCorrect: boolean;
 }
 
 export interface Props {

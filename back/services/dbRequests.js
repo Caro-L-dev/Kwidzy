@@ -41,7 +41,16 @@ function fetchFromTable(table, callback) {
 };
 
 function getCategoryQuestions(category, callback) {
-  const query = `SELECT * FROM question q INNER JOIN categories c on q.categories_id=c.id where c.name='${category}'`;
+  const query = `SELECT q.id, q.question_text, a.is_correct, a.answer_text
+  FROM question q 
+  INNER JOIN categories c on q.categories_id=c.id
+  INNER JOIN answer a on q.id=a.question_id
+  WHERE c.name='${category}'`;
+  makeSqlRequest(callback, query);
+};
+
+function getQuestionAnswers(questionId, callback) {
+  const query = `SELECT * FROM answer where question_id=${questionId}`;
   makeSqlRequest(callback, query);
 };
 
@@ -58,7 +67,7 @@ function registerUser(username, password, callback) {
 // GET
 exports.getCategories = (callback) => fetchFromTable('categories', callback);
 exports.getQuestion = (category, callback) => getCategoryQuestions(category, callback);
-exports.getAnswer = (callback) => fetchFromTable('answer', callback);
+exports.getAnswer = (questionId, callback) => getQuestionAnswers(questionId, callback);
 
 // POST
 exports.postUser = (username, password, callback) => registerUser(username, password, callback);
