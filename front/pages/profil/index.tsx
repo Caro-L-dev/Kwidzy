@@ -7,7 +7,13 @@ import { useRouter } from "next/router";
 /**
  * Local Import
  */
-import { SubTitle, Button, Avatar } from "@/src/components/atoms";
+import {
+  SubTitle,
+  Button,
+  Avatar,
+  Logo,
+  Triangle,
+} from "@/src/components/atoms";
 import Link from "next/link";
 
 /**
@@ -31,13 +37,16 @@ export default function ProfilePage() {
     <>
       <div className="flex flex-col justify-between items-center">
         <div
-          className="bg-tertiary-color h-24 w-24 rounded-full mb-2"
+          className="bg-tertiary-color h-24 w-24 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center"
           aria-hidden="true"
-        />
-        <SubTitle name="Joueur" />
-        <p className="text-xs">Compte invité</p>
-      </div>
+        >
+          <span>K</span>
+        </div>
 
+        <SubTitle name="Joueur" />
+        <p className="text-xs mb-6">Compte invité</p>
+      </div>
+      {/* 
       <div className="my-6 mb-4">
         <h3>Mes avatars débloqués</h3>
         <div className="flex my-2">
@@ -47,12 +56,12 @@ export default function ProfilePage() {
           />
           <div className="bg-white h-12 w-12 rounded-full" aria-hidden="true" />
         </div>
-      </div>
+      </div> */}
 
-      <div className="flex justify-between mb-4">
+      {/* <div className="flex justify-between mb-4">
         <p>Son</p>
         <p>Toggle</p>
-      </div>
+      </div> */}
 
       <Link href="/register">
         <Button
