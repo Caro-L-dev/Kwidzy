@@ -61,12 +61,10 @@ export default function categoriesPage() {
     if (path === "/quizdetail") {
       console.log("Je me rends sur la page QuizDetail");
 
-      router.push(
-        {
-          pathname: path,
-          query: {category: categoryName},
-        }
-      );
+      router.push({
+        pathname: path,
+        query: { category: categoryName },
+      });
     }
   };
 
@@ -86,37 +84,37 @@ export default function categoriesPage() {
 
   return (
     <>
-      {username ? (
-        <>
-          <Title name="Catégories" />
-          <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
-            {categories.map((category: Category, index: number) => (
-              <Button
-                key={category.id}
-                rounded
-                // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
-                // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
-                // la couleur correspondante dans le tableau "bgColorBtn".
-                className={`mb-2 ${bgColorBtn[index % bgColorBtn.length]} ${
-                  bgBorderColorBtn[index % bgBorderColorBtn.length]
-                }`}
-                type={"button"}
-                variant={"primary"}
-                onClick={() => handleClick("/quizdetail", category.name)}
-              >
-                {category.name}
-              </Button>
-            ))}
-          </section>
-          <div className="flex justify-center text-2xl mb-4">
-            <RepeatDots times={3}>
-              <Dot ASCIIChar="." />
-            </RepeatDots>
-          </div>
-        </>
-      ) : (
-        <Start setUsername={setUsername} />
-      )}
+      {/* {username ? ( */}
+      <>
+        <Title name="Catégories" />
+        <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
+          {categories.map((category: Category, index: number) => (
+            <Button
+              key={category.id}
+              rounded
+              // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
+              // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
+              // la couleur correspondante dans le tableau "bgColorBtn".
+              className={`mb-2 ${bgColorBtn[index % bgColorBtn.length]} ${
+                bgBorderColorBtn[index % bgBorderColorBtn.length]
+              }`}
+              type={"button"}
+              variant={"primary"}
+              onClick={() => handleClick("/quizdetail", category.name)}
+            >
+              {category.name}
+            </Button>
+          ))}
+        </section>
+        <div className="flex justify-center text-2xl mb-4">
+          <RepeatDots times={3}>
+            <Dot ASCIIChar="." />
+          </RepeatDots>
+        </div>
+      </>
+      {/* ) : (
+         <Start setUsername={setUsername} />
+       )} */}
     </>
   );
 }

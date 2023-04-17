@@ -58,22 +58,44 @@ function quizPage() {
             router_1["default"].push(path);
         }
     };
+    var scoreMsg = "";
+    if (earned < 3) {
+        scoreMsg = "Aie aie, vous ferez mieux la prochaine fois !";
+    }
+    else if (earned >= 3 && earned <= 6) {
+        scoreMsg = "Pas mal !";
+    }
+    else {
+        scoreMsg = "Excellent !";
+    }
+    var scoreMsgBubble = "";
+    if (earned < 3) {
+        scoreMsgBubble = "Que diriez vous d'une revanche ?";
+    }
+    else if (earned >= 3 && earned <= 6) {
+        scoreMsgBubble = "Allez ! une autre partie ?";
+    }
+    else {
+        scoreMsgBubble = "C'est parti pour casser la baraque !";
+    }
+    var wordScore = "Brouette";
+    if (earned > 0) {
+        wordScore += "s";
+    }
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "relative" }, stop ? (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement(atoms_1.SubTitle, { name: "Score" }),
             react_1["default"].createElement("div", { className: "mt-4" },
-                react_1["default"].createElement("p", null, "Pas mal !"),
+                react_1["default"].createElement("p", null, scoreMsg),
                 react_1["default"].createElement("p", null, "Vous avez obtenu :"),
                 react_1["default"].createElement("div", { className: "relative" },
                     react_1["default"].createElement("div", { className: "relative" },
                         react_1["default"].createElement("div", { className: "opacity-30 h-[73px] md:w-full p-4 rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center" },
                             react_1["default"].createElement("p", { className: "absolute top-5 bottom-0 right-0 left-0 text-lg font-bold" },
                                 earned,
-                                " Brouette")))),
-                react_1["default"].createElement("div", { className: "flex flex-col justify-center items-center" },
-                    react_1["default"].createElement("p", null, "Vous d\u00E9bloquez :"),
-                    react_1["default"].createElement("div", { className: "h-7 w-7 bg-white rounded-lg mt-4" })),
-                react_1["default"].createElement(atoms_1.Bubble, null, "Que diriez vous de faire mieux la prochaine fois ?"),
+                                " ",
+                                wordScore)))),
+                react_1["default"].createElement(atoms_1.Bubble, null, scoreMsgBubble),
                 react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "button", variant: "primary", onClick: function () { return handleClick("/categories"); } }, "Rejouer")))) : (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement("div", { className: "relative flex justify-center z-10 mb-4" },
                 react_1["default"].createElement(atoms_1.Timer, { setStop: setStop, questionNumber: questionNumber })),

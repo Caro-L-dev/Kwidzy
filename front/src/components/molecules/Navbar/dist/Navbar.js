@@ -12,10 +12,6 @@ var link_1 = require("next/link");
 var ai_1 = require("react-icons/ai");
 var atoms_1 = require("@/src/components/atoms");
 /**
- * Image Import
- */
-var avatar_png_1 = require("@/public/assets/images/avatar.png");
-/**
  * Component
  */
 function Navbar() {
@@ -29,8 +25,9 @@ function Navbar() {
                 react_1["default"].createElement(ai_1.AiOutlineArrowLeft, null)),
             react_1["default"].createElement(link_1["default"], { href: "/", className: "hidden md:block" },
                 react_1["default"].createElement(atoms_1.Logo, null)),
-            react_1["default"].createElement(link_1["default"], { href: "/categories", className: "md:hidden" }, "Cat\u00E9gories"),
-            react_1["default"].createElement(link_1["default"], { href: "/profil" },
-                react_1["default"].createElement(atoms_1.Avatar, { src: avatar_png_1["default"], alt: "Ananas Funky", variant: "circular", size: "md", className: "" })))));
+            react_1["default"].createElement("div", { className: "flex items-center" },
+                react_1["default"].createElement(link_1["default"], { href: "/profil" },
+                    react_1["default"].createElement("div", { className: "bg-tertiary-color h-14 w-14 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center", "aria-hidden": "true" },
+                        react_1["default"].createElement("span", null, "K")))))));
 }
 exports["default"] = Navbar;

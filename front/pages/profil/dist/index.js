@@ -22,19 +22,14 @@ function ProfilePage() {
     };
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "flex flex-col justify-between items-center" },
-            react_1["default"].createElement("div", { className: "bg-white h-24 w-24 rounded-full mb-2", "aria-hidden": "true" }),
-            react_1["default"].createElement(atoms_1.SubTitle, { name: "Pouki78" }),
-            react_1["default"].createElement("p", { className: "text-xs" }, "Compte invit\u00E9")),
-        react_1["default"].createElement("div", { className: "my-6 mb-4" },
-            react_1["default"].createElement("h3", null, "Mes avatars d\u00E9bloqu\u00E9s"),
-            react_1["default"].createElement("div", { className: "flex my-2" },
-                react_1["default"].createElement("div", { className: "bg-white h-12 w-12 rounded-full mr-2", "aria-hidden": "true" }),
-                react_1["default"].createElement("div", { className: "bg-white h-12 w-12 rounded-full", "aria-hidden": "true" }))),
-        react_1["default"].createElement("div", { className: "flex justify-between mb-4" },
-            react_1["default"].createElement("p", null, "Son"),
-            react_1["default"].createElement("p", null, "Toggle")),
+            react_1["default"].createElement("div", { className: "bg-tertiary-color h-24 w-24 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center", "aria-hidden": "true" },
+                react_1["default"].createElement("span", null, "K")),
+            react_1["default"].createElement(atoms_1.SubTitle, { name: "Joueur" }),
+            react_1["default"].createElement("p", { className: "text-xs mb-6" }, "Compte invit\u00E9")),
         react_1["default"].createElement(link_1["default"], { href: "/register" },
             react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "submit", variant: "primary", onClick: function () { return handleClick("/register"); } }, "Cr\u00E9er un compte")),
+        react_1["default"].createElement(link_1["default"], { href: "/login" },
+            react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "submit", variant: "secondary", onClick: function () { return handleClick("/login"); } }, "Se connecter")),
         react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "submit", variant: "tertiary" }, "Se d\u00E9connecter")));
 }
 exports["default"] = ProfilePage;

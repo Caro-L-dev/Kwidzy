@@ -1,7 +1,7 @@
 /**
  * Package Import
  */
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import router from "next/router";
 
 /**
@@ -66,32 +66,52 @@ export default function quizPage() {
     }
   };
 
+  let scoreMsg = "";
+  if (earned < 3) {
+    scoreMsg = "Aie aie, vous ferez mieux la prochaine fois !";
+  } else if (earned >= 3 && earned <= 6) {
+    scoreMsg = "Pas mal !";
+  } else {
+    scoreMsg = "Excellent !";
+  }
+
+  let scoreMsgBubble = "";
+  if (earned < 3) {
+    scoreMsgBubble = "Que diriez vous d'une revanche ?";
+  } else if (earned >= 3 && earned <= 6) {
+    scoreMsgBubble = "Allez ! une autre partie ?";
+  } else {
+    scoreMsgBubble = "C'est parti pour casser la baraque !";
+  }
+
+  let wordScore = "Brouette";
+  if (earned > 0) {
+    wordScore += "s";
+  }
+
   return (
     <>
       <div className="relative">
-        {/* Condition qui affiche le score */}
         {stop ? (
           <>
             <SubTitle name="Score" />
             <div className="mt-4">
-              <p>Pas mal !</p>
+              <p>{scoreMsg}</p>
               <p>Vous avez obtenu :</p>
               <div className="relative">
                 <div className="relative">
                   <div className="opacity-30 h-[73px] md:w-full p-4 rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center">
                     <p className="absolute top-5 bottom-0 right-0 left-0 text-lg font-bold">
-                      {earned} Brouette
+                      {earned} {wordScore}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col justify-center items-center">
+              {/* <div className="flex flex-col justify-center items-center">
                 <p>Vous débloquez :</p>
                 <div className="h-7 w-7 bg-white rounded-lg mt-4" />
-              </div>
-              <Bubble>
-                Que diriez vous de faire mieux la prochaine fois ?
-              </Bubble>
+              </div> */}
+              <Bubble>{scoreMsgBubble}</Bubble>
               <Button
                 rounded
                 className={"mb-4"}

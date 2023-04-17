@@ -46,6 +46,7 @@ var axios_1 = require("axios");
  * Local Import
  */
 var atoms_1 = require("@/src/components/atoms");
+var router_1 = require("next/router");
 /**
  * Datas
  */
@@ -59,33 +60,24 @@ var QuizMolecule = function (_a) {
     /**
      * State
      */
+    var router = router_1.useRouter();
     var _b = react_1.useState(null), question = _b[0], setQuestion = _b[1];
     var _c = react_1.useState(null), selectedAnswer = _c[0], setSelectedAnswer = _c[1];
     var _d = react_1.useState(null), questionApi = _d[0], setQuestionApi = _d[1];
-    var _e = react_1.useState(null), answerApi = _e[0], setAnswerApi = _e[1];
-    var _f = react_1.useState("primary"), variant = _f[0], setVariant = _f[1];
+    var _e = react_1.useState("primary"), variant = _e[0], setVariant = _e[1];
     var quizDataBack = react_1.useMemo(function () {
-        if (!questionApi || !answerApi) {
+        if (!questionApi) {
             return [];
         }
-        return questionApi.map(function (questionObject) {
+        return questionApi.map(function (questionObject, index) {
             return {
-                id: questionObject.id,
-                questionNumber: "Q" + questionObject.id + ".",
-                question: questionObject.question_text,
-                answers: answerApi
-                    .filter(function (answerObject) {
-                    return answerObject.question_id === questionObject.id;
-                })
-                    .map(function (answerObject) {
-                    return {
-                        text: answerObject.answer_text,
-                        correct: answerObject.is_correct
-                    };
-                })
+                id: questionObject.questionId,
+                questionNumber: "Q" + (index + 1) + ".",
+                question: questionObject.question,
+                answers: questionObject.answers
             };
         });
-    }, [questionApi, answerApi]);
+    }, [questionApi]);
     /**
      * Lifecycle
      */
@@ -97,10 +89,13 @@ var QuizMolecule = function (_a) {
      */
     react_1.useEffect(function () {
         var fetchQuestions = function () { return __awaiter(void 0, void 0, void 0, function () {
-            var response;
+            var categoryName, finalQuestionUrl, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1["default"].get(questionURL)];
+                    case 0:
+                        categoryName = router.query.category;
+                        finalQuestionUrl = questionURL + "?category=" + categoryName;
+                        return [4 /*yield*/, axios_1["default"].get(finalQuestionUrl)];
                     case 1:
                         response = _a.sent();
                         setQuestionApi(response.data);
@@ -109,21 +104,6 @@ var QuizMolecule = function (_a) {
             });
         }); };
         fetchQuestions();
-    }, []);
-    react_1.useEffect(function () {
-        var fetchAnswers = function () { return __awaiter(void 0, void 0, void 0, function () {
-            var response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1["default"].get(answerURL)];
-                    case 1:
-                        response = _a.sent();
-                        setAnswerApi(response.data);
-                        return [2 /*return*/];
-                }
-            });
-        }); };
-        fetchAnswers();
     }, []);
     /**
      * Delay Function
@@ -138,14 +118,20 @@ var QuizMolecule = function (_a) {
      */
     var handleClick = function (answer) {
         setSelectedAnswer(answer.text);
-        delay(1000, function () { return setVariant(answer.correct ? "correct" : "mistake"); });
-        delay(2000, function () {
-            answer.correct
-                ? (setQuestionNumber(
-                // Go to the next question
-                function (currentQuestionNumber) { return currentQuestionNumber + 1; }),
-                    setSelectedAnswer(null))
-                : setStop(true);
+        delay(500, function () { return setVariant(answer.isCorrect ? "correct" : "mistake"); });
+        delay(1500, function () {
+            if (questionNumber === quizDataBack.length) {
+                // If the current question is the last question, then stop the quiz
+                setStop(true);
+            }
+            else {
+                answer.isCorrect
+                    ? (setQuestionNumber(
+                    // Go to the next question
+                    function (currentQuestionNumber) { return currentQuestionNumber + 1; }),
+                        setSelectedAnswer(null))
+                    : setStop(true);
+            }
         });
     };
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
