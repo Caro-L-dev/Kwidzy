@@ -78,6 +78,10 @@ function quizPage() {
     else {
         scoreMsgBubble = "C'est parti pour casser la baraque !";
     }
+    var wordScore = "Brouette";
+    if (earned > 0) {
+        wordScore += "s";
+    }
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "relative" }, stop ? (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement(atoms_1.SubTitle, { name: "Score" }),
@@ -89,7 +93,8 @@ function quizPage() {
                         react_1["default"].createElement("div", { className: "opacity-30 h-[73px] md:w-full p-4 rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center" },
                             react_1["default"].createElement("p", { className: "absolute top-5 bottom-0 right-0 left-0 text-lg font-bold" },
                                 earned,
-                                " Brouette")))),
+                                " ",
+                                wordScore)))),
                 react_1["default"].createElement(atoms_1.Bubble, null, scoreMsgBubble),
                 react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "button", variant: "primary", onClick: function () { return handleClick("/categories"); } }, "Rejouer")))) : (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement("div", { className: "relative flex justify-center z-10 mb-4" },
