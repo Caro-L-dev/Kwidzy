@@ -38,13 +38,19 @@ export default function Navbar() {
 
         <div className="flex items-center">
           <Link href={"/profil"}>
-            <Avatar
+            {/* <Avatar
               src={avatarImg}
               alt="Ananas Funky"
               variant="circular"
               size="md"
               className={""}
-            />
+            /> */}
+            <div
+              className="bg-tertiary-color h-14 w-14 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center"
+              aria-hidden="true"
+            >
+              <span>K</span>
+            </div>
           </Link>
         </div>
       </>
