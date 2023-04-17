@@ -46,7 +46,7 @@ const QuizMolecule = ({
         id: questionObject.questionId,
         questionNumber: `Q${index + 1}.`,
         question: questionObject.question,
-        answers: questionObject.answers
+        answers: questionObject.answers,
       };
     });
   }, [questionApi]);
@@ -86,8 +86,8 @@ const QuizMolecule = ({
    */
   const handleClick = (answer: AnswerState) => {
     setSelectedAnswer(answer.text);
-    delay(1000, () => setVariant(answer.isCorrect ? "correct" : "mistake"));
-    delay(2000, () => {
+    delay(500, () => setVariant(answer.isCorrect ? "correct" : "mistake"));
+    delay(1500, () => {
       answer.isCorrect
         ? (setQuestionNumber(
             // Go to the next question
