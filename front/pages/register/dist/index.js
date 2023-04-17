@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -47,80 +36,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-/**
- * Package Import
- */
 var react_1 = require("react");
-var router_1 = require("next/router");
-/**
- * Local Import
- */
+var axios_1 = require("axios");
 var atoms_1 = require("@/src/components/atoms");
-/**
- * Page
- */
-function registerPage() {
-    var _this = this;
-    /**
-     * State
-     */
-    var _a = react_1.useState({
-        username: "",
-        password: "",
-        email: ""
-    }), formData = _a[0], setFormData = _a[1];
-    /**
-     * Actions
-     */
-    var handleClick = function (path) {
-        if (path === "/register") {
-            console.log("Je me rends sur la page S'inscrire");
-            router_1["default"].push(path);
-        }
-    };
-    var handleInputChange = function (event) {
-        var _a = event.target, name = _a.name, value = _a.value;
-        setFormData(function (prevFormData) {
-            var _a;
-            return (__assign(__assign({}, prevFormData), (_a = {}, _a[name] = value, _a)));
-        });
-    };
-    var handleSubmit = function (event) { return __awaiter(_this, void 0, void 0, function () {
-        var response;
+var SignupForm = function () {
+    var _a = react_1.useState(false), isSuccess = _a[0], setIsSuccess = _a[1];
+    var _b = react_1.useState(false), isError = _b[0], setIsError = _b[1];
+    var handleSubmit = function (event) { return __awaiter(void 0, void 0, void 0, function () {
+        var usernameInput, passwordInput, username, password, response, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     event.preventDefault();
-                    // Do validation here
-                    if (!formData.username || !formData.password || !formData.email) {
-                        alert("Prière de remplir tous les champs.");
-                        return [2 /*return*/];
-                    }
-                    return [4 /*yield*/, fetch("/api/register", {
-                            method: "POST",
-                            body: JSON.stringify(formData)
-                        })];
+                    usernameInput = event.currentTarget.elements.namedItem("username");
+                    passwordInput = event.currentTarget.elements.namedItem("password");
+                    username = usernameInput.value;
+                    password = passwordInput.value;
+                    _a.label = 1;
                 case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, axios_1["default"].post("http://localhost:3030/user", {
+                            username: username,
+                            password: password
+                        })];
+                case 2:
                     response = _a.sent();
-                    if (response.ok) {
-                        // Redirect to homePage (add successMsg later)
-                        router_1["default"].push("/");
-                    }
-                    else {
-                        alert("Votre inscription a échoué. Veuillez recommencer.");
-                    }
-                    return [2 /*return*/];
+                    console.log(response.data);
+                    setIsSuccess(true);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    setIsError(true);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     }); };
-    return (react_1["default"].createElement("div", { className: "flex flex-col justify-center" },
-        react_1["default"].createElement("form", { onSubmit: handleSubmit },
-            react_1["default"].createElement("p", null, "Pseudo"),
-            react_1["default"].createElement(atoms_1.Input, { name: "username", bgColor: "bg-secondary-color", value: formData.username, onChange: handleInputChange }),
-            react_1["default"].createElement("p", null, "Mot de Passe"),
-            react_1["default"].createElement(atoms_1.Input, { name: "password", bgColor: "bg-tertiary-color", type: "password", value: formData.password, onChange: handleInputChange }),
-            react_1["default"].createElement("p", null, "Email"),
-            react_1["default"].createElement(atoms_1.Input, { name: "email", bgColor: "bg-primary-color", type: "email", value: formData.email, onChange: handleInputChange }),
-            react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "submit", variant: "primary" }, "S'inscrire"))));
-}
-exports["default"] = registerPage;
+    return (react_1["default"].createElement("form", { onSubmit: handleSubmit, className: "w-60 flex flex-col justify-center" },
+        react_1["default"].createElement("div", null,
+            react_1["default"].createElement("label", { htmlFor: "username" }, "Pseudo :"),
+            react_1["default"].createElement("input", { type: "text", id: "username", name: "username", className: "text-black", required: true })),
+        react_1["default"].createElement("div", null,
+            react_1["default"].createElement("label", { htmlFor: "password" }, "Mot de passe :"),
+            react_1["default"].createElement("input", { type: "password", id: "password", name: "password", className: "text-black", required: true })),
+        react_1["default"].createElement(atoms_1.Button, { type: "submit", rounded: true, className: "text-white" }, "S'inscrire"),
+        isSuccess && (react_1["default"].createElement("div", { className: "bg-green-100 border border-green-400 text-green-700 px-4 py-3 mt-3 rounded relative" }, "L'utilisateur a bien \u00E9t\u00E9 enregistr\u00E9.")),
+        isError && (react_1["default"].createElement("div", { className: "bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-3 rounded relative" }, "Une erreur s'est produite lors de l'enregistrement de l'utilisateur."))));
+};
+exports["default"] = SignupForm;

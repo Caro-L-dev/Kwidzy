@@ -5,7 +5,7 @@
  */
 var dbRequests = require('../services/dbRequests');
 
-var errorMsg = "Unexpected error, maybe our services are down";
+var ERROR_MSG = "Unexpected error, maybe our services are down";
 var HTTP_STATUS_OK = 200;
 
 function sendErrorResponse(res, errorMessage) {
@@ -28,16 +28,25 @@ module.exports = function (server) {
 
     if (dbFunction) {
       dbFunction(function (error, data) {
-        error ? sendErrorResponse(res, errorMsg) : res.json(HTTP_STATUS_OK, data);
+        error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
       });
     } else {
       sendErrorResponse(res, 'Invalid resource');
     }
-  }); // POST wip
+  }); // POST
 
-  server.post('/register', function (req, res, next) {
-    dbRequests.postRegister(function (error, user) {
-      error ? sendErrorResponse(res, errorMsg) : res.json(200, user);
-    });
+  server.post('/:resource', function (req, res, next) {
+    var resource = req.params.resource;
+    var dbFunction = {
+      user: dbRequests.postUser
+    }[resource];
+
+    if (dbFunction) {
+      dbFunction(function (error, data) {
+        error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
+      });
+    } else {
+      sendErrorResponse(res, 'Invalid resource');
+    }
   });
 };

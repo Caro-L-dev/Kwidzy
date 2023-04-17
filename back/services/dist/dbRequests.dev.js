@@ -70,11 +70,9 @@ exports.getQuestion = function (callback) {
 
 exports.getAnswer = function (callback) {
   return fetchFromTable('answer', callback);
-}; // POST wip
+}; // POST
 
 
-exports.postRegister = function (callback) {
-  connectToDb.query("INSERT INTO user (username, password) VALUES (?;?)", [username, password], function (error, result) {
-    console.log(error);
-  });
-};
+exports.postUser = function (callback) {
+  return fetchFromTable('user', callback);
+}; // module.exports = connectToDb;

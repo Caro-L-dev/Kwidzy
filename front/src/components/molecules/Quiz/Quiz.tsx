@@ -10,6 +10,7 @@ import axios from "axios";
 import { Button } from "@/src/components/atoms";
 import { QuestionState, AnswerState } from "./types";
 import { Props, QuestionStateApi, AnswerStateApi } from "./interfaces";
+import { useRouter } from "next/router";
 
 /**
  * Datas
@@ -28,36 +29,27 @@ const QuizMolecule = ({
   /**
    * State
    */
+  const router = useRouter();
   const [question, setQuestion] = useState<QuestionState | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [questionApi, setQuestionApi] = useState<QuestionStateApi[] | null>(
     null
   );
-  const [answerApi, setAnswerApi] = useState<AnswerStateApi[] | null>(null);
   const [variant, setVariant] = useState("primary");
 
   const quizDataBack: QuestionState[] = useMemo(() => {
-    if (!questionApi || !answerApi) {
+    if (!questionApi) {
       return [];
     }
-    return questionApi.map((questionObject) => {
+    return questionApi.map((questionObject, index) => {
       return {
-        id: questionObject.id,
-        questionNumber: `Q${questionObject.id}.`,
-        question: questionObject.question_text,
-        answers: answerApi
-          .filter((answerObject) => {
-            return answerObject.question_id === questionObject.id;
-          })
-          .map((answerObject) => {
-            return {
-              text: answerObject.answer_text,
-              correct: answerObject.is_correct,
-            };
-          }),
+        id: questionObject.questionId,
+        questionNumber: `Q${index + 1}.`,
+        question: questionObject.question,
+        answers: questionObject.answers
       };
     });
-  }, [questionApi, answerApi]);
+  }, [questionApi]);
 
   /**
    * Lifecycle
@@ -71,20 +63,13 @@ const QuizMolecule = ({
    */
   useEffect(() => {
     const fetchQuestions = async () => {
-      const response = await axios.get<QuestionStateApi[]>(questionURL);
+      let categoryName = router.query.category;
+      const finalQuestionUrl = questionURL + "?category=" + categoryName;
+      const response = await axios.get<QuestionStateApi[]>(finalQuestionUrl);
       setQuestionApi(response.data);
     };
 
     fetchQuestions();
-  }, []);
-
-  useEffect(() => {
-    const fetchAnswers = async () => {
-      const response = await axios.get<AnswerStateApi[]>(answerURL);
-      setAnswerApi(response.data);
-    };
-
-    fetchAnswers();
   }, []);
 
   /**
@@ -101,9 +86,9 @@ const QuizMolecule = ({
    */
   const handleClick = (answer: AnswerState) => {
     setSelectedAnswer(answer.text);
-    delay(1000, () => setVariant(answer.correct ? "correct" : "mistake"));
+    delay(1000, () => setVariant(answer.isCorrect ? "correct" : "mistake"));
     delay(2000, () => {
-      answer.correct
+      answer.isCorrect
         ? (setQuestionNumber(
             // Go to the next question
             (currentQuestionNumber: number) => currentQuestionNumber + 1
