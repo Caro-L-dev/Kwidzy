@@ -120,12 +120,18 @@ var QuizMolecule = function (_a) {
         setSelectedAnswer(answer.text);
         delay(500, function () { return setVariant(answer.isCorrect ? "correct" : "mistake"); });
         delay(1500, function () {
-            answer.isCorrect
-                ? (setQuestionNumber(
-                // Go to the next question
-                function (currentQuestionNumber) { return currentQuestionNumber + 1; }),
-                    setSelectedAnswer(null))
-                : setStop(true);
+            if (questionNumber === quizDataBack.length) {
+                // If the current question is the last question, then stop the quiz
+                setStop(true);
+            }
+            else {
+                answer.isCorrect
+                    ? (setQuestionNumber(
+                    // Go to the next question
+                    function (currentQuestionNumber) { return currentQuestionNumber + 1; }),
+                        setSelectedAnswer(null))
+                    : setStop(true);
+            }
         });
     };
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
