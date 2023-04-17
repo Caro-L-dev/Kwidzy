@@ -40,7 +40,7 @@ var react_1 = require("react");
 var axios_1 = require("axios");
 var atoms_1 = require("@/src/components/atoms");
 var ai_1 = require("react-icons/ai");
-var SignupForm = function () {
+var Login = function () {
     var _a = react_1.useState(false), isSuccess = _a[0], setIsSuccess = _a[1];
     var _b = react_1.useState(false), isError = _b[0], setIsError = _b[1];
     var handleSubmit = function (event) { return __awaiter(void 0, void 0, void 0, function () {
@@ -77,15 +77,15 @@ var SignupForm = function () {
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("form", { onSubmit: handleSubmit, className: "flex flex-col justify-center items-center " },
             react_1["default"].createElement("div", { className: " shadow-md w-80 py-14 px-10 rounded overflow-hidden mb-4" },
-                react_1["default"].createElement("h2", { className: "border-3 border-primary-color rounded text-xl mb-10 font-bold tracking-widest sm:text-sm" }, "Cr\u00E9er un compte"),
+                react_1["default"].createElement("h2", { className: "border-3 border-primary-color rounded text-xl mb-10 font-bold tracking-widest sm:text-sm" }, "Se connecter"),
                 react_1["default"].createElement("div", { className: "flex justify-center items-center border-b  border-solid mb-6 p-2" },
                     react_1["default"].createElement(ai_1.AiOutlineUser, { className: "" }),
                     react_1["default"].createElement("input", { placeholder: "Pseudo", type: "text", id: "username", name: "username", className: " border-0 outline-none bg-transparent w-full pb ml-2 placeholder:text-sm placeholder:text-white", required: true })),
                 react_1["default"].createElement("div", { className: "flex justify-center items-center border-b border-gray-400 border-solid mb-6 p-2" },
                     react_1["default"].createElement(ai_1.AiOutlineLock, null),
                     react_1["default"].createElement("input", { placeholder: "Mot de passe", type: "password", id: "password", name: "password", className: "border-0 outline-none bg-transparent w-full pb ml-2 placeholder:text-sm placeholder:text-white", required: true })),
-                react_1["default"].createElement(atoms_1.Button, { type: "submit", rounded: true, className: "text-white" }, "S'inscrire"),
+                react_1["default"].createElement(atoms_1.Button, { type: "submit", rounded: true, className: "text-white" }, "Se connecter"),
                 isSuccess && (react_1["default"].createElement("div", { className: "mt-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" }, "L'utilisateur a bien \u00E9t\u00E9 enregistr\u00E9.")),
                 isError && (react_1["default"].createElement("div", { className: "mt-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" }, "Une erreur s'est produite lors de l'enregistrement de l'utilisateur."))))));
 };
-exports["default"] = SignupForm;
+exports["default"] = Login;
