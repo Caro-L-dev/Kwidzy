@@ -7,8 +7,13 @@ import { useRouter } from "next/router";
 /**
  * Local Import
  */
-import { SubTitle, Button } from "@/src/components/atoms";
+import { SubTitle, Button, Avatar } from "@/src/components/atoms";
 import Link from "next/link";
+
+/**
+ * Image Import
+ */
+import avatarImg from "@/public/assets/images/avatar.png";
 
 /**
  * Page
@@ -26,10 +31,10 @@ export default function ProfilePage() {
     <>
       <div className="flex flex-col justify-between items-center">
         <div
-          className="bg-white h-24 w-24 rounded-full mb-2"
+          className="bg-tertiary-color h-24 w-24 rounded-full mb-2"
           aria-hidden="true"
         />
-        <SubTitle name="Pouki78" />
+        <SubTitle name="Joueur" />
         <p className="text-xs">Compte invité</p>
       </div>
 
@@ -58,6 +63,18 @@ export default function ProfilePage() {
           onClick={() => handleClick("/register")}
         >
           Créer un compte
+        </Button>
+      </Link>
+
+      <Link href="/login">
+        <Button
+          rounded
+          className={"mb-4"}
+          type={"submit"}
+          variant={"secondary"}
+          onClick={() => handleClick("/login")}
+        >
+          Se connecter
         </Button>
       </Link>
       <Button rounded className={"mb-4"} type={"submit"} variant={"tertiary"}>

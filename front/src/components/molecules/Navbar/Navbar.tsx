@@ -9,7 +9,7 @@ import Link from "next/link";
  * Local Import
  */
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { Logo, Avatar } from "@/src/components/atoms";
+import { Logo, Avatar, Button } from "@/src/components/atoms";
 
 /**
  * Image Import
@@ -35,18 +35,18 @@ export default function Navbar() {
         <Link href={"/"} className="hidden md:block">
           <Logo />
         </Link>
-        <Link href={"/categories"} className="md:hidden">
-          Catégories
-        </Link>
-        <Link href={"/profil"}>
-          <Avatar
-            src={avatarImg}
-            alt="Ananas Funky"
-            variant="circular"
-            size="md"
-            className={""}
-          />
-        </Link>
+
+        <div className="flex items-center">
+          <Link href={"/profil"}>
+            <Avatar
+              src={avatarImg}
+              alt="Ananas Funky"
+              variant="circular"
+              size="md"
+              className={""}
+            />
+          </Link>
+        </div>
       </>
       {/* )} */}
     </nav>

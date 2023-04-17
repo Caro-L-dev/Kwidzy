@@ -34,7 +34,7 @@ const Avatar = ({ className, src, alt, variant, size }: AvatarProps) => {
         variant === "circular" ? "rounded-full" : "",
         size === "sm" ? "w-12 h-12" : "",
         size === "md" ? "w-14 h-14" : "",
-        size === "lg" ? "w-18 h-18" : "",
+        size === "lg" ? "w-15 h-15" : "",
         className
       )}
     />
