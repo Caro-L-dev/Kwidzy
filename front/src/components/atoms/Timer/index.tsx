@@ -6,40 +6,40 @@ import React, { useEffect, useState } from "react";
 /**
  * Types
  */
-type SetStopFunction = React.Dispatch<React.SetStateAction<boolean>>;
+type SetDelayTimerStopFunction = React.Dispatch<React.SetStateAction<boolean>>;
 
 interface TimerProps {
-  setStop: SetStopFunction;
-  questionNumber: number;
+  setDelayTimerStop: SetDelayTimerStopFunction;
+  nextQuestion: number;
 }
 
 /**
  * Component
  */
-const Timer = ({ setStop, questionNumber }: TimerProps) => {
+const Timer = ({ setDelayTimerStop, nextQuestion }: TimerProps) => {
   /**
    * State
    */
-  const [timer, setTimer] = useState(30);
+  const [delayTimer, setDelayTimer] = useState(30);
 
   /**
    * LifeCycles
    */
   useEffect(() => {
-    if (timer === 0) return setStop(true);
+    if (delayTimer === 0) return setDelayTimerStop(true);
     const interval = setInterval(() => {
-      setTimer((currentSecond) => currentSecond - 1);
+      setDelayTimer((currentSecond) => currentSecond - 1);
     }, 1000);
     return () => clearInterval(interval);
-  }, [setStop, timer]);
+  }, [setDelayTimerStop, delayTimer]);
 
   useEffect(() => {
-    setTimer(30);
-  }, [questionNumber]);
+    setDelayTimer(30);
+  }, [nextQuestion]);
 
   return (
     <div className="h-5 w-5 flex justify-center items-center rounded-full bg-primary-color p-8 border-white border-2">
-      {timer}
+      {delayTimer}
     </div>
   );
 };

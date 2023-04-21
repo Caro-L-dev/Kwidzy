@@ -19,7 +19,7 @@ export default function quizPage() {
    * State
    */
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [stop, setStop] = useState(false);
+  const [endGame, setEndGame] = useState(false);
   const [earned, setEarned] = useState(0);
 
   /**
@@ -64,7 +64,7 @@ export default function quizPage() {
   return (
     <>
       <div className="relative">
-        {stop ? (
+        {endGame ? (
           <>
             <SubTitle name="Score" />
             <div className="mt-4">
@@ -95,10 +95,10 @@ export default function quizPage() {
         ) : (
           <>
             <div className="relative flex justify-center z-10 mb-4">
-              <Timer setStop={setStop} questionNumber={questionNumber} />
+              <Timer setStop={setEndGame} questionNumber={questionNumber} />
             </div>
             <Quiz
-              setStop={setStop}
+              setStop={setEndGame}
               questionNumber={questionNumber}
               setQuestionNumber={setQuestionNumber}
             />

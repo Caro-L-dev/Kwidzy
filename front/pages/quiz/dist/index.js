@@ -19,7 +19,7 @@ function quizPage() {
      * State
      */
     var _a = react_1.useState(1), questionNumber = _a[0], setQuestionNumber = _a[1];
-    var _b = react_1.useState(false), stop = _b[0], setStop = _b[1];
+    var _b = react_1.useState(false), endGame = _b[0], setEndGame = _b[1];
     var _c = react_1.useState(0), earned = _c[0], setEarned = _c[1];
     /**
      * Lifecycle WIP BUG
@@ -60,7 +60,7 @@ function quizPage() {
         wordScore += "s";
     }
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
-        react_1["default"].createElement("div", { className: "relative" }, stop ? (react_1["default"].createElement(react_1["default"].Fragment, null,
+        react_1["default"].createElement("div", { className: "relative" }, endGame ? (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement(atoms_1.SubTitle, { name: "Score" }),
             react_1["default"].createElement("div", { className: "mt-4" },
                 react_1["default"].createElement("p", null, scoreMsg),
@@ -73,7 +73,7 @@ function quizPage() {
                 react_1["default"].createElement(atoms_1.Bubble, null, scoreMsgBubble),
                 react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "button", variant: "primary", onClick: function () { return handleClick("/categories"); } }, "Rejouer")))) : (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement("div", { className: "relative flex justify-center z-10 mb-4" },
-                react_1["default"].createElement(atoms_1.Timer, { setStop: setStop, questionNumber: questionNumber })),
-            react_1["default"].createElement(molecules_1.Quiz, { setStop: setStop, questionNumber: questionNumber, setQuestionNumber: setQuestionNumber }))))));
+                react_1["default"].createElement(atoms_1.Timer, { setStop: setEndGame, questionNumber: questionNumber })),
+            react_1["default"].createElement(molecules_1.Quiz, { setStop: setEndGame, questionNumber: questionNumber, setQuestionNumber: setQuestionNumber }))))));
 }
 exports["default"] = quizPage;
