@@ -1,0 +1,35 @@
+/* <div className="opacity-30 h-[73px] md:w-full p-4 rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center">
+<p className="absolute top-5 bottom-0 right-0 left-0 text-lg font-bold">
+  {earned + 0} {wordScore}
+</p>
+</div> */
+
+.bgImg{
+  position: relative; 
+  height: 74px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  background-size: cover;
+  border-radius: 2rem;
+}
+
+.bgImg::before{
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: rgba(125, 59, 169, 0.63);
+  border-radius: 2rem;
+}
+
+.bgImgText {
+  position: relative;
+  color: white;  
+  line-height: 0.9;
+  text-align: center;
+}

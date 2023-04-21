@@ -9,7 +9,7 @@ import axios from "axios";
  */
 import { Button } from "@/src/components/atoms";
 import { QuestionState, AnswerState } from "./types";
-import { Props, QuestionStateApi, AnswerStateApi } from "./interfaces";
+import { Props, QuestionStateApi } from "./interfaces";
 import { useRouter } from "next/router";
 
 /**

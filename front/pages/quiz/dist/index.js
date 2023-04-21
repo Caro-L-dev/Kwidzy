@@ -10,10 +10,7 @@ var router_1 = require("next/router");
  */
 var atoms_1 = require("@/src/components/atoms");
 var molecules_1 = require("@/src/components/molecules");
-/**
- * Datas Import
- */
-var quizData_1 = require("../../data/quizData");
+var index_module_css_1 = require("./index.module.css");
 /**
  * Page
  */
@@ -25,36 +22,16 @@ function quizPage() {
     var _b = react_1.useState(false), stop = _b[0], setStop = _b[1];
     var _c = react_1.useState(0), earned = _c[0], setEarned = _c[1];
     /**
-     * Datas
-     */
-    var scoreDatas = react_1.useMemo(function () {
-        return [
-            { id: 1, amount: 1 },
-            { id: 2, amount: 2 },
-            { id: 3, amount: 3 },
-            { id: 4, amount: 4 },
-            { id: 5, amount: 5 },
-            { id: 6, amount: 6 },
-            { id: 7, amount: 7 },
-            { id: 8, amount: 8 },
-            { id: 9, amount: 9 },
-            { id: 10, amount: 10 },
-        ].reverse();
-    }, []);
-    /**
-     * Lifecycle
+     * Lifecycle WIP BUG
      */
     react_1.useEffect(function () {
-        var _a, _b;
-        questionNumber > 1 &&
-            setEarned((_b = (_a = scoreDatas.find(function (money) { return money.id === questionNumber - 1; })) === null || _a === void 0 ? void 0 : _a.amount) !== null && _b !== void 0 ? _b : 0);
-    }, [scoreDatas, questionNumber]);
+        questionNumber > 1 && setEarned(earned + 1);
+    }, [questionNumber]);
     /**
      * Actions
      */
     var handleClick = function (path) {
         if (path === "/categories") {
-            console.log("Je me rends sur la page Catégories");
             router_1["default"].push(path);
         }
     };
@@ -78,7 +55,7 @@ function quizPage() {
     else {
         scoreMsgBubble = "C'est parti pour casser la baraque !";
     }
-    var wordScore = "Brouette";
+    var wordScore = "Point";
     if (earned > 0) {
         wordScore += "s";
     }
@@ -87,18 +64,16 @@ function quizPage() {
             react_1["default"].createElement(atoms_1.SubTitle, { name: "Score" }),
             react_1["default"].createElement("div", { className: "mt-4" },
                 react_1["default"].createElement("p", null, scoreMsg),
-                react_1["default"].createElement("p", null, "Vous avez obtenu :"),
-                react_1["default"].createElement("div", { className: "relative" },
-                    react_1["default"].createElement("div", { className: "relative" },
-                        react_1["default"].createElement("div", { className: "opacity-30 h-[73px] md:w-full p-4 rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center" },
-                            react_1["default"].createElement("p", { className: "absolute top-5 bottom-0 right-0 left-0 text-lg font-bold" },
-                                earned,
-                                " ",
-                                wordScore)))),
+                react_1["default"].createElement("p", { className: "mb-2" }, "Vous avez obtenu :"),
+                react_1["default"].createElement("div", { className: index_module_css_1["default"].bgImg },
+                    react_1["default"].createElement("p", { className: index_module_css_1["default"].bgImgText },
+                        earned + 0,
+                        " ",
+                        wordScore)),
                 react_1["default"].createElement(atoms_1.Bubble, null, scoreMsgBubble),
                 react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "button", variant: "primary", onClick: function () { return handleClick("/categories"); } }, "Rejouer")))) : (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement("div", { className: "relative flex justify-center z-10 mb-4" },
                 react_1["default"].createElement(atoms_1.Timer, { setStop: setStop, questionNumber: questionNumber })),
-            react_1["default"].createElement(molecules_1.Quiz, { quizData: quizData_1["default"], setStop: setStop, questionNumber: questionNumber, setQuestionNumber: setQuestionNumber }))))));
+            react_1["default"].createElement(molecules_1.Quiz, { setStop: setStop, questionNumber: questionNumber, setQuestionNumber: setQuestionNumber }))))));
 }
 exports["default"] = quizPage;
