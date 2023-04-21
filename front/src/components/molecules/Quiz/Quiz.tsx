@@ -112,7 +112,7 @@ const QuizMolecule = ({
       </Button>
 
       {/* ANSWERS */}
-      <div className="md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
+      <div className="grid gap-2 md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4">
         {question?.answers.map((answer, index) => (
           <Button
             key={index}

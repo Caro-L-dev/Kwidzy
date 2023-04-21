@@ -138,7 +138,7 @@ var QuizMolecule = function (_a) {
         react_1["default"].createElement(atoms_1.Button, { className: "mb-4", type: "button", variant: "tertiary", rounded: true }, question === null || question === void 0 ? void 0 :
             question.questionNumber, question === null || question === void 0 ? void 0 :
             question.question),
-        react_1["default"].createElement("div", { className: "md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4" }, question === null || question === void 0 ? void 0 : question.answers.map(function (answer, index) { return (react_1["default"].createElement(atoms_1.Button, { key: index, onClick: function () { return handleClick(answer); }, type: "button", variant: selectedAnswer === answer.text ? variant : "primary", rounded: true, className: "" },
+        react_1["default"].createElement("div", { className: "grid gap-2 md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4" }, question === null || question === void 0 ? void 0 : question.answers.map(function (answer, index) { return (react_1["default"].createElement(atoms_1.Button, { key: index, onClick: function () { return handleClick(answer); }, type: "button", variant: selectedAnswer === answer.text ? variant : "primary", rounded: true, className: "" },
             react_1["default"].createElement("p", null, answer.text))); }))));
 };
 exports["default"] = QuizMolecule;
