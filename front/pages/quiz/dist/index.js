@@ -73,7 +73,7 @@ function quizPage() {
                 react_1["default"].createElement(atoms_1.Bubble, null, scoreMsgBubble),
                 react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "button", variant: "primary", onClick: function () { return handleClick("/categories"); } }, "Rejouer")))) : (react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement("div", { className: "relative flex justify-center z-10 mb-4" },
-                react_1["default"].createElement(atoms_1.Timer, { setStop: setEndGame, questionNumber: questionNumber })),
-            react_1["default"].createElement(molecules_1.Quiz, { setStop: setEndGame, questionNumber: questionNumber, setQuestionNumber: setQuestionNumber }))))));
+                react_1["default"].createElement(atoms_1.Timer, { setDelayTimerStop: setEndGame, nextQuestion: questionNumber })),
+            react_1["default"].createElement(molecules_1.Quiz, { setEndGame: setEndGame, questionNumber: questionNumber, setQuestionNumber: setQuestionNumber }))))));
 }
 exports["default"] = quizPage;

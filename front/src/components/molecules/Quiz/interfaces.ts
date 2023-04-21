@@ -10,7 +10,7 @@ export interface AnswerStateApi {
 }
 
 export interface Props {
-  setStop: React.Dispatch<React.SetStateAction<boolean>> | Function;
+  setEndGame: React.Dispatch<React.SetStateAction<boolean>> | Function;
   questionNumber: number;
   setQuestionNumber: React.Dispatch<React.SetStateAction<number>>;
 }

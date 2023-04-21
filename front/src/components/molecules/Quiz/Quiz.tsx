@@ -16,13 +16,12 @@ import { useRouter } from "next/router";
  * Datas
  */
 const questionURL = process.env.NEXT_PUBLIC_QUESTION_URL ?? "default-url";
-const answerURL = process.env.NEXT_PUBLIC_ANSWER_URL ?? "default-url";
 
 /**
  * Component
  */
 const QuizMolecule = ({
-  setStop,
+  setEndGame,
   questionNumber,
   setQuestionNumber,
 }: Props) => {
@@ -54,6 +53,8 @@ const QuizMolecule = ({
   /**
    * Lifecycle
    */
+  // Access current question in the questions list
+  // Indeed, in this case, the number of the question is defined from 1 and not from 0.
   useEffect(() => {
     setQuestion(quizDataBack[questionNumber - 1]);
   }, [quizDataBack, questionNumber]);
@@ -90,7 +91,7 @@ const QuizMolecule = ({
     delay(1500, () => {
       if (questionNumber === quizDataBack.length) {
         // If the current question is the last question, then stop the quiz
-        setStop(true);
+        setEndGame(true);
       } else {
         answer.isCorrect
           ? (setQuestionNumber(
@@ -98,7 +99,7 @@ const QuizMolecule = ({
               (currentQuestionNumber: number) => currentQuestionNumber + 1
             ),
             setSelectedAnswer(null))
-          : setStop(true);
+          : setEndGame(true);
       }
     });
   };

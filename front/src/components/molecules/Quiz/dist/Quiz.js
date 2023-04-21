@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _a, _b;
+var _a;
 exports.__esModule = true;
 /**
  * Package Import
@@ -51,12 +51,11 @@ var router_1 = require("next/router");
  * Datas
  */
 var questionURL = (_a = process.env.NEXT_PUBLIC_QUESTION_URL) !== null && _a !== void 0 ? _a : "default-url";
-var answerURL = (_b = process.env.NEXT_PUBLIC_ANSWER_URL) !== null && _b !== void 0 ? _b : "default-url";
 /**
  * Component
  */
 var QuizMolecule = function (_a) {
-    var setStop = _a.setStop, questionNumber = _a.questionNumber, setQuestionNumber = _a.setQuestionNumber;
+    var setEndGame = _a.setEndGame, questionNumber = _a.questionNumber, setQuestionNumber = _a.setQuestionNumber;
     /**
      * State
      */
@@ -81,6 +80,8 @@ var QuizMolecule = function (_a) {
     /**
      * Lifecycle
      */
+    // Access current question in the questions list
+    // Indeed, in this case, the number of the question is defined from 1 and not from 0.
     react_1.useEffect(function () {
         setQuestion(quizDataBack[questionNumber - 1]);
     }, [quizDataBack, questionNumber]);
@@ -122,7 +123,7 @@ var QuizMolecule = function (_a) {
         delay(1500, function () {
             if (questionNumber === quizDataBack.length) {
                 // If the current question is the last question, then stop the quiz
-                setStop(true);
+                setEndGame(true);
             }
             else {
                 answer.isCorrect
@@ -130,7 +131,7 @@ var QuizMolecule = function (_a) {
                     // Go to the next question
                     function (currentQuestionNumber) { return currentQuestionNumber + 1; }),
                         setSelectedAnswer(null))
-                    : setStop(true);
+                    : setEndGame(true);
             }
         });
     };

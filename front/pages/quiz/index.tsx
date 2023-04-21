@@ -95,10 +95,13 @@ export default function quizPage() {
         ) : (
           <>
             <div className="relative flex justify-center z-10 mb-4">
-              <Timer setStop={setEndGame} questionNumber={questionNumber} />
+              <Timer
+                setDelayTimerStop={setEndGame}
+                nextQuestion={questionNumber}
+              />
             </div>
             <Quiz
-              setStop={setEndGame}
+              setEndGame={setEndGame}
               questionNumber={questionNumber}
               setQuestionNumber={setQuestionNumber}
             />
