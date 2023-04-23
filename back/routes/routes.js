@@ -74,6 +74,15 @@ module.exports = function(server) {
   });
 
   // GET
+  server.get('/category', function(req, res, next) {
+    const categoryName = req.query.name;
+
+    dbRequests.getCategoryDetails(categoryName, function(error, data) {
+        error ? sendErrorResponse(res, ERROR_MSG) : res.json(HTTP_STATUS_OK, data);
+    });
+  });
+
+  // GET
     server.get('/:resource', function(req, res, next) {
         // Utilisé pour récupérer le nom de la ressource demandée, 
         // par exemple, "categories", "question" ou "answer".

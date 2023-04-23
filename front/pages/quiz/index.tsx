@@ -23,7 +23,7 @@ export default function quizPage() {
   const [earned, setEarned] = useState(0);
 
   /**
-   * Lifecycle WIP BUG
+   * Lifecycle
    */
   useEffect(() => {
     questionNumber > 1 && setEarned(earned + 1);
@@ -33,9 +33,7 @@ export default function quizPage() {
    * Actions
    */
   const handleClick = (path: string) => {
-    if (path === "/categories") {
       router.push(path);
-    }
   };
 
   let scoreMsg = "";
@@ -57,7 +55,7 @@ export default function quizPage() {
   }
 
   let wordScore = "Point";
-  if (earned > 0) {
+  if (earned > 1) {
     wordScore += "s";
   }
 
@@ -73,7 +71,7 @@ export default function quizPage() {
 
               <div className={styles.bgImg}>
                 <p className={styles.bgImgText}>
-                  {earned + 0} {wordScore}
+                  {earned} {wordScore}
                 </p>
               </div>
               {/* <div className="flex flex-col justify-center items-center">
