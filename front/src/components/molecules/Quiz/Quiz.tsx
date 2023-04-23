@@ -87,19 +87,18 @@ const QuizMolecule = ({
    */
   const handleClick = (answer: AnswerState) => {
     setSelectedAnswer(answer.text);
-    delay(500, () => setVariant(answer.isCorrect ? "correct" : "mistake"));
+    delay(0, () => setVariant(answer.isCorrect ? "correct" : "mistake"));
     delay(1500, () => {
+      answer.isCorrect
+        ? (setQuestionNumber(
+            // Go to the next question
+            (currentQuestionNumber: number) => currentQuestionNumber + 1
+          ),
+          setSelectedAnswer(null))
+        : setEndGame(true);
       if (questionNumber === quizDataBack.length) {
         // If the current question is the last question, then stop the quiz
         setEndGame(true);
-      } else {
-        answer.isCorrect
-          ? (setQuestionNumber(
-              // Go to the next question
-              (currentQuestionNumber: number) => currentQuestionNumber + 1
-            ),
-            setSelectedAnswer(null))
-          : setEndGame(true);
       }
     });
   };
