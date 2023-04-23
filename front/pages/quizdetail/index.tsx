@@ -16,7 +16,7 @@ import axios from "axios";
 /**
  * Datas
  */
-const categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
+const categoryURL = process.env.NEXT_PUBLIC_CATEGORY_URL ?? "";
 
 /**
  * Page
@@ -42,7 +42,8 @@ export default function quizdetailPage() {
    * Fetch datas
    */
   React.useEffect(() => {
-    axios.get(categoriesURL).then((response) => {
+    let categoryUrl = categoryURL + '?name=' + router.query.category;
+    axios.get(categoryUrl).then((response) => {
       setCategories(response.data);
     });
   }, []);
@@ -69,7 +70,7 @@ export default function quizdetailPage() {
             <div className="mb-32">
               <Box bgColor="bg-tertiary-color">{categories[0].level}</Box>
               <Box bgColor="bg-secondary-color">
-                {categories[0].questions_nbr} questions
+                {categories[0].questions_total} questions
               </Box>
               <div className="text-sm text-left">
                 <h3>But du jeu :</h3>

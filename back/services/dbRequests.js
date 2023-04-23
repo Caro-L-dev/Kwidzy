@@ -40,6 +40,11 @@ function fetchFromTable(table, callback) {
   makeSqlRequest(callback, query);
 };
 
+function getCategoryDetails(category, callback) {
+  const query = `select * from categories where name='${category}'`;
+  makeSqlRequest(callback, query);
+};
+
 function getCategoryQuestions(category, callback) {
   const query = `SELECT q.id, q.question_text, a.is_correct, a.answer_text
   FROM question q 
@@ -66,6 +71,7 @@ function registerUser(username, password, callback) {
 
 // GET
 exports.getCategories = (callback) => fetchFromTable('categories', callback);
+exports.getCategoryDetails = (category, callback) => getCategoryDetails(category, callback);
 exports.getQuestion = (category, callback) => getCategoryQuestions(category, callback);
 exports.getAnswer = (questionId, callback) => getQuestionAnswers(questionId, callback);
 
