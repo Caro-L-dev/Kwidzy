@@ -2,7 +2,6 @@
  * Package Import
  */
 import React from "react";
-import router from "next/router";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -25,7 +24,6 @@ export default function quizdetailPage() {
   const router = useRouter();
 
   const handleClick = (path: string) => {
-    if (path === "/quiz") {
       let categoryName = router.query.category;
       router.push(
         {
@@ -33,7 +31,6 @@ export default function quizdetailPage() {
           query: {category: categoryName},
         }
       )
-    }
   };
 
   const [categories, setCategories] = React.useState(null);

@@ -22,9 +22,7 @@ export default function homePage() {
    * Actions
    */
   const handleClick = (path: string) => {
-    if (path === "/categories") {
       router.push(path);
-    }
   };
 
   return (

@@ -28,9 +28,7 @@ export default function ProfilePage() {
   const router = useRouter();
 
   const handleClick = (path: string) => {
-    if (path === "/register") {
-      console.log("Je me rends sur la page S'inscrire");
-    }
+    router.push(path);
   };
 
   return (

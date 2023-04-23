@@ -58,14 +58,10 @@ export default function categoriesPage() {
    * Action
    */
   const handleClick = (path: string, categoryName: string) => {
-    if (path === "/quizdetail") {
-      console.log("Je me rends sur la page QuizDetail");
-
       router.push({
         pathname: path,
         query: { category: categoryName },
       });
-    }
   };
 
   /**
