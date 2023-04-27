@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 exports.__esModule = true;
 /**
  * Package Import
@@ -15,24 +16,26 @@ var axios_1 = require("axios");
 /**
  * Datas
  */
-var categoriesURL = process.env.NEXT_PUBLIC_CATEGORIES_URL;
+var categoryURL = (_a = process.env.NEXT_PUBLIC_CATEGORY_URL) !== null && _a !== void 0 ? _a : "";
 /**
  * Page
  */
 function quizdetailPage() {
     var router = router_1.useRouter();
     var handleClick = function (path) {
-        if (path === "/quiz") {
-            console.log("Je me rends sur la page Quiz");
-            router.push(path);
-        }
+        var categoryName = router.query.category;
+        router.push({
+            pathname: path,
+            query: { category: categoryName }
+        });
     };
     var _a = react_1["default"].useState(null), categories = _a[0], setCategories = _a[1];
     /**
      * Fetch datas
      */
     react_1["default"].useEffect(function () {
-        axios_1["default"].get(categoriesURL).then(function (response) {
+        var categoryUrl = categoryURL + "?name=" + router.query.category;
+        axios_1["default"].get(categoryUrl).then(function (response) {
             setCategories(response.data);
         });
     }, []);
@@ -52,7 +55,7 @@ function quizdetailPage() {
                     react_1["default"].createElement("div", { className: "mb-32" },
                         react_1["default"].createElement(atoms_1.Box, { bgColor: "bg-tertiary-color" }, categories[0].level),
                         react_1["default"].createElement(atoms_1.Box, { bgColor: "bg-secondary-color" },
-                            categories[0].questions_nbr,
+                            categories[0].questions_total,
                             " questions"),
                         react_1["default"].createElement("div", { className: "text-sm text-left" },
                             react_1["default"].createElement("h3", null, "But du jeu :"),

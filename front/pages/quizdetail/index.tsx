@@ -24,13 +24,11 @@ export default function quizdetailPage() {
   const router = useRouter();
 
   const handleClick = (path: string) => {
-      let categoryName = router.query.category;
-      router.push(
-        {
-          pathname: path,
-          query: {category: categoryName},
-        }
-      )
+    let categoryName = router.query.category;
+    router.push({
+      pathname: path,
+      query: { category: categoryName },
+    });
   };
 
   const [categories, setCategories] = React.useState(null);
@@ -39,7 +37,7 @@ export default function quizdetailPage() {
    * Fetch datas
    */
   React.useEffect(() => {
-    let categoryUrl = categoryURL + '?name=' + router.query.category;
+    let categoryUrl = categoryURL + "?name=" + router.query.category;
     axios.get(categoryUrl).then((response) => {
       setCategories(response.data);
     });
