@@ -2,6 +2,7 @@
  * Package Import
  */
 import type { AppProps } from "next/app";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 /**
  * Local Import
@@ -25,10 +26,12 @@ const mainFont = Rammetto_One({
  */
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Container>
-      <main className={mainFont.className}>
-        <Component {...pageProps} />
-      </main>
-    </Container>
+    <UserProvider>
+      <Container>
+        <main className={mainFont.className}>
+          <Component {...pageProps} />
+        </main>
+      </Container>
+    </UserProvider>
   );
 }
