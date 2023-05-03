@@ -26,8 +26,8 @@ export default function ProfilePage() {
           <>
             <img
               className=" h-24 w-24 rounded-full mb-4 border-4 border-secondary-color flex justify-center items-center"
-              src={user.picture}
-              alt={user.name}
+              src={user.picture?.toString()}
+              alt={user.name?.toString()}
             />
             <h2>{user.name}</h2>
             <p className="text-xs mb-6">Compte officiel</p>

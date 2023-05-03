@@ -9,33 +9,35 @@ import { useUser } from "@auth0/nextjs-auth0/client";
  */
 import { Button, Triangle } from "@/src/components/atoms";
 import Link from "next/link";
+import styles from "./index.module.css";
 
 /**
  * Page
  */
-
 export default function homePage() {
   const router = useRouter();
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
+  console.log(user);
 
-  const handleClick = (path: string) => {
-    router.push(path);
-  };
+  const greeting =
+    user && user.given_name ? `Coucou, ${user.given_name} !` : "cher joueur";
+
+  const handleClick = (path: string) => router.push(path);
 
   return (
     <>
       <div className="relative mt-56 md:mt-[20%]">
         <div className="flex justify-center">
-          <Triangle className={"md:hidden"} position={"down"} />
+          <Triangle className={"md:hidden"} />
         </div>
         <h1 className="absolute top-6 right-0 left-0 font-bold text-3xl md:text-6xl mb-20 md:relative md:text-center">
           KWIDZY
         </h1>
       </div>
       {user ? (
-        <div className="mb-8">
+        <div className="mt-8 mb-8">
           <p>
-            Coucou <span className="text-tertiary-color">{user.name}</span> !
+            Coucou <span className="text-tertiary-color">{greeting}</span> !
           </p>
           <p className="mb-5">C'est l'heure de </p>
           <Button
@@ -48,17 +50,9 @@ export default function homePage() {
             Jouer !
           </Button>
 
-          {/* <Link href="/api/auth/logout">
-            <Button
-              rounded
-              className={"mb-4"}
-              type={"submit"}
-              variant={"tertiary"}
-            >
-              Se déconnecter
-            </Button>
-          </Link> */}
-          <Link href="/api/auth/logout">Se déconnecter</Link>
+          <Link href="/api/auth/logout" className={styles.logout}>
+            Se déconnecter
+          </Link>
         </div>
       ) : (
         <>

@@ -15,7 +15,8 @@ var atoms_1 = require("@/src/components/atoms");
  * Component
  */
 function Navbar() {
-    var _a = client_1.useUser(), user = _a.user, error = _a.error, isLoading = _a.isLoading;
+    var _a, _b;
+    var _c = client_1.useUser(), user = _c.user, error = _c.error, isLoading = _c.isLoading;
     if (isLoading)
         return react_1["default"].createElement("p", null, "En cours de chargement ...");
     if (error)
@@ -28,7 +29,6 @@ function Navbar() {
                 react_1["default"].createElement(atoms_1.Logo, null)),
             user ? (react_1["default"].createElement(react_1["default"].Fragment, null,
                 react_1["default"].createElement("div", { className: "flex items-center" },
-                    react_1["default"].createElement(link_1["default"], { href: "/profil" },
-                        react_1["default"].createElement("img", { className: " h-12 w-12 rounded-full mb-4 border-4 border-secondary-color flex justify-center items-center", src: user.picture, alt: user.name }))))) : (""))));
+                    react_1["default"].createElement(link_1["default"], { href: "/profil" }, user && (react_1["default"].createElement("img", { className: " h-12 w-12 rounded-full mb-4 border-4 border-secondary-color flex justify-center items-center", src: (_a = user.picture) === null || _a === void 0 ? void 0 : _a.toString(), alt: (_b = user.name) === null || _b === void 0 ? void 0 : _b.toString() })))))) : (""))));
 }
 exports["default"] = Navbar;

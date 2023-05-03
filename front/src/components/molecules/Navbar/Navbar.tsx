@@ -33,11 +33,13 @@ export default function Navbar() {
           <>
             <div className="flex items-center">
               <Link href={"/profil"}>
-                <img
-                  className=" h-12 w-12 rounded-full mb-4 border-4 border-secondary-color flex justify-center items-center"
-                  src={user.picture}
-                  alt={user.name}
-                />
+                {user && (
+                  <img
+                    className=" h-12 w-12 rounded-full mb-4 border-4 border-secondary-color flex justify-center items-center"
+                    src={user.picture?.toString()}
+                    alt={user.name?.toString()}
+                  />
+                )}
               </Link>
             </div>
           </>
