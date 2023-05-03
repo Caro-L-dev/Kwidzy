@@ -5,7 +5,6 @@ exports.__esModule = true;
  */
 var react_1 = require("react");
 var link_1 = require("next/link");
-// import { useAuth } from "../hooks/useAuth";
 /**
  * Local Import
  */
@@ -15,7 +14,6 @@ var atoms_1 = require("@/src/components/atoms");
  * Component
  */
 function Navbar() {
-    // const { user } = useAuth();
     /**
      * Render
      */
