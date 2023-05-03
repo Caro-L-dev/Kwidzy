@@ -7,19 +7,8 @@ import { useRouter } from "next/router";
 /**
  * Local Import
  */
-import {
-  SubTitle,
-  Button,
-  Avatar,
-  Logo,
-  Triangle,
-} from "@/src/components/atoms";
+import { SubTitle, Button } from "@/src/components/atoms";
 import Link from "next/link";
-
-/**
- * Image Import
- */
-import avatarImg from "@/public/assets/images/avatar.png";
 
 /**
  * Page
@@ -33,9 +22,9 @@ export default function ProfilePage() {
 
   return (
     <>
-      <div className="flex flex-col justify-between items-center">
+      <div className="flex flex-col justify-between items-center text-white">
         <div
-          className="bg-tertiary-color h-24 w-24 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center"
+          className="bg-tertiary-color h-24 w-24 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center "
           aria-hidden="true"
         >
           <span>K</span>
@@ -76,7 +65,7 @@ export default function ProfilePage() {
       <Link href="/login">
         <Button
           rounded
-          className={"mb-4"}
+          className={"mb-4 text-white"}
           type={"submit"}
           variant={"secondary"}
           onClick={() => handleClick("/login")}
@@ -84,7 +73,12 @@ export default function ProfilePage() {
           Se connecter
         </Button>
       </Link>
-      <Button rounded className={"mb-4"} type={"submit"} variant={"tertiary"}>
+      <Button
+        rounded
+        className={"mb-4 text-[#191D85]"}
+        type={"submit"}
+        variant={"tertiary"}
+      >
         Se déconnecter
       </Button>
     </>

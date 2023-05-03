@@ -33,7 +33,7 @@ export default function quizPage() {
    * Actions
    */
   const handleClick = (path: string) => {
-      router.push(path);
+    router.push(path);
   };
 
   let scoreMsg = "";
@@ -74,14 +74,14 @@ export default function quizPage() {
                   {earned} {wordScore}
                 </p>
               </div>
-              {/* <div className="flex flex-col justify-center items-center">
-                <p>Vous débloquez :</p>
-                <div className="h-7 w-7 bg-white rounded-lg mt-4" />
-              </div> */}
-              <Bubble>{scoreMsgBubble}</Bubble>
+
+              <div className="text-txt-tertiary-color">
+                <Bubble>{scoreMsgBubble}</Bubble>
+              </div>
+
               <Button
                 rounded
-                className={"mb-4"}
+                className={"mb-4 text-txt-primary-color"}
                 type={"button"}
                 variant={"primary"}
                 onClick={() => handleClick("/categories")}

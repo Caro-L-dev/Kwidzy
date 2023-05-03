@@ -22,7 +22,7 @@ export default function homePage() {
    * Actions
    */
   const handleClick = (path: string) => {
-      router.push(path);
+    router.push(path);
   };
 
   return (
@@ -31,7 +31,7 @@ export default function homePage() {
         <div className="flex justify-center">
           <Triangle className={"md:hidden"} position={"down"} />
         </div>
-        <h1 className="absolute top-6 right-0 left-0 font-bold text-3xl md:text-6xl mb-8 md:relative md:text-center">
+        <h1 className="absolute top-6 right-0 left-0 font-bold text-3xl md:text-6xl mb-8 md:relative md:text-center text-white">
           KWIDZY
         </h1>
       </div>
@@ -39,7 +39,7 @@ export default function homePage() {
       <Button
         type={"button"}
         variant={"primary"}
-        className={"mt-20 mb-4"}
+        className={"mt-20 mb-4 text-txt-primary-color"}
         rounded
         onClick={() => handleClick("/categories")}
       >
