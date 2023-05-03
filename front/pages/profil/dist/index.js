@@ -19,6 +19,7 @@ function ProfilePage() {
         router.push(path);
     };
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
+        react_1["default"].createElement("title", null, "Kwidzy | Mon profil"),
         react_1["default"].createElement("div", { className: "flex flex-col justify-between items-center text-white" },
             react_1["default"].createElement("div", { className: "bg-tertiary-color h-24 w-24 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center ", "aria-hidden": "true" },
                 react_1["default"].createElement("span", null, "K")),
@@ -27,7 +28,7 @@ function ProfilePage() {
         react_1["default"].createElement(link_1["default"], { href: "/register" },
             react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "submit", variant: "primary", onClick: function () { return handleClick("/register"); } }, "Cr\u00E9er un compte")),
         react_1["default"].createElement(link_1["default"], { href: "/login" },
-            react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4 text-white", type: "submit", variant: "secondary", onClick: function () { return handleClick("/login"); } }, "Se connecter")),
-        react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4 text-[#191D85]", type: "submit", variant: "tertiary" }, "Se d\u00E9connecter")));
+            react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "submit", variant: "secondary", onClick: function () { return handleClick("/login"); } }, "Se connecter")),
+        react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4", type: "submit", variant: "tertiary" }, "Se d\u00E9connecter")));
 }
 exports["default"] = ProfilePage;

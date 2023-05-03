@@ -22,6 +22,7 @@ export default function ProfilePage() {
 
   return (
     <>
+      <title>Kwidzy | Mon profil</title>
       <div className="flex flex-col justify-between items-center text-white">
         <div
           className="bg-tertiary-color h-24 w-24 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center "
@@ -33,22 +34,6 @@ export default function ProfilePage() {
         <SubTitle name="Joueur" />
         <p className="text-xs mb-6">Compte invité</p>
       </div>
-      {/* 
-      <div className="my-6 mb-4">
-        <h3>Mes avatars débloqués</h3>
-        <div className="flex my-2">
-          <div
-            className="bg-white h-12 w-12 rounded-full mr-2"
-            aria-hidden="true"
-          />
-          <div className="bg-white h-12 w-12 rounded-full" aria-hidden="true" />
-        </div>
-      </div> */}
-
-      {/* <div className="flex justify-between mb-4">
-        <p>Son</p>
-        <p>Toggle</p>
-      </div> */}
 
       <Link href="/register">
         <Button
@@ -65,7 +50,7 @@ export default function ProfilePage() {
       <Link href="/login">
         <Button
           rounded
-          className={"mb-4 text-white"}
+          className={"mb-4"}
           type={"submit"}
           variant={"secondary"}
           onClick={() => handleClick("/login")}
@@ -73,12 +58,7 @@ export default function ProfilePage() {
           Se connecter
         </Button>
       </Link>
-      <Button
-        rounded
-        className={"mb-4 text-[#191D85]"}
-        type={"submit"}
-        variant={"tertiary"}
-      >
+      <Button rounded className={"mb-4"} type={"submit"} variant={"tertiary"}>
         Se déconnecter
       </Button>
     </>

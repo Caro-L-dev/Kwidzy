@@ -48,6 +48,11 @@ export default function quizdetailPage() {
 
   return (
     <>
+      <title>
+        Kwidzy | Description catégorie {categories[0].name} - Niveau{" "}
+        {categories[0].level} - {categories[0].questions_total} questions
+      </title>
+
       <div className="hidden md:flex md:mb-4 md:items-center">
         <span className="mr-4 text-4xl cursor-pointer">
           <Link href={""} onClick={() => router.back()}>

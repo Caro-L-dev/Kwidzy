@@ -1,16 +1,22 @@
 "use strict";
+var _a;
 exports.__esModule = true;
 /**
  * Package Import
  */
 var react_1 = require("react");
-var router_1 = require("next/router");
 /**
  * Local Import
  */
 var atoms_1 = require("@/src/components/atoms");
 var molecules_1 = require("@/src/components/molecules");
 var index_module_css_1 = require("./index.module.css");
+var axios_1 = require("axios");
+var router_1 = require("next/router");
+/**
+ * Datas
+ */
+var categoryURL = (_a = process.env.NEXT_PUBLIC_CATEGORY_URL) !== null && _a !== void 0 ? _a : "";
 /**
  * Page
  */
@@ -30,9 +36,9 @@ function quizPage() {
     /**
      * Actions
      */
-    var handleClick = function (path) {
-        router_1["default"].push(path);
-    };
+    // const handleClick = (path: string) => {
+    //   router.push(path);
+    // };
     var scoreMsg = "";
     if (earned < 3) {
         scoreMsg = "Aie aie, vous ferez mieux la prochaine fois !";
@@ -57,8 +63,36 @@ function quizPage() {
     if (earned > 1) {
         wordScore += "s";
     }
+    var router = router_1.useRouter();
+    var handleClick = function (path) {
+        var categoryName = router.query.category;
+        router.push({
+            pathname: path,
+            query: { category: categoryName }
+        });
+    };
+    var _d = react_1["default"].useState(null), categories = _d[0], setCategories = _d[1];
+    /**
+     * Fetch datas
+     */
+    react_1["default"].useEffect(function () {
+        var categoryUrl = categoryURL + "?name=" + router.query.category;
+        axios_1["default"].get(categoryUrl).then(function (response) {
+            setCategories(response.data);
+        });
+    }, []);
+    if (!categories)
+        return null;
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("div", { className: "relative" }, endGame ? (react_1["default"].createElement(react_1["default"].Fragment, null,
+            react_1["default"].createElement("title", null,
+                "Kwidzy | Score Quiz ",
+                categories[0].name,
+                " - Vous avez obtenu",
+                " ",
+                earned,
+                " ",
+                wordScore),
             react_1["default"].createElement(atoms_1.SubTitle, { name: "Score" }),
             react_1["default"].createElement("div", { className: "mt-4" },
                 react_1["default"].createElement("p", null, scoreMsg),
@@ -71,6 +105,10 @@ function quizPage() {
                 react_1["default"].createElement("div", { className: "text-txt-tertiary-color" },
                     react_1["default"].createElement(atoms_1.Bubble, null, scoreMsgBubble)),
                 react_1["default"].createElement(atoms_1.Button, { rounded: true, className: "mb-4 text-txt-primary-color", type: "button", variant: "primary", onClick: function () { return handleClick("/categories"); } }, "Rejouer")))) : (react_1["default"].createElement(react_1["default"].Fragment, null,
+            react_1["default"].createElement("title", null,
+                "Kwidzy | ",
+                categories[0].name,
+                " - Quiz en cours"),
             react_1["default"].createElement("div", { className: "relative flex justify-center z-10 mb-4" },
                 react_1["default"].createElement(atoms_1.Timer, { setDelayTimerStop: setEndGame, nextQuestion: questionNumber })),
             react_1["default"].createElement(molecules_1.Quiz, { setEndGame: setEndGame, questionNumber: questionNumber, setQuestionNumber: setQuestionNumber }))))));

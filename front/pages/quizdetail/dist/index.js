@@ -43,6 +43,15 @@ function quizdetailPage() {
     if (!categories)
         return null;
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
+        react_1["default"].createElement("title", null,
+            "Kwidzy | Description cat\u00E9gorie ",
+            categories[0].name,
+            " - Niveau",
+            " ",
+            categories[0].level,
+            " - ",
+            categories[0].questions_total,
+            " questions"),
         react_1["default"].createElement("div", { className: "hidden md:flex md:mb-4 md:items-center" },
             react_1["default"].createElement("span", { className: "mr-4 text-4xl cursor-pointer" },
                 react_1["default"].createElement(link_1["default"], { href: "", onClick: function () { return router.back(); } },

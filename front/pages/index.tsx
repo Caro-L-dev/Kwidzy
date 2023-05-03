@@ -27,9 +27,10 @@ export default function homePage() {
 
   return (
     <>
+      <title>Kwidzy | Acceuil : Testez votre culture en vous amusant !</title>
       <div className="relative mt-56 md:mt-[20%]">
         <div className="flex justify-center">
-          <Triangle className={"md:hidden"} position={"down"} />
+          <Triangle className={"md:hidden"} />
         </div>
         <h1 className="absolute top-6 right-0 left-0 font-bold text-3xl md:text-6xl mb-8 md:relative md:text-center text-white">
           KWIDZY

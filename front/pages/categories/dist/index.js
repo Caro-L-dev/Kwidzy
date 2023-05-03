@@ -64,6 +64,7 @@ function categoriesPage() {
         return null;
     }
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
+        react_1["default"].createElement("title", null, "Kwidzy | Tous les quiz"),
         react_1["default"].createElement(atoms_1.Title, { name: "Cat\u00E9gories" }),
         react_1["default"].createElement("section", { className: "mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12" }, categories.map(function (category, index) { return (react_1["default"].createElement(atoms_1.Button, { key: category.id, rounded: true, 
             // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
