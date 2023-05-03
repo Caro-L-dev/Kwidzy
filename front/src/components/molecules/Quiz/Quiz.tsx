@@ -106,7 +106,12 @@ const QuizMolecule = ({
   return (
     <>
       {/* QUESTIONS */}
-      <Button className={"mb-4"} type={"button"} variant={"tertiary"} rounded>
+      <Button
+        className={"mb-4 text-txt-tertiary-color"}
+        type={"button"}
+        variant={"tertiary"}
+        rounded
+      >
         {question?.questionNumber}
         {question?.question}
       </Button>
@@ -120,7 +125,7 @@ const QuizMolecule = ({
             type={"button"}
             variant={selectedAnswer === answer.text ? variant : "primary"}
             rounded
-            className={""}
+            className={"text-txt-primary-color"}
           >
             <p>{answer.text}</p>
           </Button>

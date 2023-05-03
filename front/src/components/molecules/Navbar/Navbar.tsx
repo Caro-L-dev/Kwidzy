@@ -3,31 +3,22 @@
  */
 import React from "react";
 import Link from "next/link";
-// import { useAuth } from "../hooks/useAuth";
 
 /**
  * Local Import
  */
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { Logo, Avatar, Button } from "@/src/components/atoms";
-
-/**
- * Image Import
- */
-import avatarImg from "@/public/assets/images/avatar.png";
+import { Logo } from "@/src/components/atoms";
 
 /**
  * Component
  */
 export default function Navbar() {
-  // const { user } = useAuth();
-
   /**
    * Render
    */
   return (
     <nav className="flex justify-between items-center mb-7">
-      {/* {user && ( // condition pour afficher navbar si user connecté */}
       <>
         <Link href={"/"} className="md:hidden">
           <AiOutlineArrowLeft />
@@ -38,13 +29,6 @@ export default function Navbar() {
 
         <div className="flex items-center">
           <Link href={"/profil"}>
-            {/* <Avatar
-              src={avatarImg}
-              alt="Ananas Funky"
-              variant="circular"
-              size="md"
-              className={""}
-            /> */}
             <div
               className="bg-tertiary-color h-14 w-14 rounded-full mb-2 border-4 border-secondary-color flex justify-center items-center"
               aria-hidden="true"
@@ -54,7 +38,6 @@ export default function Navbar() {
           </Link>
         </div>
       </>
-      {/* )} */}
     </nav>
   );
 }

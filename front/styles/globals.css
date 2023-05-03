@@ -7,10 +7,16 @@
 #docs-root{
   --primary-color: #F4B24F;
   --darker-primary-color: #DA8505;
-  --secondary-color: #D459DF;
-  --darker-secondary-color: #AC43B6;
+  --txt-primary-color: #79162A;
+
+  --secondary-color: #a81fba;
+  --darker-secondary-color: #73137f;
+  --txt-secondary-color: #ffffff;
+
   --tertiary-color: #3FC6E3;
   --darker-tertiary-color: #39ABC5;
+  --txt-tertiary-color: #4f1985;
+
   --correct-color: #59df6d;
   --darker-correct-color: #39c540;
   --mistake-color: #df5959;
@@ -23,5 +29,5 @@ html, body {
 }
 
 html,body {
-  @apply bg-indigo-500
-} 
+  @apply bg-[#2D30F0]
+}  
