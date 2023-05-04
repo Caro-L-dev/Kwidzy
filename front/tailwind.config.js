@@ -14,12 +14,19 @@ module.exports = {
       colors: {
         "primary-color": "var(--primary-color)",
         "darker-primary-color": "var(--darker-primary-color)",
+        "txt-primary-color": "var(--txt-primary-color)",
+
         "secondary-color": "var(--secondary-color)",
         "darker-secondary-color": "var(--darker-secondary-color)",
+        "txt-secondary-color": "var(--txt-secondary-color)",
+
         "tertiary-color": "var(--tertiary-color)",
         "darker-tertiary-color": "var(--darker-tertiary-color)",
+        "txt-tertiary-color": "var(--txt-tertiary-color)",
+
         "correct-color": "var(--correct-color)",
         "darker-correct-color": "var(--darker-correct-color)",
+        
         "mistake-color": "var(--mistake-color)",
         "darker-mistake-color": "var(--darker-mistake-color)",
       },

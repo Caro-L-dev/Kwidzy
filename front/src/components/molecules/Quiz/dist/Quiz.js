@@ -119,27 +119,25 @@ var QuizMolecule = function (_a) {
      */
     var handleClick = function (answer) {
         setSelectedAnswer(answer.text);
-        delay(500, function () { return setVariant(answer.isCorrect ? "correct" : "mistake"); });
+        delay(0, function () { return setVariant(answer.isCorrect ? "correct" : "mistake"); });
         delay(1500, function () {
+            answer.isCorrect
+                ? (setQuestionNumber(
+                // Go to the next question
+                function (currentQuestionNumber) { return currentQuestionNumber + 1; }),
+                    setSelectedAnswer(null))
+                : setEndGame(true);
             if (questionNumber === quizDataBack.length) {
                 // If the current question is the last question, then stop the quiz
                 setEndGame(true);
             }
-            else {
-                answer.isCorrect
-                    ? (setQuestionNumber(
-                    // Go to the next question
-                    function (currentQuestionNumber) { return currentQuestionNumber + 1; }),
-                        setSelectedAnswer(null))
-                    : setEndGame(true);
-            }
         });
     };
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
-        react_1["default"].createElement(atoms_1.Button, { className: "mb-4", type: "button", variant: "tertiary", rounded: true }, question === null || question === void 0 ? void 0 :
+        react_1["default"].createElement(atoms_1.Button, { className: "mb-4 text-txt-tertiary-color", type: "button", variant: "tertiary", rounded: true }, question === null || question === void 0 ? void 0 :
             question.questionNumber, question === null || question === void 0 ? void 0 :
             question.question),
-        react_1["default"].createElement("div", { className: "grid gap-2 md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4" }, question === null || question === void 0 ? void 0 : question.answers.map(function (answer, index) { return (react_1["default"].createElement(atoms_1.Button, { key: index, onClick: function () { return handleClick(answer); }, type: "button", variant: selectedAnswer === answer.text ? variant : "primary", rounded: true, className: "" },
+        react_1["default"].createElement("div", { className: "grid gap-2 md:grid-cols-2 md:gap-x-4 md:gap-y-4 md:mb-4" }, question === null || question === void 0 ? void 0 : question.answers.map(function (answer, index) { return (react_1["default"].createElement(atoms_1.Button, { key: index, onClick: function () { return handleClick(answer); }, type: "button", variant: selectedAnswer === answer.text ? variant : "primary", rounded: true, className: "text-txt-primary-color" },
             react_1["default"].createElement("p", null, answer.text))); }))));
 };
 exports["default"] = QuizMolecule;

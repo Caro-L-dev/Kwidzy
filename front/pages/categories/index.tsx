@@ -9,16 +9,11 @@ import axios from "axios";
  * Local Import
  */
 import { Title, Button } from "@/src/components/atoms";
-import { Start } from "@/src/components/molecules";
 import { Dot, RepeatDots } from "@/pages/categories/dots";
 
 /**
  * Types
  */
-interface UsernameState {
-  username: string;
-}
-
 interface Category {
   id: string;
   name: string;
@@ -48,20 +43,25 @@ export default function categoriesPage() {
     "border-darker-tertiary-color",
   ];
 
+  const textColorBtn = [
+    "text-txt-primary-color",
+    "text-txt-secondary-color",
+    "text-txt-tertiary-color",
+  ];
+
   /**
    * State
    */
-  const [username, setUsername] = useState<UsernameState | null>(null);
   const [categories, setCategories] = useState<Category[] | null>(null);
 
   /**
    * Action
    */
   const handleClick = (path: string, categoryName: string) => {
-      router.push({
-        pathname: path,
-        query: { category: categoryName },
-      });
+    router.push({
+      pathname: path,
+      query: { category: categoryName },
+    });
   };
 
   /**
@@ -80,37 +80,34 @@ export default function categoriesPage() {
 
   return (
     <>
-      {/* {username ? ( */}
-      <>
-        <Title name="Catégories" />
-        <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
-          {categories.map((category: Category, index: number) => (
-            <Button
-              key={category.id}
-              rounded
-              // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
-              // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
-              // la couleur correspondante dans le tableau "bgColorBtn".
-              className={`mb-2 ${bgColorBtn[index % bgColorBtn.length]} ${
-                bgBorderColorBtn[index % bgBorderColorBtn.length]
-              }`}
-              type={"button"}
-              variant={"primary"}
-              onClick={() => handleClick("/quizdetail", category.name)}
-            >
-              {category.name}
-            </Button>
-          ))}
-        </section>
-        <div className="flex justify-center text-2xl mb-4">
-          <RepeatDots times={3}>
-            <Dot ASCIIChar="." />
-          </RepeatDots>
-        </div>
-      </>
-      {/* ) : (
-         <Start setUsername={setUsername} />
-       )} */}
+      <title>Kwidzy | Tous les quiz</title>
+
+      <Title name="Catégories" />
+      <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
+        {categories.map((category: Category, index: number) => (
+          <Button
+            key={category.id}
+            rounded
+            // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
+            // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
+            // la couleur correspondante dans le tableau "bgColorBtn".
+            className={`mb-2 uppercase ${
+              bgColorBtn[index % bgColorBtn.length]
+            } ${bgBorderColorBtn[index % bgBorderColorBtn.length]}
+              ${textColorBtn[index % textColorBtn.length]}`}
+            type={"button"}
+            variant={"primary"}
+            onClick={() => handleClick("/quizdetail", category.name)}
+          >
+            {category.name}
+          </Button>
+        ))}
+      </section>
+      <div className="flex justify-center text-2xl mb-4">
+        <RepeatDots times={3}>
+          <Dot ASCIIChar="." />
+        </RepeatDots>
+      </div>
     </>
   );
 }

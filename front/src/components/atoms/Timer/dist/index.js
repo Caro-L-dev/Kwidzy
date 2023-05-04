@@ -27,6 +27,6 @@ var Timer = function (_a) {
     react_1.useEffect(function () {
         setDelayTimer(30);
     }, [nextQuestion]);
-    return (react_1["default"].createElement("div", { className: "h-5 w-5 flex justify-center items-center rounded-full bg-primary-color p-8 border-white border-2" }, delayTimer));
+    return (react_1["default"].createElement("div", { className: "h-5 w-5 flex justify-center items-center rounded-full border-4 border-white p-8  text-white" }, delayTimer));
 };
 exports["default"] = Timer;

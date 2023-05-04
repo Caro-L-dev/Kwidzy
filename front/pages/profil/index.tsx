@@ -21,6 +21,7 @@ export default function ProfilePage() {
 
   return (
     <>
+      <title>Kwidzy | Mon profil</title>
       <div className="flex flex-col justify-between items-center">
         {user ? (
           <>
