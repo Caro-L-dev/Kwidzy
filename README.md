@@ -50,9 +50,3 @@ For both folders.
 - https://tailwindcss.com/
 - https://jestjs.io/fr/docs/getting-started
 - https://testing-library.com/docs/react-testing-library/intro/
-
-  Accessibility:
-
-- https://github.com/alsacreations/guidelines/blob/master/Guidelines-Accessibilite.md
-- https://www.digidop.fr/blog/aria-label
-- https://la-cascade.io/articles/comprendre-wai-aria-un-guide-complet
