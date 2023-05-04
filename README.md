@@ -1,6 +1,6 @@
 # **Kwidzy**
 
-_NextJs, Typescript, Tailwind, Jest, React Testing Library, StoryBook , MySQL, Clever Cloud_
+_NextJs, Typescript, Tailwind, Jest, React Testing Library, MySQL, Clever Cloud_
 
 --
 
