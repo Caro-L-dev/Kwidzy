@@ -2,6 +2,7 @@
  * Package Import
  */
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 /**
@@ -15,6 +16,7 @@ import styles from "./index.module.css";
  * Page
  */
 export default function homePage() {
+  const [pageTitle, setPageTitle] = useState("localhost:3000/⁤");
   const router = useRouter();
   const { user } = useUser();
   console.log(user);
@@ -24,9 +26,13 @@ export default function homePage() {
 
   const handleClick = (path: string) => router.push(path);
 
+  useEffect(() => {
+    setPageTitle("Kwidzy | Acceuil : Testez votre culture en vous amusant !");
+  }, []);
+
   return (
     <>
-      <title>Kwidzy | Acceuil : Testez votre culture en vous amusant !</title>
+      {/* <title>{pageTitle}</title> */}
       <div className="relative mt-56 md:mt-[20%]">
         <div className="flex justify-center">
           <Triangle className={"md:hidden"} />
