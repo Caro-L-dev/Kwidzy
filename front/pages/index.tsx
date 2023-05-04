@@ -20,7 +20,7 @@ export default function homePage() {
   console.log(user);
 
   const greeting =
-    user && user.given_name ? `Coucou, ${user.given_name} !` : "cher joueur";
+    user && user.given_name ? `${user.given_name}` : "cher joueur";
 
   const handleClick = (path: string) => router.push(path);
 
