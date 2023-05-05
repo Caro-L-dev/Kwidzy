@@ -83,7 +83,7 @@ export default function categoriesPage() {
       <title>Kwidzy | Tous les quiz</title>
 
       <Title name="Catégories" />
-      <section className="mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
+      <section className="mt-4 mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
         {categories.map((category: Category, index: number) => (
           <Button
             key={category.id}

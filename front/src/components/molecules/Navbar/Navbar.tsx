@@ -8,7 +8,6 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 /**
  * Local Import
  */
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Logo } from "@/src/components/atoms";
 
 /**
@@ -21,11 +20,8 @@ export default function Navbar() {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <nav className="flex justify-between items-center mb-7">
+    <nav className="flex justify-end items-center mb-7">
       <>
-        <Link href={"/"} className="md:hidden">
-          <AiOutlineArrowLeft />
-        </Link>
         <Link href={"/"} className="hidden md:block">
           <Logo />
         </Link>

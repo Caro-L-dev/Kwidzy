@@ -53,7 +53,7 @@ export default function quizdetailPage() {
         {categories[0].level} - {categories[0].questions_total} questions
       </title>
 
-      <div className="hidden md:flex md:mb-4 md:items-center">
+      <div className=" flex mb-4 items-center">
         <span className="mr-4 text-4xl cursor-pointer">
           <Link href={""} onClick={() => router.back()}>
             <HiArrowCircleLeft />
