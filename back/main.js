@@ -3,9 +3,8 @@
  */
 require('dotenv').config();
 const restify = require('restify');
-const mysql = require('mysql');
 const corsMiddleware = require('restify-cors-middleware');
-const connectToDb = require('./services/dbRequests');
+
 /**
  * Constants
  */

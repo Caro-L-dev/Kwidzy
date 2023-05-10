@@ -7,11 +7,7 @@ require('dotenv').config();
 
 var restify = require('restify');
 
-var mysql = require('mysql');
-
 var corsMiddleware = require('restify-cors-middleware');
-
-var connectToDb = require('./services/dbRequests');
 /**
  * Constants
  */

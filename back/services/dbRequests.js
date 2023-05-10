@@ -19,7 +19,7 @@ const connectToDb = mysql.createConnection({
 
 connectToDb.connect(function(error) {
   if (error) throw error;
-  console.log("Datas are linked to front, you're connected!");
+  console.log("Connected!");
 });
 
 function makeSqlRequest(callback, query) {

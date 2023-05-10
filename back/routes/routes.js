@@ -84,8 +84,6 @@ module.exports = function(server) {
 
   // GET
     server.get('/:resource', function(req, res, next) {
-        // Utilisé pour récupérer le nom de la ressource demandée, 
-        // par exemple, "categories", "question" ou "answer".
         const resource = req.params.resource;
     
         const dbFunction = {

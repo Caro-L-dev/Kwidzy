@@ -12,7 +12,7 @@ import { Title, Button } from "@/src/components/atoms";
 import { Dot, RepeatDots } from "@/pages/categories/dots";
 
 /**
- * Types
+ * Type
  */
 interface Category {
   id: string;
@@ -80,8 +80,6 @@ export default function categoriesPage() {
 
   return (
     <>
-      <title>Kwidzy | Tous les quiz</title>
-
       <Title name="Catégories" />
       <section className="mt-4 mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12">
         {categories.map((category: Category, index: number) => (

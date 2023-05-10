@@ -4,13 +4,12 @@
  * Package Import
  */
 var mysql = require('mysql');
-
-require('dotenv').config();
 /**
  * Connection to the Database
  */
 
 
+console.log("mysql port : " + process.env.MYSQL_ADDON_PORT);
 var connectToDb = mysql.createConnection({
   port: process.env.MYSQL_ADDON_PORT,
   host: process.env.MYSQL_ADDON_HOST,
@@ -20,11 +19,10 @@ var connectToDb = mysql.createConnection({
 });
 connectToDb.connect(function (error) {
   if (error) throw error;
-  console.log("Datas are linked to front, you're connected!");
+  console.log("Connected!");
 });
 
-function fetchFromTable(table, callback) {
-  var query = "SELECT * FROM ".concat(table);
+function makeSqlRequest(callback, query) {
   connectToDb.query(query, function (error, results) {
     if (error) {
       console.log("Error occurred in executing the query for ".concat(table, ": ").concat(error));
@@ -58,21 +56,58 @@ function fetchFromTable(table, callback) {
   });
 }
 
-; // GET
+function fetchFromTable(table, callback) {
+  var query = "SELECT * FROM ".concat(table);
+  makeSqlRequest(callback, query);
+}
+
+;
+
+function getCategoryDetails(category, callback) {
+  var query = "select * from categories where name='".concat(category, "'");
+  makeSqlRequest(callback, query);
+}
+
+;
+
+function getCategoryQuestions(category, callback) {
+  var query = "SELECT q.id, q.question_text, a.is_correct, a.answer_text\n  FROM question q \n  INNER JOIN categories c on q.categories_id=c.id\n  INNER JOIN answer a on q.id=a.question_id\n  WHERE c.name='".concat(category, "'");
+  makeSqlRequest(callback, query);
+}
+
+;
+
+function getQuestionAnswers(questionId, callback) {
+  var query = "SELECT * FROM answer where question_id=".concat(questionId);
+  makeSqlRequest(callback, query);
+}
+
+;
+
+function registerUser(username, password, callback) {
+  connectToDb.query('INSERT INTO user (username, password) VALUES (?, ?)', [username, password], function (error, results) {
+    callback(error, results);
+  });
+} // GET
+
 
 exports.getCategories = function (callback) {
   return fetchFromTable('categories', callback);
 };
 
-exports.getQuestion = function (callback) {
-  return fetchFromTable('question', callback);
+exports.getCategoryDetails = function (category, callback) {
+  return getCategoryDetails(category, callback);
 };
 
-exports.getAnswer = function (callback) {
-  return fetchFromTable('answer', callback);
+exports.getQuestion = function (category, callback) {
+  return getCategoryQuestions(category, callback);
+};
+
+exports.getAnswer = function (questionId, callback) {
+  return getQuestionAnswers(questionId, callback);
 }; // POST
 
 
-exports.postUser = function (callback) {
-  return fetchFromTable('user', callback);
-}; // module.exports = connectToDb;
+exports.postUser = function (username, password, callback) {
+  return registerUser(username, password, callback);
+};
