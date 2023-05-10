@@ -50,7 +50,7 @@ export default function homePage() {
           <Button
             type={"button"}
             variant={"primary"}
-            className={"mb-4"}
+            className={"mb-4 text-txt-primary-color"}
             rounded
             onClick={() => handleClick("/categories")}
           >

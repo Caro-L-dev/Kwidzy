@@ -20,7 +20,7 @@ export default function Navbar() {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <nav className="flex justify-end items-center mb-7">
+    <nav className="flex justify-between items-center mb-7">
       <>
         <Link href={"/"} className="hidden md:block">
           <Logo />

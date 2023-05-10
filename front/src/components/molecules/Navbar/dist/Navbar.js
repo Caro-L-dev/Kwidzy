@@ -20,7 +20,7 @@ function Navbar() {
         return react_1["default"].createElement("p", null, "En cours de chargement ...");
     if (error)
         return react_1["default"].createElement("p", null, error.message);
-    return (react_1["default"].createElement("nav", { className: "flex justify-end items-center mb-7" },
+    return (react_1["default"].createElement("nav", { className: "flex justify-between items-center mb-7" },
         react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement(link_1["default"], { href: "/", className: "hidden md:block" },
                 react_1["default"].createElement(atoms_1.Logo, null)),

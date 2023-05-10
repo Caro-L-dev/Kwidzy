@@ -66,11 +66,7 @@ function categoriesPage() {
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
         react_1["default"].createElement("title", null, "Kwidzy | Tous les quiz"),
         react_1["default"].createElement(atoms_1.Title, { name: "Cat\u00E9gories" }),
-        react_1["default"].createElement("section", { className: "mt-4 mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12" }, categories.map(function (category, index) { return (react_1["default"].createElement(atoms_1.Button, { key: category.id, rounded: true, 
-            // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
-            // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
-            // la couleur correspondante dans le tableau "bgColorBtn".
-            className: "mb-2 uppercase " + bgColorBtn[index % bgColorBtn.length] + " " + bgBorderColorBtn[index % bgBorderColorBtn.length] + "\n              " + textColorBtn[index % textColorBtn.length], type: "button", variant: "primary", onClick: function () { return handleClick("/quizdetail", category.name); } }, category.name)); })),
+        react_1["default"].createElement("section", { className: "mt-4 mb-4 md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-4 md:justify-items-center md:mt-12" }, categories.map(function (category, index) { return (react_1["default"].createElement(atoms_1.Button, { key: category.id, rounded: true, className: "mb-2 uppercase " + bgColorBtn[index % bgColorBtn.length] + " " + bgBorderColorBtn[index % bgBorderColorBtn.length] + "\n              " + textColorBtn[index % textColorBtn.length], type: "button", variant: "primary", onClick: function () { return handleClick("/quizdetail", category.name); } }, category.name)); })),
         react_1["default"].createElement("div", { className: "flex justify-center text-2xl mb-4" },
             react_1["default"].createElement(dots_1.RepeatDots, { times: 3 },
                 react_1["default"].createElement(dots_1.Dot, { ASCIIChar: "." })))));

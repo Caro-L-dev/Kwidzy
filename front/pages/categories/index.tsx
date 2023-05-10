@@ -88,9 +88,6 @@ export default function categoriesPage() {
           <Button
             key={category.id}
             rounded
-            // L'opérateur modulo "% bgColorBtn.length" garantit que la valeur de "index"
-            // est toujours comprise entre 0 et 2, ce qui nous permet de sélectionner
-            // la couleur correspondante dans le tableau "bgColorBtn".
             className={`mb-2 uppercase ${
               bgColorBtn[index % bgColorBtn.length]
             } ${bgBorderColorBtn[index % bgBorderColorBtn.length]}
