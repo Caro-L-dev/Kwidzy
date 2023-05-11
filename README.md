@@ -30,8 +30,6 @@ npm start
 npm install
 ```
 
-Open [http://localhost:3306](http://localhost:3306) with your browser to see the result.
-
 ## 🔧 **Setup project**
 
 ```bash
@@ -50,4 +48,15 @@ Don't forget to re-start the server to display the changes!
 ## **Warning**
 
 Don't forget to fetch .env file when repository is cloned!  
-For both folders.
+For both folders.   
+
+---  
+## 🚀  **What's next?**
+
+- Setting up a reward system
+- Possibility to choose your avatar
+- Play sound or not
+- Loader animation
+- Animation on answer
+- Play a random theme
+
