@@ -1,6 +1,6 @@
 # **Kwidzy - Back**
 
-_Dbeaver, MySQL, Node, Restify_
+_MySQL, Node, Restify_
 
 --
 
