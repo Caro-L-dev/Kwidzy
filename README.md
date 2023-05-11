@@ -1,6 +1,6 @@
 # **Kwidzy**
 
-_NextJs, Typescript, Tailwind, Jest, React Testing Library, MySQL, Clever Cloud_
+_NextJs, Typescript, Tailwind, MySQL, Clever Cloud_
 
 --
 
@@ -43,10 +43,3 @@ Don't forget to re-start the server to display the changes!
 
 Don't forget to fetch .env file when repository is cloned!  
 For both folders.
-
-### 📝 **Docs**
-
-- https://nextjs.org/
-- https://tailwindcss.com/
-- https://jestjs.io/fr/docs/getting-started
-- https://testing-library.com/docs/react-testing-library/intro/
