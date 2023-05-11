@@ -87,7 +87,19 @@ npx tailwind init -p
 
 Don't forget to re-start the server to display the changes! 
 
---
+--  
+## 📜 **My main documentation**
+- NextJs doc: https://nextjs.org/docs
+- Style with Tailwind: https://tailwindcss.com/docs/installation
+- Online Database: https://www.clever-cloud.com/fr/
+- Setup server with Restify: http://restify.com/docs/home/
+- SQL courses: https://sql.sh/
+- Authentification with Auth0: https://auth0.com/docs/quickstart/webapp/nextjs/interactive
+- Check contrast ratio with WebAim: https://webaim.org/resources/contrastchecker/
+- Google & Stack Overflow, my buddies
+
+--  
+
 ## 🚀  **What's next?**
 
 - Setting up a reward system
