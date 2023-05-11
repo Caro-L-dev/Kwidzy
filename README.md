@@ -6,6 +6,7 @@
 Kwidzy is a fun and playful responsive website for everyone.
 It adapts to the mobile and desktop format.
 The goal is to answer as many questions as possible and evaluate your general culture through many topics, all while having fun. If the player is wrong, the game stops. His score is displayed after the game is finished.  
+  
 _NextJs, Typescript, Tailwind, MySQL, Clever Cloud_
 
 --
