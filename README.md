@@ -14,21 +14,63 @@ _NextJs, Typescript, Tailwind, MySQL, Clever Cloud_
 
 ## 👶 **Getting Started**
 
-First, run the development server(front folder):
+### 🔹 Front folder:  
 
+📀 Fetch dependencies:
+```bash
+npm install
+``` 
+
+⚠️ Fetch .env file on your local repository
+```bash
+# DATAS
+NEXT_PUBLIC_CATEGORIES_URL=
+NEXT_PUBLIC_CATEGORY_URL=
+NEXT_PUBLIC_QUESTION_URL=
+NEXT_PUBLIC_ANSWER_URL=
+
+# AUTH0 // To authentification
+AUTH0_SECRET=
+AUTH0_BASE_URL=
+AUTH0_ISSUER_BASE_URL=
+AUTH0_CLIENT_ID=
+AUTH0_CLIENT_SECRET=
+```  
+
+🏃 Run the development server:
 ```bash
 npm run dev
-npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👀 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. 
 
-First, run the development server(back folder):
+--
 
+### 🔹 Back folder:
+
+📀 Fetch dependencies:
+```bash
+npm install
+``` 
+
+⚠️ Fetch .env file on your local repository
+```bash
+# Your Clever Cloud BDD
+MYSQL_ADDON_HOST=
+MYSQL_ADDON_DB=
+MYSQL_ADDON_USER=
+MYSQL_ADDON_PORT=
+MYSQL_ADDON_PASSWORD=
+MYSQL_ADDON_URI=
+```  
+
+🏃 Run the development server:
 ```bash
 npm start
-npm install
-```
+```  
+
+--  
+--  
 
 ## 🔧 **Setup project**
 
@@ -43,14 +85,9 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwind init -p
 ```
 
-Don't forget to re-start the server to display the changes!
+Don't forget to re-start the server to display the changes! 
 
-## **Warning**
-
-Don't forget to fetch .env file when repository is cloned!  
-For both folders.   
-
----  
+--
 ## 🚀  **What's next?**
 
 - Setting up a reward system
@@ -59,4 +96,11 @@ For both folders.
 - Loader animation
 - Animation on answer
 - Play a random theme
+
+### **Notes**  
+Each new feature is created on a new branch from main.  
+```bash
+Example
+feat/score-component
+```
 
