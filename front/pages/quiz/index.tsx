@@ -18,6 +18,11 @@ import { useRouter } from "next/router";
  */
 const categoryURL = process.env.NEXT_PUBLIC_CATEGORY_URL ?? "";
 
+interface CategoryQuiz {
+  id: number;
+  name: string;
+}
+
 /**
  * Page
  */
@@ -35,13 +40,6 @@ export default function quizPage() {
   useEffect(() => {
     questionNumber > 1 && setEarned(earned + 1);
   }, [questionNumber]);
-
-  /**
-   * Actions
-   */
-  // const handleClick = (path: string) => {
-  //   router.push(path);
-  // };
 
   let scoreMsg = "";
   if (earned < 3) {
@@ -76,17 +74,21 @@ export default function quizPage() {
     });
   };
 
-  const [categories, setCategories] = React.useState(null);
+  const [categories, setCategories] = React.useState<CategoryQuiz[] | null>(
+    null
+  );
 
   /**
    * Fetch datas
    */
   React.useEffect(() => {
-    let categoryUrl = categoryURL + "?name=" + router.query.category;
-    axios.get(categoryUrl).then((response) => {
-      setCategories(response.data);
-    });
-  }, []);
+    if (router.query.category) {
+      let categoryUrl = categoryURL + "?name=" + router.query.category;
+      axios.get(categoryUrl).then((response) => {
+        setCategories(response.data);
+      });
+    }
+  }, [router.query]);
 
   if (!categories) return null;
 

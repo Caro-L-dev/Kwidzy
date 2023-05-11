@@ -33,12 +33,6 @@ function quizPage() {
     react_1.useEffect(function () {
         questionNumber > 1 && setEarned(earned + 1);
     }, [questionNumber]);
-    /**
-     * Actions
-     */
-    // const handleClick = (path: string) => {
-    //   router.push(path);
-    // };
     var scoreMsg = "";
     if (earned < 3) {
         scoreMsg = "Aie aie, vous ferez mieux la prochaine fois !";
@@ -76,11 +70,13 @@ function quizPage() {
      * Fetch datas
      */
     react_1["default"].useEffect(function () {
-        var categoryUrl = categoryURL + "?name=" + router.query.category;
-        axios_1["default"].get(categoryUrl).then(function (response) {
-            setCategories(response.data);
-        });
-    }, []);
+        if (router.query.category) {
+            var categoryUrl = categoryURL + "?name=" + router.query.category;
+            axios_1["default"].get(categoryUrl).then(function (response) {
+                setCategories(response.data);
+            });
+        }
+    }, [router.query]);
     if (!categories)
         return null;
     return (react_1["default"].createElement(react_1["default"].Fragment, null,
