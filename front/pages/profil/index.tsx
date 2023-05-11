@@ -47,11 +47,18 @@ export default function ProfilePage() {
         )}
       </div>
 
+      <Link href="/categories">
+        <Button rounded className={"mb-4 text-txt-primary-color"} type={"submit"} variant={"primary"}>
+          Retourner jouer
+        </Button>
+      </Link>
+
       <Link href="/api/auth/logout">
-        <Button rounded className={"mb-4"} type={"submit"} variant={"tertiary"}>
+        <Button rounded className={"mb-4 text-txt-tertiary-color"} type={"submit"} variant={"tertiary"}>
           Se déconnecter
         </Button>
       </Link>
+
     </>
   );
 }
