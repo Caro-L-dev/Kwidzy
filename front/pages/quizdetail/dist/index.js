@@ -35,11 +35,13 @@ function quizdetailPage() {
      * Fetch datas
      */
     react_1["default"].useEffect(function () {
-        var categoryUrl = categoryURL + "?name=" + router.query.category;
-        axios_1["default"].get(categoryUrl).then(function (response) {
-            setCategories(response.data);
-        });
-    }, []);
+        if (router.query.category) {
+            var categoryUrl = categoryURL + "?name=" + router.query.category;
+            axios_1["default"].get(categoryUrl).then(function (response) {
+                setCategories(response.data);
+            });
+        }
+    }, [router.query]);
     if (!categories)
         return null;
     return (react_1["default"].createElement(react_1["default"].Fragment, null,

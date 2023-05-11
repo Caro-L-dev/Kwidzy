@@ -18,6 +18,13 @@ import axios from "axios";
  */
 const categoryURL = process.env.NEXT_PUBLIC_CATEGORY_URL ?? "";
 
+interface CategoryDetail {
+  id: number;
+  name: string;
+  level: string;
+  questions_total: number;
+}
+
 /**
  * Page
  */
@@ -32,17 +39,21 @@ export default function quizdetailPage() {
     });
   };
 
-  const [categories, setCategories] = React.useState(null);
+  const [categories, setCategories] = React.useState<CategoryDetail[] | null>(
+    null
+  );
 
   /**
    * Fetch datas
    */
   React.useEffect(() => {
-    let categoryUrl = categoryURL + "?name=" + router.query.category;
-    axios.get(categoryUrl).then((response) => {
-      setCategories(response.data);
-    });
-  }, []);
+    if (router.query.category) {
+      let categoryUrl = categoryURL + "?name=" + router.query.category;
+      axios.get(categoryUrl).then((response) => {
+        setCategories(response.data);
+      });
+    }
+  }, [router.query]);
 
   if (!categories) return null;
 
