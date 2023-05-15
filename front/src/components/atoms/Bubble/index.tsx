@@ -4,11 +4,6 @@
 import React from "react";
 
 /**
- * Local Import
- */
-import { Triangle } from "../index";
-
-/**
  * Type
  */
 interface BubbleProps {
@@ -21,10 +16,6 @@ interface BubbleProps {
 const Bubble = ({ children }: BubbleProps) => {
   return (
     <div className="relative my-6">
-      {/* <Triangle
-        className={"absolute right-[-2px] top-0"}
-        position={"side-bubble"}
-      /> */}
       <p className="p-4 bg-tertiary-color rounded-full mb-6 tracking-wide text-sm z-30">
         {children}
       </p>
