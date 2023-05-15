@@ -1,5 +1,4 @@
-![kwidzy-banner-full](https://github.com/Caro-L-dev/Kwidzy/assets/65663844/cf2e16cb-3058-4a3e-a644-a6f508b91ebd)
-
+![kwidzy-banner-full](https://github.com/Caro-L-dev/Kwidzy/assets/65663844/fd461ca1-17cc-435e-9f69-ece3a74120ca)
 
 # 🎮 **What is Kwidzy ?**  
 
@@ -7,7 +6,7 @@ Kwidzy is a fun and playful responsive website for everyone.
 It adapts to the mobile and desktop format.
 The goal is to answer as many questions as possible and evaluate your general culture through many topics, all while having fun. If the player is wrong, the game stops. His score is displayed after the game is finished.  
   
-_NextJs, Typescript, Tailwind, MySQL, Clever Cloud_
+_NextJs, Typescript, Tailwind, NodeJs, MySQL_
 
 --
 
