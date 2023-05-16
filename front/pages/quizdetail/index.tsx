@@ -59,11 +59,6 @@ export default function quizdetailPage() {
 
   return (
     <>
-      <title>
-        Kwidzy | Description catégorie {categories[0].name} - Niveau{" "}
-        {categories[0].level} - {categories[0].questions_total} questions
-      </title>
-
       <div className=" flex mb-4 items-center">
         <span className="mr-4 text-4xl cursor-pointer">
           <Link href={""} onClick={() => router.back()}>
@@ -78,7 +73,7 @@ export default function quizdetailPage() {
       <div className="flex flex-col justify-between">
         <div className="md:flex md:mb-10">
           <div>
-            <div className="h-[73px] md:h-full md:w-[580px] p-4 font-bold text-xl rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center" />
+            <div className="hidden md:block h-[73px] md:h-full md:w-[580px] p-4 font-bold text-xl rounded-2xl my-4 bg-fixed bg-numerique bg-no-repeat bg-cover bg-center" />
           </div>
           <div className="md:w-full md:ml-12">
             <div className="mb-32">

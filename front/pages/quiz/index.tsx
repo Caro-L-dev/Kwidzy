@@ -97,10 +97,6 @@ export default function quizPage() {
       <div className="relative">
         {endGame ? (
           <>
-            <title>
-              Kwidzy | Score Quiz {categories[0].name} - Vous avez obtenu{" "}
-              {earned} {wordScore}
-            </title>
             <SubTitle name="Score" />
             <div className="mt-4">
               <p>{scoreMsg}</p>
@@ -129,8 +125,6 @@ export default function quizPage() {
           </>
         ) : (
           <>
-            <title>Kwidzy | {categories[0].name} - Quiz en cours</title>
-
             <div className="relative flex justify-center z-10 mb-4">
               <Timer
                 setDelayTimerStop={setEndGame}
