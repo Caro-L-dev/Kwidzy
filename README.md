@@ -11,6 +11,11 @@ _NextJs, Typescript, Tailwind, NodeJs, MySQL_
 --
 
 
+
+https://github.com/Caro-L-dev/Kwidzy/assets/65663844/9b75e9df-6dd3-4995-8d9d-d101c4303874
+
+
+
 ## 👶 **Getting Started**
 
 ### 🔹 Front folder:  
